@@ -24,7 +24,7 @@
 		<div class="form-group">
 			<label for="content">내 용</label>
 			<textarea rows="4" cols="100" class="form-control" id="content" name="content" placeholder="내용을 입력하세요"></textarea>
-			<input type="hidden" name="bno" value="${bno}"/>
+			<input type="hidden" name="boardno" value="${boardno}"/>
 			<button type="submit" class="btn btn-primary">수 정</button>
 			
 		</div>

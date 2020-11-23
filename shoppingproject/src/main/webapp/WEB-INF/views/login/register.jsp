@@ -212,11 +212,6 @@ $(document).ready(function() {
 			$("#errMsg_08").text("이메일 주소는 영문자, 숫자,@만 사용가능");
 			event.preventDefault();
 			}
-		
-		
-		
-
-
 		});
 		var chkValId = function(id){
 			var patt = new RegExp(/^[a-z0-9_]+$/);

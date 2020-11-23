@@ -27,7 +27,7 @@
 				<dd>${detail.writer}</dd>
 							
 				<dt>작성날짜</dt>
-				<dd><fmt:formatDate value="${detail.reg_date}" pattern="yyyy/MM/dd HH:mm:ss" /></dd>	
+				<dd><fmt:formatDate value="${detail.regdate}" pattern="yyyy/MM/dd HH:mm:ss" /></dd>	
 						
 				<dt>첨부파일</dt>
 				<dd><a href="/board/fileDown/${files.bno}">${files.fileOriName}</a></dd>
@@ -37,8 +37,8 @@
 			</dl>
 		</form>
 		<div class="btn-group btn-group-sm" role="group" style="float:right;">
-			<button type="button" class="btn btn-info"    onclick="location.href='/board/boardDelete/${detail.bno}'">삭제</button>
-			<button type="button" class="btn btn-success" onclick="location.href='/board/boardUpdate/${detail.bno}'">수정</button>
+			<button type="button" class="btn btn-info"    onclick="location.href='/board/boardDelete/${detail.boardno}'">삭제</button>
+			<button type="button" class="btn btn-success" onclick="location.href='/board/boardUpdate/${detail.boardno}'">수정</button>
 			<button type="button" class="btn btn-danger " onclick="location.href='/board/boardList'">목록</button>
 		</div>
 	</div>
@@ -48,7 +48,7 @@
 		<label for="comment">댓글</label>
 		<form name="commentInsertForm">
 			<div class="input-group">
-				<input type="hidden" name="bno" value="${detail.bno}"/>
+				<input type="hidden" name="bno" value="${detail.boardno}"/>
 				<input type="text" class="form-control" id="content" name="content" placeholder="댓글을 입력하십시오"/>
 				<span class="input-group-btn">
 					<button class="btn btn-warning" type="button" name="commentInsertBtn">등록</button>

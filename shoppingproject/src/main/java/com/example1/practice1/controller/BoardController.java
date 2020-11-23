@@ -113,7 +113,7 @@ public class BoardController {
 			file.setFileOriName(fileName);
 			file.setFileUrl(fileUrl);
 			
-			service.fileInsert(file);
+//			service.fileInsert(file);
 		}
 		return "redirect:/board/boardList";
 		
@@ -139,8 +139,8 @@ public class BoardController {
 		pageMaker.setTotalCount(service.listCount(scri));
 		model.addAttribute("pageMaker", pageMaker);
 		
-		List<BoardVO> search = service.searchList(scri);
-		model.addAttribute("search", search);
+//		List<BoardVO> search = service.searchList(scri);
+//		model.addAttribute("search", search);
 
 		return "/board/boardList";
 	}// end - private String boardList(Model model,@ModelAttribute("scri")
@@ -153,8 +153,8 @@ public class BoardController {
 
 		logger.info("boarddatail get...");
 		model.addAttribute("detail", service.detail(boardno));
-		model.addAttribute("board", service.boardHit(boardno));
-		model.addAttribute("upload", service.uploadFileList(boardno));
+//		model.addAttribute("board", service.boardHit(boardno));
+//		model.addAttribute("upload", service.uploadFileList(boardno));
 		return "/board/boardDetail";
 	}// end - public String detail(@PathVariable int bno, Model model) throws
 		// Exception
@@ -171,10 +171,10 @@ public class BoardController {
 		// Exception
 
 	// 게시글 수정 화면
-	@RequestMapping(value = "/boardUpdate/{bno}", method = RequestMethod.GET)
-	private String getUpdate(@PathVariable int bno, Model model) throws Exception {
+	@RequestMapping(value = "/boardUpdate/{boardno}", method = RequestMethod.GET)
+	private String getUpdate(@PathVariable int boardno, Model model) throws Exception {
 		logger.info("update get.....");
-		model.addAttribute("detail", service.detail(bno));
+		model.addAttribute("detail", service.detail(boardno));
 		return "/board/boardUpdate";
 	}// end - public String getUpdate(@PathVariable int bno,Model model) throws
 		// Exception

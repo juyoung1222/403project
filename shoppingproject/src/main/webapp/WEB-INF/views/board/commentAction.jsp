@@ -3,7 +3,7 @@
 
 var imsi = "Good";
 
-var bno = '${detail.bno}';	//게시글 번호
+var boardno= '${detail.boardno}';	//게시글 번호
 //alert("bno : " + bno);
 //댓글 등록 버튼을 눌렀을 경우
 $('[name=commentInsertBtn]').click(function() {
@@ -31,7 +31,7 @@ function commentList() {
 	$.ajax({
 		url:	'/comment/list/'+bno,
 		type:	'get',
-		data:	{'bno': bno},
+		data:	{'boardno': boardno},
 		success: function(data) {
 			var str = '';
 			$.each(data, function(key, value){ 

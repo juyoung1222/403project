@@ -66,27 +66,27 @@ public class BoardService {
 	}
 	
 	//게시글 조회수
-	public int boardHit(int boardno) throws Exception{
-		logger.info("service hit ..." + boardno);
-		return mapper.boardHit(boardno);
-	
-	}
-	//파일 올리기
-	public int fileInsert(FileVO file) throws Exception{
-		logger.info("service fileInsert..... " + file);
-		return mapper.fileInsert(file);
-	}
-	//파일 업로드 url보기
-	public FileVO uploadFileList(int boardno) throws Exception{
-		logger.info("service upload.... " + boardno);
-		return mapper.uploadFileList(boardno);
-	}
-	//검색기능
-	public List<BoardVO> searchList(SearchCriteria scri) throws Exception{
-		logger.info("service search..." );
-		return  mapper.searchList(scri);
-		
-	}
+//	public int boardHit(int boardno) throws Exception{
+//		logger.info("service hit ..." + boardno);
+//		return mapper.boardHit(boardno);
+//	
+//	}
+//	//파일 올리기
+//	public int fileInsert(FileVO file) throws Exception{
+//		logger.info("service fileInsert..... " + file);
+//		return mapper.fileInsert(file);
+//	}
+//	//파일 업로드 url보기
+//	public FileVO uploadFileList(int boardno) throws Exception{
+//		logger.info("service upload.... " + boardno);
+//		return mapper.uploadFileList(boardno);
+//	}
+//	//검색기능
+//	public List<BoardVO> searchList(SearchCriteria scri) throws Exception{
+//		logger.info("service search..." );
+//		return  mapper.searchList(scri);
+//		
+	//}
 
 		
 		

@@ -25,7 +25,7 @@
 		</div>
 		<div class="form-group">
 			<label>작 성 날 짜</label>
-			<p>${detail.reg_date}</p>
+			<p>${detail.regdate}</p>
 		</div>
 		<div class="form-group">
 			<label>내 용</label>
@@ -36,8 +36,8 @@
 			<p>${upload.fileUrl}</p>
 		</div>
 		<button  class="btn btn-primary" onclick="location.href='/board/boardList'">목록으로</button>
-		<button class="btn btn-success" onclick="location.href='/board/boardUpdate/${detail.bno}'">수정</button>
-		<button class="btn btn-danger" onclick="location.href='/board/boardDelete/${detail.bno}'">삭제</button>
+		<button class="btn btn-success" onclick="location.href='/board/boardUpdate/${detail.boardno}'">수정</button>
+		<button class="btn btn-danger" onclick="location.href='/board/boardDelete/${detail.boardno}'">삭제</button>
 	
 </div>	
 
