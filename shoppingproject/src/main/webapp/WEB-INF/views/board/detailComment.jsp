@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" 				   prefix="layoutTag" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <layoutTag:layout>
 
@@ -29,9 +29,7 @@
 				<dt>작성날짜</dt>
 				<dd><fmt:formatDate value="${detail.regdate}" pattern="yyyy/MM/dd HH:mm:ss" /></dd>	
 						
-				<dt>첨부파일</dt>
-				<dd><a href="/board/fileDown/${files.bno}">${files.fileOriName}</a></dd>
-							
+				
 				<dt>내  용</dt>
 				<dd>${detail.content}</dd>			
 			</dl>
@@ -48,9 +46,11 @@
 		<label for="comment">댓글</label>
 		<form name="commentInsertForm">
 			<div class="input-group">
-				<input type="hidden" name="bno" value="${detail.boardno}"/>
-				<input type="text" class="form-control" id="content" name="content" placeholder="댓글을 입력하십시오"/>
+				<input type="hidden" name="boardno" id="boardno" value="${detail.boardno}" />
+				<input type="hidden" name="replywriterid" id="replywriterid" value="${comment.replywriterid}"/>
+				<input type="text" class="form-control" id="replytext" name="replytext" placeholder="댓글을 입력하십시오"/>
 				<span class="input-group-btn">
+					<button class="btn btn-warning" type="submit" name="commentInsertBtn">등록s</button>
 					<button class="btn btn-warning" type="button" name="commentInsertBtn">등록</button>
 				</span>
 			</div>

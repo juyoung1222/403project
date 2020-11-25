@@ -32,7 +32,6 @@
 			<div class="col-sm-6">
 			<input type="text" class="form-control" id="userId" name="userId"
 			maxlength=20 placeholder="id를 입력하세요"/>
-			<span class="error" id="errMsg_01"></span>
 		</div>
 		<div class="col-sm-2">
 			<button class="btn btn-warning idCheck" type="button" id="idCheck" onclick="dupCheck();" value="N">중복확인</button> 
@@ -43,7 +42,6 @@
 			<div class="col-sm-6">
 			<input type="password" class="form-control" id="userPw" name="userPw"
 			maxlength=20 placeholder="비밀번호를 입력하세요"/>
-			<span class="error" id="errMsg_02"></span>
 		</div>
 	</div>
 	<div class="form-group">
@@ -51,19 +49,14 @@
 			<div class="col-sm-6">
 			<input type="text" class="form-control" id="userName" name="userName"
 			maxlength=20 placeholder="이름을 입력하세요"/>
-			<span class="error" id="errMsg_03"></span>
 		</div>
 	</div>
 	
-	<div class="form-group">
-		<label class="control-label col-sm-2"><span class="glyphicon glyphicon glyphicon glyphicon-user">성 별</span></label>
-			<input type="radio" name="gender" value="female" checked="checked"/>여성
-			<input type="radio" name="gender" value="male"/>남성
-	</div>
+	
 	<div class="form-group">
 		<label class="control-label col-sm-2"><span class="glyphicon glyphicon glyphicon glyphicon-user">생 년 월 일</span></label>
 		<div class="col-sm-6">
-		<input type="date" value="" min="1910-01-01" max="2100-01-01"/>
+		<input type="date" value="2020-11-14" min="1910-01-01" max="2020-11-14" name="userBirth"/>
 		<fmt:formatDate value="${DateValue}" pattern="yy-MM-dd"/>
 	</div>
 </div>
@@ -80,14 +73,12 @@
 		<label class="control-label col-sm-2"><span class="glyphicon glyphicon glyphicon glyphicon-home">주소</span></label>
 		<div class="col-sm-6">
 			<input type="text" class="form-control" name="address01" id="address01" placeholder="주소"/>
-			<span class="error" id="errMsg_04"></span>
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="control-label col-sm-2"><span class="glyphicon glyphicon glyphicon glyphicon-home">상세주소</span></label>
 		<div class="col-sm-6">
 			<input type="text" class="form-control" name="address02" id="address02" placeholder="상세주소"/>
-			<span class="error" id="errMsg_05"></span>
 		
 		</div>
 	</div>
@@ -106,12 +97,10 @@
 				<div class="input-group-addon">-</div>
 				<div><input type="text" class="form-control col-sm-1" id="tel2"name="tel2" 
 					maxlength="4" placeholder="Tel">
-					<span class="error" id="errMsg_06"></span>
 				</div>
 				<div class="input-group-addon">-</div>
 				<div><input type="text" class="form-control col-sm-1" id="tel3" name="tel3" 
 					maxlength="4" placeholder="Tel">
-					<span class="error" id="errMsg_07"></span>
 				</div>
 			</div>
 		</div>
@@ -120,12 +109,11 @@
 			<div class="col-sm-6">
 			<input type="email" class="form-control" id="userEmail" name="userEmail"
 			maxlength=40 placeholder="이메일을 입력하세요"/>
-			<span class="error" id="errMsg_08"></span>
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-4">
-			<button class="btn btn-success" type="submit" id="chkVal" value="submit">회원가입</button>
+			<button class="btn btn-success" type="submit" id="submit">회원가입</button>
 			<button class="btn btn-danger cancel" type="button">취소</button>
 			
 		</div>
@@ -147,105 +135,56 @@ $(document).ready(function() {
 		location.href="/"
 	});
 	//회원가입 버튼을 눌렀을 경우 =>입력필드가 비어있는지 검사한다.
-	$(".error").hide();
-
-	$("#chkVal").click(function(event){
-
-		var userId = $("#userId").val();
-		var userPw = $("#userPw").val();
-		var userName = $("#userName").val();
-		var address01 = $("#address01").val();
-		var address02 = $("#address02").val();
-		var tel2 = $("#tel2").val();
-		var tel3 = $("#tel3").val();
-		var userEmail = $("#userEmail").val();
-
-		if(chkValId(userId)){
-			$("#errMsg_01").hide();
-			}
-		else{
-			$("#errMsg_01").show();
-			$("#errMsg_01").text("아이디는 오직 영문자와 숫자만 입력가능합니다.");
-			event.preventDefault();
-			}
-
-		if(chkValPw(userPw)){
-			$("#errMsg_02").hide();
-			}
-		else{
-			$("#errMsg_02").show();
-			$("#errMsg_02").text("비밀번호는 오직 영문자와 숫자만 입력가능합니다.");
-			event.preventDefault();
-			}
-
-		if(chkValName(userName)){
-			$("#errMsg_03").hide();
-			}
-		else{
-			$("#errMsg_03").show();
-			$("#errMsg_03").text("이름은 한글이나 영문자만 입력가능합니다.");
-			event.preventDefault();
-			}
-
-		if(chkValAddress(address01)){
-			$("#errMsg_04").hide();
-			}
-		else{
-			$("#errMsg_04").show();
-			$("#errMsg_04").text("주소는 한글이나 영문자 그리고 숫자만 입력가능합니다.");
-			event.preventDefault();
-			}
-
-		if(chkValAddress(address02)){
-			$("#errMsg_05").hide();
-			}
-		else{
-			$("#errMsg_05").show();
-			$("#errMsg_05").text("주소는 한글이나 영문자 그리고 숫자만 입력가능합니다.");
-			event.preventDefault();
-			}
-		if(chkValEmail(userEmail)){
-			$("#errMsg_08").hide();
-			}
-		else{
-			$("#errMsg_08").show();
-			$("#errMsg_08").text("이메일 주소는 영문자, 숫자,@만 사용가능");
-			event.preventDefault();
-			}
-		});
-		var chkValId = function(id){
-			var patt = new RegExp(/^[a-z0-9_]+$/);
-			return patt.test(id);
-			}
-		var chkValPw = function(pw){
-			var patt = new RegExp(/^[a-z0-9_]+$/);
-			return patt.test(pw);
-			}
-		var chkValName = function(name){
-			var patt = new RegExp(/^[ㄱ-ㅎa-z]+$/);
-			return patt.test(name);
-			}
-		var chkValAddress = function(address01){
-			var patt = new RegExp(/^[ㄱ-ㅎa-z]+$/);
-			return patt.test(address01);
-			}
-		var chkValAddress = function(address02){
-			var patt = new RegExp(/^[ㄱ-ㅎa-z]+$/);
-			return patt.test(address02);
-			}
-		var chkValTel = function(tel02){
-			var patt = new RegExp(/^[0-9]+$/);
-			return patt.test(tel02);
-			}
-		var chkValTel = function(tel03){
-			var patt = new RegExp(/^[0-9]+$/);
-			return patt.test(tel3);
-			}
-		var chkValEmail = function(email){
-			var patt = new RegExp(/^[a-z0-9@]+$/);
-			return patt.test(email);
-			}
+	$("#submit").on("click",function(){
+		if($("#userId").val() == ""){
+			alert("아이디를 입력하세요");
+			$("#userId").focus();
+			return false;
+		}
+		if($("#userPw").val() == ""){
+			alert("비밀번호를 입력하세요");
+			$("#userPw").focus();
+			return false;
+		}
+		if($("#userName").val() == ""){
+			alert("이름을 입력하세요");
+			$("#userName").focus();
+			return false;
+		}
+		if($("#userBirth").val() == ""){
+			alert("생년월일을 입력하세요");
+			$("#userBirth").focus();
+			return false;
+		}
+		if($("#address01").val() == ""){
+			alert("주소를 입력하세요");
+			$("#address01").focus();
+			return false;
+		}
+		if($("#address02").val() == ""){
+			alert("상세주소를 입력하세요");
+			$("#address02").focus();
+			return false;
+		}
 		
+		if($("#tel2").val() == ""){
+			alert("전화번호를 입력하세요");
+			$("#address01").focus();
+			return false;
+		}
+		if($("#tel3").val() == ""){
+			alert("전화번호를 입력하세요");
+			$("#address01").focus();
+			return false;
+		}
+		if($("#userEmail").val() == ""){
+			alert("이메일을 입력하세요");
+			$("#address01").focus();
+			return false;
+		}
+		
+		
+	});
 	
 })
 //아이디 중복 검사

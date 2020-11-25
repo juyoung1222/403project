@@ -18,7 +18,9 @@
 	color:rgb(255,255,255);
 	background-color:red
 }
-	li{list-style:none; float:left; padding:6px;}
+	ul{list-style:none; float:center; padding:6px;}
+
+	
 </style>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link rel="stylesheet" href="//code.jquey.com/ui/1.12.1/themes/base/jquey-ui.css">
@@ -39,7 +41,6 @@
 				<th>제목</th>
 				<th>작성자</th>
 				<th>내용</th>
-				<th>파일업로드</th>
 				<th>작성일시</th>
 			
 			</tr>
@@ -109,6 +110,20 @@ $(document).ready(function(){
 </script>
 <script>
 
+</script>
+<script>
+$(document).ready(function(){
+	$(".btn-primary").on("click",function(){
+		
+		if(${member == null}){
+			alert("로그인을 하셔야 합니다.");
+			location.href="/login/login";
+			}
+		else if(${member != null}){
+			location.href="/board/boardInsert";
+			}
+		});
+});
 </script>
 </div>
 	</body>

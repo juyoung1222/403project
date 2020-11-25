@@ -25,10 +25,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example1.practice1.domain.BoardVO;
+import com.example1.practice1.domain.BoardDTO;
 import com.example1.practice1.domain.Criteria;
-import com.example1.practice1.domain.FileVO;
-import com.example1.practice1.domain.MemberVO;
+import com.example1.practice1.domain.FileDTO;
+import com.example1.practice1.domain.MemberDTO;
 import com.example1.practice1.domain.PageMaker;
 import com.example1.practice1.domain.SearchCriteria;
 import com.example1.practice1.service.BoardService;
@@ -62,59 +62,27 @@ public class BoardController {
 	 */
 	//파일 등록
 	@RequestMapping("/uploadInsert")
-	private String uploadInsert(FileVO file, Model model) throws Exception{
+	private String uploadInsert(FileDTO file, Model model) throws Exception{
 		logger.info("uploadInsert get...");
 		
 		return "/board/uploadInsert";
 	}
 
 	@RequestMapping("/insertProc")
-	private String boardInsertProc(HttpServletRequest request,@RequestPart MultipartFile files) throws Exception {
+	private String boardInsertProc(HttpServletRequest request) throws Exception {
 
 		logger.info("insertproc get........");
-		BoardVO vo = new BoardVO();
-		FileVO file = new FileVO();
+		BoardDTO boardDTO = new BoardDTO();
 		
-		logger.info("Files:"+files.getOriginalFilename());
 		logger.info("subject : " + request.getParameter("subject") );
 
-		vo.setSubject(request.getParameter("subject"));
-		vo.setContent(request.getParameter("content"));
-		vo.setWriter(request.getParameter("writer"));
+		boardDTO .setSubject(request.getParameter("subject"));
+		boardDTO .setContent(request.getParameter("content"));
+		boardDTO .setWriter(request.getParameter("writer"));
 		
-		service.insertBoard(vo);
+		service.insertBoard(boardDTO);
 		
-		if(files.isEmpty()) {
-			logger.info("isEmpty.....");
-			service.insertBoard(vo);
-		}else {
-			logger.info("NOT isEmpty.....");
-			
-			String fileName = files.getOriginalFilename();
-			String fileNameExtension = FilenameUtils.getExtension(fileName).toLowerCase();
-			File destinationFile;
-			String destinationFileName;
-			String fileUrl = "D:\\project\\juyoungWeb\\exam4\\src\\main\\webapp\\WEB-INF\\views\\upload";
-			
-			do {
-				destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
-				destinationFile = new File(fileUrl + destinationFileName);
-			}while(destinationFile.exists());
-			
-			destinationFile.getParentFile().mkdir();
-			files.transferTo(destinationFile);
-			
 		
-			
-			logger.info("FileName : " + destinationFileName);
-			//파일관련 자료를 files테이블에 등록한다.
-			file.setBno(vo.getBoardno());
-			file.setFileName(destinationFileName);
-			file.setFileOriName(fileName);
-			file.setFileUrl(fileUrl);
-			
-//			service.fileInsert(file);
-		}
 		return "redirect:/board/boardList";
 		
 		}
@@ -124,16 +92,9 @@ public class BoardController {
 	private String boardList(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
 		logger.info("boardList get...");
 		
-	
-		
-		
-		
-		List<BoardVO> list = service.boardList(scri);
+		List<BoardDTO> list = service.boardList(scri);
 		model.addAttribute("list", list);
 		
-		
-		
-
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(service.listCount(scri));
@@ -165,6 +126,7 @@ public class BoardController {
 
 		logger.info("comment get...");
 		model.addAttribute("detail", service.detail(boardno));// 게시글으리 정보를 가져와서 저장한다.
+		
 		return "/board/detailComment";
 
 	}// end - public String comment(@PathVariable int bno,Model model) throws
@@ -175,6 +137,7 @@ public class BoardController {
 	private String getUpdate(@PathVariable int boardno, Model model) throws Exception {
 		logger.info("update get.....");
 		model.addAttribute("detail", service.detail(boardno));
+		
 		return "/board/boardUpdate";
 	}// end - public String getUpdate(@PathVariable int bno,Model model) throws
 		// Exception
@@ -184,13 +147,13 @@ public class BoardController {
 	private String boardUpdateProc(HttpServletRequest request) throws Exception {
 
 		logger.info("updateproc get........");
-		BoardVO vo = new BoardVO();
+		BoardDTO boardDTO  = new BoardDTO();
 
-		vo.setSubject(request.getParameter("subject"));
-		vo.setContent(request.getParameter("content"));
-		vo.setBoardno(Integer.parseInt(request.getParameter("boardno")));
+		boardDTO .setSubject(request.getParameter("subject"));
+		boardDTO .setContent(request.getParameter("content"));
+		boardDTO .setBoardno(Integer.parseInt(request.getParameter("boardno")));
 
-		service.update(vo);
+		service.update(boardDTO);
 		return "redirect:/board/boardDetail/" + request.getParameter("boardno");
 	}
 

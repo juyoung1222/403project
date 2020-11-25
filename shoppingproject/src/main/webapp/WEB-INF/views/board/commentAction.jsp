@@ -9,10 +9,12 @@ var boardno= '${detail.boardno}';	//게시글 번호
 $('[name=commentInsertBtn]').click(function() {
 	var insertData = $('[name=commentInsertForm]').serialize();	//commentInsertForm의 내용을 가져온다.
 	commentInsert(insertData);	
+	//commentInsert(boardno);	
 });
 
 //댓글 등록
 function commentInsert(insertData){
+	alert(insertData);
     $.ajax({
         url : '/comment/insert',
         type : 'post',
@@ -20,7 +22,7 @@ function commentInsert(insertData){
         success : function(data){
             if(data == 1) {
                 commentList(); //댓글 작성 후 댓글 목록 reload
-                $('[name=content]').val('');
+				$('[name=replytext]').val('');
             }
         }
     });
@@ -29,22 +31,22 @@ function commentInsert(insertData){
 //댓글 목록 보기
 function commentList() {
 	$.ajax({
-		url:	'/comment/list/'+bno,
+		url:	'/comment/list/'+replyno,
 		type:	'get',
-		data:	{'boardno': boardno},
+		data:	{'replyno': replyno},
 		success: function(data) {
 			var str = '';
 			$.each(data, function(key, value){ 
 				str += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-				str += '<div class="commentInfo'+value.cno+'">'+'댓글번호 : '+value.cno+' / 작성자 : '+value.writer;
-				str += '<a onclick="commentUpdate('+value.cno+',\''+value.content+'\');"> 수정 </a>';
-				str += '<a onclick="commentDelete('+value.cno+');"> 삭제 </a> </div>';
-				str += '<div class="commentContent'+value.cno+'"> <p> 내용 : '+value.content +'</p>';
+				str += '<div class="commentInfo'+value.replyno+'">'+'댓글번호 : '+value.replyno+' / 작성자 : '+value.replywriterid;
+				str += '<a onclick="commentUpdate('+value.replyno+',\''+value.replytext+'\');"> 수정 </a>';
+				str += '<a onclick="commentDelete('+value.replyno+');"> 삭제 </a> </div>';
+				str += '<div class="commentContent'+value.replyno+'"> <p> 내용 : '+value.replytext +'</p>';
 				str += '</div></div>';
 			});
 			$(".commentList").html(str);
 			//alert("imsi1["+imsi+"]);
-			imsi = bno;
+			imsi = replyno;
 		}
 	})
 	// 콜백함수 : 요청 성공 시에 호출되는 함수
@@ -58,40 +60,40 @@ function commentList() {
 }
 
 //댓글 수정 - 댓글 내용 출력을 input 폼으로 변경한다.
-function commentUpdate(cno, content) {
+function commentUpdate(replyno, replytext) {
 	var str = '';
 
 	str += '<div class="input-group">';
-	str += '<input type="text" class="form-control" name="content_' + cno + '" value="' +content + '"/>';
-	str += '<span class="input-group-btn"><button class="btn btn-warning" type="button" onclick="commentUpdateProc('+cno+');">수정</button> </span>';
+	str += '<input type="text" class="form-control" name="replytext_' + replyno + '" value="' +replytext + '"/>';
+	str += '<span class="input-group-btn"><button class="btn btn-warning" type="button" onclick="commentUpdateProc('+replyno+');">수정</button> </span>';
 	str += '</div>';
 
 	$('.commentContent' + cno).html(str);
 }
 
 //댓글 수정 - 수정한 댓글 내용을 테이블에 업데이트한다.
-function commentUpdateProc(cno) {
+function commentUpdateProc(replyno) {
 	//댓글 번호에 해당하는 수정된 내용을 가져온다.
-	var updateContent = $('[name=content_' + cno + ']').val();
+	var updateContent = $('[name=replytext_' + replyno + ']').val();
 	
 	$.ajax({
 		url:	'/comment/update',
 		type:	'post',
-		data:	{'content' : updateContent, 'cno' : cno},
+		data:	{'replytext' : updateContent, 'replyno' : replyno},
 		success: function(data) {
-			if(data == 1) commentList(bno); //댓글을 수정한 후 목록을 출력한다.
+			if(data == 1) commentList(replyno); //댓글을 수정한 후 목록을 출력한다.
 		}
 	});
 }
 
 //댓글 삭제
-function commentDelete(cno) {
+function commentDelete(replyno) {
 	//alert("commentDelete");
 	$.ajax({
-		url:	'/comment/delete/' + cno,
+		url:	'/comment/delete/' + replyno,
 		type:	'post',
 		success: function(data) {
-			if(data == 1) commentList(bno);	//댓글 삭제 후에 목록을 출력한다.
+			if(data == 1) commentList(replyno);	//댓글 삭제 후에 목록을 출력한다.
 		}
 	});
 }

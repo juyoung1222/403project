@@ -174,7 +174,7 @@ for (i = 0; i < dropdown.length; i++) {
 						<p>
 							<strong>프로필</strong>
 						</p>
-						<p>닉네임:내 귀에 유미 시발련아</p>
+						<p> </p>
 						<p>동물 피규어 및 애니피규어를 제작판매 하는 중 입니다.</p>
 						<button class="btn" data-toggle="modal" data-target="#myModal">Buy
 							Click</button>

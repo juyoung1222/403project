@@ -11,9 +11,10 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example1.practice1.controller.BoardController;
-import com.example1.practice1.domain.BoardVO;
+import com.example1.practice1.domain.BoardDTO;
+import com.example1.practice1.domain.CommentDTO;
 import com.example1.practice1.domain.Criteria;
-import com.example1.practice1.domain.FileVO;
+import com.example1.practice1.domain.FileDTO;
 import com.example1.practice1.domain.SearchCriteria;
 import com.example1.practice1.mapper.BoardMapper;
 
@@ -27,17 +28,16 @@ public class BoardService {
 	BoardMapper mapper;
 	
 	//게시글 등록
-	public int insertBoard(BoardVO vo) throws Exception{
-		logger.info("service insertBoard...." + vo);
-		return mapper.insertBoard(vo);
+	public int insertBoard(BoardDTO boardDTO ) throws Exception{
+		logger.info("service insertBoard...." + boardDTO);
+		return mapper.insertBoard(boardDTO);
 	}
 	//게시글 목록보기
 	@Transactional(isolation = Isolation.READ_COMMITTED)
-	public List<BoardVO> boardList(SearchCriteria scri) throws Exception{
+	public List<BoardDTO> boardList(SearchCriteria scri) throws Exception{
 		logger.info("service :" + scri );
-		List<BoardVO> list = mapper.boardList(scri);
-			return mapper.boardList(scri);
-	
+		List<BoardDTO> list = mapper.boardList(scri);
+			return list;
 		
 	}
 	//게시글 총 갯수
@@ -47,17 +47,17 @@ public class BoardService {
 	}
 	
 	//게시글 상세보기
-	public BoardVO detail(int boardno) throws Exception{
+	public BoardDTO detail(int boardno) throws Exception{
 		logger.info("service detail....." + boardno);
 		return mapper.detail(boardno);
 	}
 	//게시글 수정
-	public int update(BoardVO vo) throws Exception{
-		logger.info("service update..... " + vo);
-		System.out.println("BOARDNO : " + vo.getBoardno());
-		System.out.println("SUBJECT : " + vo.getSubject());
-		System.out.println("CONTENT : " + vo.getContent());
-		return mapper.update(vo);
+	public int update(BoardDTO boardDTO) throws Exception{
+		logger.info("service update..... " + boardDTO);
+		System.out.println("BOARDNO : " + boardDTO.getBoardno());
+		System.out.println("SUBJECT : " + boardDTO.getSubject());
+		System.out.println("CONTENT : " + boardDTO.getContent());
+		return mapper.update(boardDTO );
 	}
 	//게시글 삭제
 	public int delete(int boardno) throws Exception{
@@ -87,7 +87,10 @@ public class BoardService {
 //		return  mapper.searchList(scri);
 //		
 	//}
+	
 
+	
+	
 		
 		
 	

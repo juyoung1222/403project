@@ -6,29 +6,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.example1.practice1.mapper.BoardMapper">
 
 <!-- 게시글 등록 -->
-<insert id="insertBoard" parameterType="com.example1.practice1.domain.BoardVO">
+<insert id="insertBoard" parameterType="com.example1.practice1.domain.BoardDTO">
 INSERT	INTO	BOARDTABLE
 			(BOARDNO, 		SUBJECT, 	CONTENT, 	WRITER, 	REGDATE)
 	VALUES	(#{boardno},	#{subject},	#{content},	#{writer},	now() )
 
 </insert>
 
-<!-- 게시글 목록보기 
+ <!--게시글 목록보기   
 <select id="boardList" resultType="com.example1.practice1.domain.BoardVO">
 SELECT *
-FROM pro_board
+FROM BOARDTABLE
 ORDER BY boardno DESC
 
 </select>-->
 
 <!-- 파일올리기 -->
-<insert id="fileInsert" parameterType="com.example1.practice1.domain.FileVO" useGeneratedKeys="true">
+<insert id="fileInsert" parameterType="com.example1.practice1.domain.FileDTO" useGeneratedKeys="true">
 INSERT INTO files
 	(FNO, BNO, FILENAME, FILEORINAME, FILEURL)
 VALUES (#{fno}, #{bno}, #{fileName} , #{fileOriName}, #{fileUrl})
 </insert>
 <!-- 게시글 페이징 -->
-<select id="boardList" resultType="com.example1.practice1.domain.BoardVO" parameterType="com.example1.practice1.domain.Criteria">
+<select id="boardList" resultType="com.example1.practice1.domain.BoardDTO" parameterType="com.example1.practice1.domain.Criteria">
 SELECT BOARDNO, 
 		        SUBJECT, 
 		        CONTENT,
@@ -72,9 +72,9 @@ WHERE boardno > 0  <!-- 참이라는 의미,bno가 0이상인 데이터들을 �
 	</sql>
 
 <!-- 게시글 상세보기 -->
-<select id="detail" parameterType="int" resultType="com.example1.practice1.domain.BoardVO">
+<select id="detail" parameterType="int" resultType="com.example1.practice1.domain.BoardDTO">
 SELECT * 
-FROM BOARDNO
+FROM BOARDTABLE
 WHERE boardno = ${boardno}
 
 </select>
@@ -82,7 +82,7 @@ WHERE boardno = ${boardno}
 
 
 <!-- bno에 해당하는 게시글의 정보를 수정한다. -->
-<update id="update" parameterType="com.example1.practice1.domain.BoardVO">
+<update id="update" parameterType="com.example1.practice1.domain.BoardDTO">
 UPDATE	BOARDTABLE
 SET		<if test="subject != null and subject !=''">subject = #{subject}</if>
 		<if test="subject != null and subject !='' and content != null and content !=''"> , </if> <!-- ,의 의미는 여러개 넘어와야할때 사용. -->
@@ -101,18 +101,20 @@ WHERE boardno = #{boardno}
 
 
 <!-- 파일업로드 목록보기 -->
-<select id="uploadFileList" resultType="com.example1.practice1.domain.FileVO" >
+<select id="uploadFileList" resultType="com.example1.practice1.domain.FileDTO" >
 SELECT *
 FROM files
 limit 1
 </select>
 
 <!-- 검색기능 -->
-<select id="searchList" resultType="com.example1.practice1.domain.BoardVO">
+<select id="searchList" resultType="com.example1.practice1.domain.BoardDTO">
 SELECT *
 FROM BOARDTABLE
 limit 1
 </select>
+
+
 
 
 </mapper>
