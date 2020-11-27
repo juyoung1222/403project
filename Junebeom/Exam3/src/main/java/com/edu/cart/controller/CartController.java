@@ -24,11 +24,11 @@ public class CartController {
 	= LoggerFactory.getLogger(CartController.class);
 	
 	@Inject
-	CartService cartservice;
+	CartService cartService;
 	
 	@RequestMapping(value="/cart", method= RequestMethod.GET)
 	public String getCart()throws Exception {
-		logger.info("CartController getCart()");
+		logger.info("CartController getCart()....");
 		
 		return "/cart";
 	}
@@ -55,7 +55,7 @@ public class CartController {
 //		
 //		return "/cart/cartChk";
 //	}
-	
+//	
 //	//삭제
 //	@RequestMapping(value="/cart/deleteCart", method= RequestMethod.GET)
 //	public String deleteCart(@RequestParam("cartproductid") int cartproductid) throws Exception {

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.edu.cart.controller.CartController;
 import com.edu.cart.mapper.CartMapper;
 
-@Repository("com.edu.cart.mapper.Cartmapper")
+@Repository("com.edu.cart.service.CartService")
 public class CartService {
 
 	private static final Logger logger
@@ -25,8 +25,8 @@ public class CartService {
 //		logger.info("service addCart()...");
 //		return 0;
 //	}
-	
-	
+//	
+//	
 //	//삭제
 //	public static void deleteCart(int cartproductid) {
 //		
