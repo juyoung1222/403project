@@ -4,9 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import com.edu.cart.domain.CartDTO;
 
-
-
-@Repository("com.edu.cart.Mapper.CartMapper")
+@Repository("com.edu.cart.mapper.CartMapper")
 public interface CartMapper {
 	
 	//추가
