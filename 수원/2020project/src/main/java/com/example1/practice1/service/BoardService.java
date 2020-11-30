@@ -64,11 +64,10 @@ public class BoardService {
 	}
 	
 	//게시글 조회수
-//	public int boardHit(int boardno) throws Exception{
-//		logger.info("service hit ..." + boardno);
-//		return mapper.boardHit(boardno);
-//	
-//	}
+	public int boardHit(int boardno) throws Exception{
+		logger.info("service hit ..." + boardno);
+		return mapper.boardHit(boardno);	
+	}
 //	//파일 올리기
 //	public int fileInsert(FileVO file) throws Exception{
 //		logger.info("service fileInsert..... " + file);

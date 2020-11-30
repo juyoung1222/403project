@@ -30,6 +30,7 @@
      </c:if>
      <c:if test="${member != null}">
       <li><a href="/login/logout" role="button"><span class="glyphicon glyphicon-log-out"></span>로그아웃</a></li>
+      <li><a href="/product/productinsert" role="button"><span class="glyphicon glyphicon-usd"></span>제품등록</a></li>
      </c:if>
     </ul>
   </div>

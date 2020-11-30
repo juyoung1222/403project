@@ -45,23 +45,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	WHERE	PRODUCTNO		= #{productno}
 	</select>
 	
-	<!-- bno에 해당하는 게시글의 정보를 수정한다. 
+	<!-- PRODUCTNO 에 해당하는 게시글의 정보를 수정한다. -->
 	<update id="productUpdate" parameterType="com.example1.practice1.domain.ProductDTO">
 	UPDATE	PRODUCTTABLE
-	SET		<if test="subject != null and subject !=''">SUBJECT = #{subject}</if>
-			<if test="subject != null and subject !='' and content != null and content !=''"> , </if>
-			<if test="content != null and content !=''">CONTENT = #{content}</if>
-	WHERE	BNO		= #{bno}
+	SET		<if test="productname != null and productname !=''">PRODUCTNAME = #{productname}</if>
+			<if test="productname != null and productname !='' and productprice != null and productprice !=''"> , </if>
+			<if test="productprice != null and productprice !=''">PRODUCTPRICE = #{productprice}</if>
+	WHERE	PRODUCTNO		= #{productno}
 	</update>
-	-->
 	
-	<!-- bno에 해당하는 자료를 삭제한다. 
+	
+	<!-- bno에 해당하는 자료를 삭제한다. -->
 	<delete id="productDelete" parameterType="int" >
 	DELETE
 	FROM	PRODUCTTABLE
-	WHERE	BNO		= #{bno}
+	WHERE	PRODUCTNO		= #{PRODUCTNO}
 	</delete>
-	 
+	
+	<!-- 
 	<select id="fileDetail" parameterType="int" resultType="com.edu.board.domain.FileDTO">
 	SELECT	*
 	FROM	FILES

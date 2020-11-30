@@ -8,19 +8,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 게시글 등록 -->
 <insert id="insertBoard" parameterType="com.example1.practice1.domain.BoardDTO">
 INSERT	INTO	BOARDTABLE
-			(BOARDNO, 		SUBJECT, 	CONTENT, 	WRITER, 	REGDATE)
-	VALUES	(#{boardno},	#{subject},	#{content},	#{writer},	now() )
+			(BOARDNO, 		SUBJECT, 	CONTENT, 	WRITER, 	REGDATE,  BOARDHIT)
+	VALUES	(#{boardno},	#{subject},	#{content},	#{writer},	now(), #{boardhit})
 
 </insert>
 
-<!-- 게시글 목록보기-->   
+<!-- 게시글 목록보기   
 <select id="boardList" resultType="com.example1.practice1.domain.BoardDTO">
 SELECT *
 FROM BOARDTABLE
 ORDER BY boardno DESC
-
 </select>
-
+-->
 <!-- 파일올리기 
 <insert id="fileInsert" parameterType="com.example1.practice1.domain.FileDTO" useGeneratedKeys="true">
 INSERT INTO files
@@ -28,30 +27,23 @@ INSERT INTO files
 VALUES (#{fno}, #{bno}, #{fileName} , #{fileOriName}, #{fileUrl})
 </insert>-->
 
-<!-- 게시글 페이징 
+<!-- 게시글 페이징 -->
 <select id="boardList" resultType="com.example1.practice1.domain.BoardDTO" parameterType="com.example1.practice1.domain.Criteria">
 SELECT BOARDNO, 
-		        SUBJECT, 
-		        CONTENT,
-		        WRITER, 
-		        REGDATE
-		        
-		 FROM ( 
-		        SELECT BOARDNO, 
-		               SUBJECT, 
-		               CONTENT, 
-		               WRITER, 
-		               REGDATE, 
-		               
-		               ROW_NUMBER() OVER(ORDER BY BOARDNO DESC) AS RNUM
-		         FROM BOARDTABLE
-		         WHERE 1=1 
-		         	<include refid="search"></include>
-		                       ) MP
-		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
-		ORDER BY BOARDNO DESC
-	</select>
--->
+              SUBJECT, 
+              CONTENT,
+              WRITER, 
+              REGDATE,
+              BOARDHIT
+              
+       
+FROM BOARDTABLE
+WHERE 1=1
+
+   <include refid="search"></include>
+LIMIT #{rowStart}, #{rowEnd}               
+
+</select>
 
 <!-- 게시글페이지 개수 -->
 <select id="listCount" parameterType="com.example1.practice1.domain.SearchCriteria" resultType="int">
@@ -122,4 +114,12 @@ FROM REPLYTABLE
 WHERE replycontentid = #{boardno} 
 ORDER BY REPLYNO 
 </select>
+
+<!-- 조회수 -->
+<update id="boardHit" parameterType="int" >
+UPDATE BOARDTABLE 
+SET  boardhit = boardhit + 1
+WHERE boardno = #{boardno} 
+</update>
+
 </mapper>

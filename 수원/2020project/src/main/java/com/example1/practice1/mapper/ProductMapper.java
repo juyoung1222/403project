@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.example1.practice1.domain.BoardDTO;
 import com.example1.practice1.domain.Pagination;
 import com.example1.practice1.domain.ProductDTO;
 
@@ -31,4 +32,10 @@ public interface ProductMapper {
 		
 	//파일 상세 정보
 	public ProductDTO fileDetail(int Productno) throws Exception;
+    
+	//게시글 삭제
+	public int productDelete(int Productno) throws Exception;
+
+	//게시글 수정
+	public int productUpdate(ProductDTO product) throws Exception;
 }

@@ -144,37 +144,37 @@ for (i = 0; i < dropdown.length; i++) {
 				<div class="col-sm-3">
 					<div class="thumbnail">
 						<img src="/static/images/프로필1.jpg" alt="Paris" width="600"
-							height="400">
+							height="400" onclick="location.href='/product/productlist'">
 						<p>
 							<strong>프로필</strong>
 						</p>
 						<p>닉네임:SyaByMe</p>
 						<p>다양한 가면등을 제작하고 판매하고있습니다</p>
-						<button class="btn btn-default">Buy Click</button>
+						<button class="btn btn-default" onclick="location.href='/product/productlist'" >More Click</button>
 					</div>
 				</div>
 				<div class="col-sm-3">
 					<div class="thumbnail">
 						<img src="/static/images/프로필2.jpg" alt="New York" width="600"
-							height="400">
+							height="400" onclick="location.href='/product/productlist'">
 						<p>
 							<strong>프로필</strong>
 						</p>
 						<p>닉네임:오라하르콘</p>
 						<p>애니피규어를 주종목으로 하고있습니다.</p>
-						<button class="btn btn-default">Buy Click</button>
+						<button class="btn btn-default" onclick="location.href='/product/productlist'">More Click</button>
 					</div>
 				</div>
 				<div class="col-sm-3">
 					<div class="thumbnail">
 						<img src="/static/images/프로필3.jpg" alt="San Francisco" width="600"
-							height="400">
+							height="400" onclick="location.href='/product/productlist'">
 						<p>
 							<strong>프로필</strong>
 						</p>
 						<p> </p>
 						<p>동물 피규어 및 애니피규어를 제작판매 하는 중 입니다.</p>
-						<button class="btn btn-default">Buy Click</button>
+						<button class="btn btn-default" onclick="location.href='/product/productlist'">More Click</button>
 					</div>
 				</div>
 

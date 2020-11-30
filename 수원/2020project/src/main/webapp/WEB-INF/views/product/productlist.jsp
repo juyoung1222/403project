@@ -1,6 +1,5 @@
 <%@ page session="true"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib  prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="layoutTag" tagdir="/WEB-INF/tags"%>
@@ -84,50 +83,10 @@
      <div class="col-sm-3">
         <div class="thumbnail">
           <img src="/static/upload/${product.productimageName}" alt="이미지 업로드" >
-          <button class="btn" data-toggle="modal" data-target="#myModal">Click</button>
+          <button class="btn" data-toggle="modal" data-target="#myModal" onclick="location.href='/product/productdetail/${product.productno}'">Click</button>
         </div>
       </div>
 </c:forEach>   
-  
- 
-  <!-- 클릭시 팝업 창 -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-    
- <!-- Modal 팝업창 세부 내용-->
-<div class="modal-content">
-     <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">×</button>
-          <h4><span class="glyphicon glyphicon-lock"></span>상세 내용</h4>
-       	</div>
-    <div class="modal-body">
-          <form role="form">
-            <div class="form-group">
-             <p>고양이 !</p>
-             <p>고어로는 '괴'였으리라고 짐작된다. 더 이른 시기에는 '고니 > 고이'. '괴'라는 말에 '작은 것'을 뜻하는 접미사 
-             '-앙이'가 붙어서 '괴앙이'가 되었는데, 이 시기의 'ㅚ'는 이중모음 [oj]였기에 뒤 음절 앞에 반모음 [j]의 첨가가 일어나 
-             '괴양이'가 되고 다시 '괴'의 끝 [j]가 탈락하여 '고양이'가 되었다는 것이 정설. 즉 [괴앙이 koj.aŋ.i > 괴양이 koj.jaŋ.i > 고양이 ko.jaŋ.i].
-              사실상 발음은 '괴(고이)-' 어근 기준으로 고대 이래로 거의 바뀌지 않은 셈이다.</p>
-            </div>
-   <div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-user"></span> 연락처를 남겨주세요</label>
-              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
-            </div>
-              <button type="submit" class="button btn-block">BUYS 
-                <span class="glyphicon glyphicon-ok"></span>
-              </button>
-          </form>
-        </div>
-  <div class="modal-footer">
-          <button type="submit" class="button btn-danger btn-default pull-left" data-dismiss="modal">
-            <span class="glyphicon glyphicon-remove"></span> Cancel
-          </button>
-          <p>Need <a href="#">help?</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
 
 		<!-- pagination{s}
 		<div id="paginationBox" >

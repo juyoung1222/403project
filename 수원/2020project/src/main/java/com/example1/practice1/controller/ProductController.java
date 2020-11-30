@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +28,9 @@ import com.example1.practice1.service.ProductService;
 @Controller
 @RequestMapping("/product")
 public class ProductController {
+	
+	// 로깅을 위한 변수
+		private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 	
 	@Resource(name = "com.example1.practice1.service.ProductService")
 	ProductService productService;	
@@ -106,6 +112,45 @@ public class ProductController {
 			
 			return "/product/productlist";
 		}
+		// 게시글 번호에 해당하는 상세정보화면
+			@RequestMapping("/productdetail/{productno}")
+			private String boardDetail(@PathVariable int productno, Model model) throws Exception {
+				// bno에 해당하는 자료를 찾아와서 model에 담는다.
+				model.addAttribute("productdetail", productService.productDetailService(productno)); // 게시글의 정보를 가져와서 저장한다.					//model.addAttribute("files", productService.fileDetailService(bno)); // 파일의 정보를 가져와서 저장한다.
+					return "/product/productdetail";
+			}
+			
+			// 게시글 수정 화면
+			@RequestMapping(value = "/Update/{productno}", method = RequestMethod.GET)
+			private String getUpdate(@PathVariable int productno, Model model) throws Exception {
+				logger.info("update get.....");
+				model.addAttribute("detail", productService.productDetailService(productno));
+				
+				return "/product/Update";
+			}// end - public String getUpdate(@PathVariable int bno,Model model) throws
+				// Exception
+
+			// 게시글 수정 화면에서 수정할 자료를 업데이트한다.
+			@RequestMapping("/updateProc")
+			private String productUpdateProc(HttpServletRequest request) throws Exception {
+
+				logger.info("updateproc get........");
+				ProductDTO productDTO  = new ProductDTO();
+
+				productDTO.setProductname(request.getParameter("productname"));
+				productDTO.setProductprice(Integer.parseInt(request.getParameter("productprice")));
+				productDTO.setProductsalescnt(Integer.parseInt(request.getParameter("productsalescnt")));
+
+				productService.update(productDTO);
+				return "redirect:/product/productDetail/" + request.getParameter("productno");
+			}
+			
+			// 글 번호에 해당하는 자료를 삭제한다.
+			@RequestMapping("/delete/{productno}")
+			private String productDelete(@PathVariable int productno) throws Exception {
+				productService.productDeleteService(productno);
+				return "redirect:/product/productlist";
+			}
 }
 
 
