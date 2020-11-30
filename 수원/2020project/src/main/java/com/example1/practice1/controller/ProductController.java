@@ -60,7 +60,7 @@ public class ProductController {
 				// fileUrl = "uploadFiles 폴더의 위치";
 				// uploadFiles 폴더의 위치 확인 : uploadFiles 우클릭 -> Properties -> Resource - >
 				// Location
-				String productimageUrl = "C:\\Users\\TJ\\Desktop\\shoppingproject2\\src\\main\\webapp\\WEB-INF\\views\\upload\\";
+				String productimageUrl = "C:\\Users\\TJ\\Desktop\\2020project\\src\\main\\resources\\static\\upload\\";
 				                          
 				do {
 					destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;

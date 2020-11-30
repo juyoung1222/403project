@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 게시글 목록 보기 -->
 	<select id="productList" resultType="com.example1.practice1.domain.ProductDTO">
 	SELECT	
-		PRODUCTNO, PRODUCTIMAGEFILE, PRODUCTNAME, PRODUCTPRICE, PRODUCTSALESCNT
+		PRODUCTNO, PRODUCTIMAGEFILE, productimageName, productimageOriName, productimageUrl, PRODUCTNAME, PRODUCTPRICE, PRODUCTPRICE, PRODUCTSALESCNT
 	FROM
 			PRODUCTTABLE	
 	order by PRODUCTNO desc		

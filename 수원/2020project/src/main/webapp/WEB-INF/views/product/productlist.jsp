@@ -1,6 +1,6 @@
 <%@ page session="true"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib  prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="layoutTag" tagdir="/WEB-INF/tags"%>
@@ -80,10 +80,10 @@
     </a>
 </div>
 
-<c:forEach items="${list}">
+<c:forEach var="product" items="${list}">
      <div class="col-sm-3">
-        <div class="thumbnail" >
-          <img src="/static/images/프로필3.jpg" alt="이미지 업로드" >
+        <div class="thumbnail">
+          <img src="/static/upload/${product.productimageName}" alt="이미지 업로드" >
           <button class="btn" data-toggle="modal" data-target="#myModal">Click</button>
         </div>
       </div>

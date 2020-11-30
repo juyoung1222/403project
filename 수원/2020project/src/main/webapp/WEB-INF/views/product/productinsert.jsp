@@ -13,6 +13,7 @@
 		.container{
 			margin-top: 5%;
 		}
+		.select_img img{margin: 20px 0;}
 	</style>
 </head>
 <body>
@@ -21,10 +22,23 @@
 	<h2>게시글 작성</h2>
 	<form class="form-horizontal" action="/product/insertProc" method="post" enctype="multipart/form-data">
 		
-		<div class="form-group">
+		<div class="inputArea">
 			<label for="productimagefile">이미지</label>
 			<input type="file" id="productimagefile" name="productimagefile">
-		</div>
+			 <div class="select_img"><img src="" /></div>
+		<!--이미지 미리보기-->
+		<script>
+			  $("#productimagefile").change(function(){
+			   if(this.files && this.files[0]) {
+			    var reader = new FileReader;
+			    reader.onload = function(data) {
+			     $(".select_img img").attr("src", data.target.result).width(500);        
+			    }
+			    reader.readAsDataURL(this.files[0]);
+			   }
+			  });
+			 </script>
+		</div>	
 		<div class="form-group">
 			<label for="productname">제 품 명</label>
 			<input type="text" class="form-control" id="productname" name="productname" placeholder="제품명을 입력하십시오."/>

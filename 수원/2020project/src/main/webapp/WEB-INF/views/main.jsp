@@ -232,7 +232,6 @@ for (i = 0; i < dropdown.length; i++) {
 
 
 
-
 		<br>
 
 <!-- 밑의 여섯칸 쇼핑몰 창 -->
