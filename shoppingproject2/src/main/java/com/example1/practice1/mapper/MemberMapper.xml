@@ -16,6 +16,7 @@ INSERT INTO USERTABLE
 VALUES (#{userId}, #{userPw}, #{userName},#{userBirth}, #{address01}, #{address02}, #{tel1}, #{tel2}, #{tel3}, #{userEmail})
 </insert>
 
+<!-- 로그인 -->
 <select id="login" resultType="com.example1.practice1.domain.MemberDTO">
 SELECT USERID,USERPW
 FROM USERTABLE
@@ -23,12 +24,14 @@ WHERE USERID = #{userId}
 AND USERPW = #{userPw}
 </select>
 
+<!-- 회원정보수정 -->
 <update id="update" parameterType="com.example1.practice1.domain.MemberDTO">
 UPDATE USERTABLE
 	SET USERPW = #{userPw}, USERNAME = #{userName}
 	WHERE USERID = #{userId}
 </update>
 
+<!-- 회원탈퇴 -->
 <delete id="delete">
 DELETE FROM
 USERTABLE

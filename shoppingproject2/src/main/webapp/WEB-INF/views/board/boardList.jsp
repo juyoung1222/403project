@@ -42,6 +42,7 @@
 				<th>작성자</th>
 				<th>내용</th>
 				<th>작성일시</th>
+				<th>조회수</th>
 			
 			</tr>
 		</thead>
@@ -57,13 +58,20 @@
 			<tr>
 			
 				
-				<td class="info" onclick="location.href='/board/boardDetail/${board.boardno}'">${board.boardno}</td>
-				<td>${board.subject}</td>
+				<td class="info" onclick="location.href='/board/detailComment/${board.boardno}'">${board.boardno}</td>
+				<td>${board.subject}
+				&nbsp;
+									<c:if test="${board.newMark}">
+										<span class="badge badge-pill badge-danger">new</span>
+									</c:if>
+									
+				</td>
 				<td>${board.writer}</td>
 				<td>${board.content}</td>
 				<td><fmt:formatDate value="${board.regdate}" pattern="yyyy년 MM월 dd일"/></td>
+				<td><c:out value="${board.boardhit}"/></td>
 				
-				<td class="warning" onclick="location.href='/board/detailComment/${board.boardno}'">댓글</td>
+				
 			</tr>
 		</c:forEach>
 	

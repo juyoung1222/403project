@@ -120,9 +120,9 @@ public class BoardController {
 
 		logger.info("boarddatail get...");
 		model.addAttribute("detail", service.detail(boardno));
-//		model.addAttribute("board", service.boardHit(boardno));
+		
 //		model.addAttribute("upload", service.uploadFileList(boardno));
-		return "/board/boardDetail";
+		return "/board/detailComment";
 	}// end - public String detail(@PathVariable int bno, Model model) throws
 		// Exception
 
@@ -133,22 +133,26 @@ public class BoardController {
 		logger.info("comment get...");
 		model.addAttribute("detail", service.detail(boardno));// 게시글으리 정보를 가져와서 저장한다.
 		//model.addAttribute("comment", service.commentList(boardno));
+		model.addAttribute("board", service.boardHit(boardno));
+		
+		//댓글리스트 보기 
 		List<CommentDTO> commentDTO = new ArrayList<CommentDTO>();
 		commentDTO = service.commentList(boardno);
-		logger.info("return commentDTO : " + commentDTO);
+		logger.info("return comment : " + commentDTO);
 		model.addAttribute("comment", commentDTO);
-		
 		
 		return "/board/detailComment";
 
 	}// end - public String comment(@PathVariable int bno,Model model) throws
 		// Exception
+	
 
 	// 게시글 수정 화면
 	@RequestMapping(value = "/boardUpdate/{boardno}", method = RequestMethod.GET)
 	private String getUpdate(@PathVariable int boardno, Model model) throws Exception {
 		logger.info("update get.....");
 		model.addAttribute("detail", service.detail(boardno));
+		
 		
 		return "/board/boardUpdate";
 	}// end - public String getUpdate(@PathVariable int bno,Model model) throws
@@ -166,13 +170,14 @@ public class BoardController {
 		boardDTO .setBoardno(Integer.parseInt(request.getParameter("boardno")));
 
 		service.update(boardDTO);
-		return "redirect:/board/boardDetail/" + request.getParameter("boardno");
-	}
-
+		return "redirect:/board/detailComment/" + request.getParameter("boardno");
+	}//end - private String boardUpdateProc(HttpServletRequest request) throws Exception
+	
+	//게시글 삭제
 	@RequestMapping("/boardDelete/{boardno}")
 	private String getDelete(@PathVariable int boardno, Model model) throws Exception {
 		service.delete(boardno);
 		return "redirect:/board/boardList";
-	}
+	}//end - private String getDelete(@PathVariable int boardno, Model model) throws Exception
 
 }// end - public class BoardController

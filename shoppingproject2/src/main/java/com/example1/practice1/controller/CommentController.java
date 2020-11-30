@@ -100,4 +100,33 @@ public class CommentController {
 		 return mCommentService.commentListService(boardno);		
 		
 	}//end - private List<CommentDTO> mCommentServiceList(@RequestParam String replywriterid, @RequestParam String replytext,@RequestParam Date replydate ) throws Exception
+	
+	//댓글수정
+	@ResponseBody
+	@RequestMapping("/update")
+	private int mCommentServiceUpdate(@RequestParam int replyno, @RequestParam String replytext) throws Exception{
+		logger.info("comment update....");
+		System.out.println("mCommentService Update......");
+		
+		logger.info("replyno[" +replyno+ "]");
+		logger.info("replytext[" + replytext + "]");
+		
+		CommentDTO comment = new CommentDTO();
+		comment.setReplyno(replyno);
+		comment.setReplytext(replytext);
+		
+		return mCommentService.commentUpdateService(comment);
+		
+	}//end - private int mCommentServiceUpdate(@RequestParam int replyno, @RequestParam String replytext) throws Exception
+	
+	//댓글 삭제
+	@ResponseBody
+	@RequestMapping("/delete/{replyno}")
+	private int mCommentServiceDelete(@PathVariable int replyno) throws Exception{
+		logger.info("comment delete.....");
+		System.out.println("mCommentService Delete......");
+		
+		return mCommentService.commentDeleteService(replyno);
+	} 
+	
 }

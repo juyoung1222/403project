@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script>
-
+//alert("script start...");
 
 var imsi = "Good";
 
@@ -8,8 +8,8 @@ var boardno= '${detail.boardno}';	//게시글 번호
 //alert("bno : " + bno);
 //댓글 등록 버튼을 눌렀을 경우
 $('[name=commentInsertBtn]').click(function() {
-	alert("commentInsertBtn.....");
-	alert("commentList....");
+	//alert("commentInsertBtn.....");
+	//alert("commentList....");
 	var insertData = $('[name=commentInsertForm]').serialize();	//commentInsertForm의 내용을 가져온다.
 	
 	commentInsert(insertData);	
@@ -17,9 +17,9 @@ $('[name=commentInsertBtn]').click(function() {
 	//commentList(listData);
 });
 
-//댓글 등록
+
 function commentInsert(insertData){
-	alert(insertData);
+	//alert(insertData)
     $.ajax({
         url : '/comment/insert',
         type : 'post',
@@ -29,7 +29,7 @@ function commentInsert(insertData){
                 commentList(); //댓글 작성 후 댓글 목록 reload
 				$('[name=replytext]').val('');
             } else{
-            	commentList(); //댓글 작성 후 댓글 목록 reload
+            	commentList(); // 댓글 목록 reload
             }     
         }
     });
@@ -72,4 +72,59 @@ function commentList() {
 	});
 	//alert("imsi2["+imsi+"]);
 }
+
+//댓글 수정 - 댓글 내용 출력을 input 폼으로 변경한다.
+
+function commentUpdate(replyno, replytext){
+	var str = '';
+	//alert("commentUpdate replyno:"+replyno);
+	//alert("commentUpdate replytext:"+replytext);
+
+	str += '<div class="input-group">';
+	//str += '<input type="text" class="form-control" name="replytext_' +replytext +'" value="' +replytext + '"/>';
+	str += '<input type="text" class="form-control" name="replytext_' +replyno +'" value="' +replytext + '"/>';
+	str += '<span class="input-group-btn"><button class="btn btn-warning" type="button" onclick="mCommentServiceUpdate('+replyno+')";>수정</button></span>';
+	str += '</div>';
+	$('.commentContent' + replyno).html(str);
+}
+
+//댓글 수정 - 수정한 댓글 내용을 테이블에 업데이트 한다.
+//function mCommentServiceUpdate(replytext){
+function mCommentServiceUpdate(replyno){
+	//alert("commentUpdate1:"+replyno)
+	//댓글 번호에 해당하는 수정된 내용을 가져온다.
+	var updateContent = $('[name=replytext_'+replyno+']').val();
+
+	$.ajax({
+		url : '/comment/update',
+		type : 'get',
+		data : {'replyno' : replyno, 'replytext' :  updateContent},
+		success : function(data){
+			if(data == 1) commentList(replycontentid);
+			}
+		});
+	}
+
+//댓글 삭제
+function commentDelete(replyno){
+	//alert("commentDelete");
+
+	$.ajax({
+		url : '/comment/delete/' + replyno,
+		type : 'post',
+		success : function(data){
+			if(data == 1) commentList(replycontentid);
+			}
+		});
+	}
+
+//페이지 로딩시 게시글에 연결된 댓글이 있으면 무조건 댓글을 보여준다.
+$(document).ready(function(){
+	//alert("commentList called......");
+	commentList();
+	
+});
+
 </script>
+
+

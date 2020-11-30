@@ -13,6 +13,9 @@ public class BoardDTO {
 	private String writer;//게시글 작성자
 	private String content;//게시글 내용
 	private Date regdate;//게시글 작성일시
+	private boolean newMark;//게시글 new 버튼
+	private int boardhit;//조회수
+	
 	
 	public BoardDTO() {}
 
@@ -55,12 +58,33 @@ public class BoardDTO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+	
+	public void setNewMark(boolean newMark) {
+		this.newMark = newMark;
+		
+	}
+	
+	public boolean isNewMark() {
+		
+		
+		return newMark;
+	}
+
+	public int getBoardhit() {
+		return boardhit;
+	}
+
+	public void setBoardhit(int boardhit) {
+		this.boardhit = boardhit;
+	}
+	
 
 	@Override
 	public String toString() {
 		return "BoardDTO [boardno=" + boardno + ", subject=" + subject + ", writer=" + writer + ", content=" + content
 				+ ", regdate=" + regdate + "]";
 	}
+	
 	
 	
 

@@ -14,7 +14,7 @@ INSERT	INTO	BOARDTABLE
 </insert>
 
  <!--게시글 목록보기   
-<select id="boardList" resultType="com.example1.practice1.domain.BoardBTO">
+<select id="boardList" resultType="com.example1.practice1.domain.BoardDTO">
 SELECT *
 FROM BOARDTABLE
 ORDER BY boardno DESC
@@ -28,13 +28,14 @@ INSERT INTO files
 VALUES (#{fno}, #{bno}, #{fileName} , #{fileOriName}, #{fileUrl})
 </insert>-->
 
-<!-- 게시글 페이징 -->
+<!-- 게시글 페이징--> 
 <select id="boardList" resultType="com.example1.practice1.domain.BoardDTO" parameterType="com.example1.practice1.domain.Criteria">
 SELECT BOARDNO, 
 		        SUBJECT, 
 		        CONTENT,
 		        WRITER, 
-		        REGDATE
+		        REGDATE,
+		        BOARDHIT
 		        
 		 FROM ( 
 		        SELECT BOARDNO, 
@@ -42,6 +43,7 @@ SELECT BOARDNO,
 		               CONTENT, 
 		               WRITER, 
 		               REGDATE, 
+		               BOARDHIT,
 		               
 		               ROW_NUMBER() OVER(ORDER BY BOARDNO DESC) AS RNUM
 		         FROM BOARDTABLE
@@ -122,6 +124,16 @@ FROM REPLYTABLE
 WHERE replycontentid = #{boardno} 
 ORDER BY REPLYNO 
 </select>
+
+<!-- 게시글 조회수 -->
+<update id="boardHit" parameterType="int">
+	UPDATE BOARDTABLE
+	SET boardhit = boardhit + 1
+	WHERE boardno = #{boardno}
+</update>
+
+
+
 
 
 
