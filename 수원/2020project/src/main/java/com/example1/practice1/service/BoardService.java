@@ -51,6 +51,7 @@ public class BoardService {
 	//게시글 수정
 	public int update(BoardDTO boardDTO) throws Exception{
 		logger.info("service update..... " + boardDTO);
+		
 		System.out.println("BOARDNO : " + boardDTO.getBoardno());
 		System.out.println("SUBJECT : " + boardDTO.getSubject());
 		System.out.println("CONTENT : " + boardDTO.getContent());

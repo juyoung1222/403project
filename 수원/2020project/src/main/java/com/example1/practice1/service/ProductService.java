@@ -52,10 +52,12 @@ public class ProductService {
 	//게시글 수정
 	public int update(ProductDTO productDTO) throws Exception{
 		logger.info("service update..... " + productDTO);
+		
+		System.out.println("Productno : " + productDTO.getProductno());
 		System.out.println("Productname : " + productDTO.getProductname());
 		System.out.println("Productprice : " + productDTO.getProductprice());
 		System.out.println("Productsalescnt : " + productDTO.getProductsalescnt());
-		return productMapper.productUpdate(productDTO );
+		return productMapper.productUpdate(productDTO);
 	}
 //	// 서비스는 매퍼를 호출한다.
 //	@Resource(name = "com.edu.Product.mapper.ProductMapper")

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>boardUpdate.jsp</title>
+<title>Update.jsp</title>
 </head>
 <div class="container-fluid">
 	<h2 align="left">게 시 글 엡데이트</h2>
@@ -42,6 +42,7 @@
 			<label for="productsalescnt">판매수량</label>
 			<input type="number" class="form-control" id="productsalescnt" name="productsalescnt"  placeholder="수량를 입력하십시오."/>
 		</div>
+			<input type="hidden" name="productno" value="${productno}"/>
 			<button type="submit" class="btn btn-primary">수 정</button>
 				
 	</form>	

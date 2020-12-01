@@ -124,7 +124,7 @@ public class ProductController {
 			@RequestMapping(value = "/Update/{productno}", method = RequestMethod.GET)
 			private String getUpdate(@PathVariable int productno, Model model) throws Exception {
 				logger.info("update get.....");
-				model.addAttribute("detail", productService.productDetailService(productno));
+				model.addAttribute("productdetail", productService.productDetailService(productno));
 				
 				return "/product/Update";
 			}// end - public String getUpdate(@PathVariable int bno,Model model) throws
@@ -136,7 +136,7 @@ public class ProductController {
 
 				logger.info("updateproc get........");
 				ProductDTO productDTO  = new ProductDTO();
-
+				
 				productDTO.setProductname(request.getParameter("productname"));
 				productDTO.setProductprice(Integer.parseInt(request.getParameter("productprice")));
 				productDTO.setProductsalescnt(Integer.parseInt(request.getParameter("productsalescnt")));
