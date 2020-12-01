@@ -5,6 +5,7 @@ import java.io.File;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -29,12 +30,11 @@ import com.example1.practice1.service.ProductService;
 @RequestMapping("/product")
 public class ProductController {
 	
-	// 로깅을 위한 변수
-		private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
-	
 	@Resource(name = "com.example1.practice1.service.ProductService")
 	ProductService productService;	
 	
+	// 로깅을 위한 변수
+	private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 	// 웹 브라우저에서 http://localhost:8088/Product/Productinsert 로 호출한다.
 		@RequestMapping("/productinsert")
 		private String boardInsertForm() {
@@ -44,8 +44,11 @@ public class ProductController {
 
 		// Controller 에서 Multipart 를 @RequestParet 어노테이션을 통해 별도의 설정없이 사용할 수 있다.
 		@RequestMapping("/insertProc")
-		private String boardInsertProc(HttpServletRequest request, @RequestPart MultipartFile productimagefile) throws Exception {
-
+		private String boardInsertProc(HttpServletRequest request,@RequestPart MultipartFile productimagefile) throws Exception {
+			
+			
+		
+			
 			// 게시글 등록 화면에서 입력한 값들을 실어나르기 위해 BoardVO를 생성한다.
 			ProductDTO product = new ProductDTO();
 			
@@ -113,45 +116,47 @@ public class ProductController {
 			return "/product/productlist";
 		}
 		// 게시글 번호에 해당하는 상세정보화면
-			@RequestMapping("/productdetail/{productno}")
-			private String boardDetail(@PathVariable int productno, Model model) throws Exception {
-				// bno에 해당하는 자료를 찾아와서 model에 담는다.
-				model.addAttribute("productdetail", productService.productDetailService(productno)); // 게시글의 정보를 가져와서 저장한다.					//model.addAttribute("files", productService.fileDetailService(bno)); // 파일의 정보를 가져와서 저장한다.
-					return "/product/productdetail";
-			}
-			
-			// 게시글 수정 화면
-			@RequestMapping(value = "/Update/{productno}", method = RequestMethod.GET)
-			private String getUpdate(@PathVariable int productno, Model model) throws Exception {
+		@RequestMapping("/productdetail/{productno}")
+		private String boardDetail(@PathVariable int productno, Model model) throws Exception {
+			// bno에 해당하는 자료를 찾아와서 model에 담는다.
+			model.addAttribute("productdetail", productService.productDetailService(productno)); // 게시글의 정보를 가져와서 저장한다.					//model.addAttribute("files", productService.fileDetailService(bno)); // 파일의 정보를 가져와서 저장한다.
+				return "/product/productdetail";
+		}
+					
+		// 게시글 수정 화면
+		@RequestMapping(value = "/Update/{productno}", method = RequestMethod.GET)
+		private String getUpdate(@PathVariable int productno, Model model) throws Exception {
 				logger.info("update get.....");
-				model.addAttribute("productdetail", productService.productDetailService(productno));
-				
+				model.addAttribute("detail", productService.productDetailService(productno));
+						
 				return "/product/Update";
-			}// end - public String getUpdate(@PathVariable int bno,Model model) throws
-				// Exception
+		}// end - public String getUpdate(@PathVariable int bno,Model model) throws
+						// Exception
 
-			// 게시글 수정 화면에서 수정할 자료를 업데이트한다.
-			@RequestMapping("/updateProc")
-			private String productUpdateProc(HttpServletRequest request) throws Exception {
+		// 게시글 수정 화면에서 수정할 자료를 업데이트한다.
+		@RequestMapping("/updateProc")
+		private String productUpdateProc(HttpServletRequest request,@RequestParam int productno) throws Exception {
 
-				logger.info("updateproc get........");
-				ProductDTO productDTO  = new ProductDTO();
-				
-				productDTO.setProductname(request.getParameter("productname"));
-				productDTO.setProductprice(Integer.parseInt(request.getParameter("productprice")));
-				productDTO.setProductsalescnt(Integer.parseInt(request.getParameter("productsalescnt")));
+			logger.info("updateproc get........");
+			ProductDTO productDTO  = new ProductDTO();
+			
+			productDTO.setProductno(Integer.parseInt(request.getParameter("productno")));
+			productDTO.setProductname(request.getParameter("productname"));
+			productDTO.setProductprice(Integer.parseInt(request.getParameter("productprice")));
+			productDTO.setProductsalescnt(Integer.parseInt(request.getParameter("productsalescnt")));
 
 				productService.update(productDTO);
-				return "redirect:/product/productDetail/" + request.getParameter("productno");
-			}
-			
-			// 글 번호에 해당하는 자료를 삭제한다.
-			@RequestMapping("/delete/{productno}")
-			private String productDelete(@PathVariable int productno) throws Exception {
-				productService.productDeleteService(productno);
-				return "redirect:/product/productlist";
-			}
+				return "redirect:/product/productdetail/" + request.getParameter("productno");
+		}
+					
+		// 글 번호에 해당하는 자료를 삭제한다.
+		@RequestMapping("/delete/{productno}")
+		private String productDelete(@PathVariable int productno) throws Exception {
+			productService.productDeleteService(productno);
+			return "redirect:/product/productlist";
+		}
 }
+
 
 
 

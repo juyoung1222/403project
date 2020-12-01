@@ -47,7 +47,6 @@
 			<thead>
 				<tr>
 					<th>이미지</th>
-					<th width="65">조회수</th>
 				</tr>
 			</thead>
 				<tr>
@@ -55,18 +54,26 @@
 				</tr>
 		</table>
 		<c:if test = "${member != null}">
+		<select name="수량~">
+			<c:forEach begin="1" end="10" var="i">
+				<option value="${i}">${i}</option>
+			</c:forEach>
+		</select>
 		<button class="btn btn-warning"
-			onclick="location.href='/product/Update/${productdetail.productno}'">수정</button>
+			onclick="location.href='#'">구매 하기</button>
 		<button class="btn btn-danger"
-			onclick="location.href='/product/delete/${productdetail.productno}'">삭제</button>
+			onclick="#">장바구니담기</button>
 		</c:if>
 		<c:if test = "${member == null}">
-		<button type="submit" class="btn btn-primary"
-			onclick="button1_click()">댓글</button>
+		<select name="수량~">
+			<c:forEach begin="1" end="10" var="i">
+				<option value="${i}">${i}</option>
+			</c:forEach>
+		</select>
 		<button class="btn btn-warning"
-			onclick="button1_click()">수정</button>
+			onclick="button1_click()">구매 하기</button>
 		<button class="btn btn-danger"
-			onclick="button1_click()">삭제</button>
+			onclick="button1_click()">장바구니담기</button>
 		</c:if>
 	</div>
 

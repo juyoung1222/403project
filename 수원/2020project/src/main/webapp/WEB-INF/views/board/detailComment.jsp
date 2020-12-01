@@ -25,6 +25,12 @@
 	</div>
 </div>
 <div class="form-group">
+	<label class="control-label col-sm-2">게시글 번호</label>
+	<div class="col-sm-4">
+		<input type="text" class="form-control" id="boardno" name="boardno" value="${detail.boardno}" readonly="readonly"/>
+	</div>
+</div>
+<div class="form-group">
 	<label class="control-label col-sm-2">제 목</label>
 	<div class="col-sm-6">
 	<input type="text" class="form-control" id="subject" name="subject" value="${detail.subject}" readonly="readonly"/>
@@ -63,6 +69,7 @@
 				<span class="input-group-btn">
 					<button class="btn btn-warning" type="submit" name="commentInsertBtn">등록</button>
 					
+					
 				</span>
 			</div>
 		</form>
@@ -76,9 +83,28 @@
 			</div>
 		</form>
 	</div>
-	
-
 </div>
+<script>
+$(document).ready(function(){
+	$(".btn-info").on("click",function(){
+		if(${member == null}){
+			alert("로그인을 하셔야 합니다.");
+			location.href="/login/login";
+			}
+		else if(${member != null}){
+			location.href="/board/boardUpdate";
+			}
+		});
+	$(".btn-success").on("click",function(){
+		if(${member == null}){
+			alert("로그인을 하셔야 합니다.");
+			location.href="/login/login";
+			}
+		});
+	})
+
+</script>
+
 
 <!-- 댓글 목록 -->
 <%@ include file="commentAction.jsp" %>

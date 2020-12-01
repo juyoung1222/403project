@@ -8,18 +8,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 게시글 등록 -->
 <insert id="insertBoard" parameterType="com.example1.practice1.domain.BoardDTO">
 INSERT	INTO	BOARDTABLE
-			(BOARDNO, 		SUBJECT, 	CONTENT, 	WRITER, 	REGDATE,  BOARDHIT)
-	VALUES	(#{boardno},	#{subject},	#{content},	#{writer},	now(), #{boardhit})
+			(BOARDNO, 		SUBJECT, 	CONTENT, 	WRITER, 	REGDATE, BOARDHIT)
+	VALUES	(#{boardno},	#{subject},	#{content},	#{writer},	now(), #{boardhit} )
 
 </insert>
 
-<!-- 게시글 목록보기   
+ <!--게시글 목록보기   
 <select id="boardList" resultType="com.example1.practice1.domain.BoardDTO">
 SELECT *
 FROM BOARDTABLE
 ORDER BY boardno DESC
-</select>
--->
+
+</select>-->
+
 <!-- 파일올리기 
 <insert id="fileInsert" parameterType="com.example1.practice1.domain.FileDTO" useGeneratedKeys="true">
 INSERT INTO files
@@ -30,20 +31,20 @@ VALUES (#{fno}, #{bno}, #{fileName} , #{fileOriName}, #{fileUrl})
 <!-- 게시글 페이징 -->
 <select id="boardList" resultType="com.example1.practice1.domain.BoardDTO" parameterType="com.example1.practice1.domain.Criteria">
 SELECT BOARDNO, 
-              SUBJECT, 
-              CONTENT,
-              WRITER, 
-              REGDATE,
-              BOARDHIT
-              
-       
+		        SUBJECT, 
+		        CONTENT,
+		        WRITER, 
+		        REGDATE,
+		        BOARDHIT
+		        
+		 
 FROM BOARDTABLE
 WHERE 1=1
 
-   <include refid="search"></include>
-LIMIT #{rowStart}, #{rowEnd}               
+	<include refid="search"></include>
+LIMIT #{rowStart}, #{rowEnd}	         	
 
-</select>
+	</select>
 
 <!-- 게시글페이지 개수 -->
 <select id="listCount" parameterType="com.example1.practice1.domain.SearchCriteria" resultType="int">
@@ -52,8 +53,8 @@ SELECT COUNT(boardno)
 FROM BOARDTABLE
 WHERE boardno > 0  <!-- 참이라는 의미,bno가 0이상인 데이터들을 모두 조회한다는 의미  -->
 <include refid="search"></include>
-
 </select>
+
 <!-- 검색기능 -->
 <sql id="search">
 		<if test="searchType != null">
@@ -62,7 +63,7 @@ WHERE boardno > 0  <!-- 참이라는 의미,bno가 0이상인 데이터들을 �
 			<if test="searchType == 'w'.toString()">AND WRITER LIKE CONCAT('%',#{keyword},'%')</if>
 			<if test="searchType == 'sc'.toString()">AND (SUBJECT LIKE CONCAT('%',#{keyword},'%')) or (CONTENT LIKE CONCAT('%',#{keyword},'%'))</if>
 		</if>
-</sql>
+	</sql>
 
 <!-- 게시글 상세보기 -->
 <select id="detail" parameterType="int" resultType="com.example1.practice1.domain.BoardDTO">
@@ -88,9 +89,7 @@ WHERE	boardno	= #{boardno}
 DELETE FROM
 BOARDTABLE
 WHERE boardno = #{boardno}
-
 </delete>
-
 
 
 <!-- 파일업로드 목록보기 -->
@@ -115,11 +114,18 @@ WHERE replycontentid = #{boardno}
 ORDER BY REPLYNO 
 </select>
 
-<!-- 조회수 -->
-<update id="boardHit" parameterType="int" >
-UPDATE BOARDTABLE 
-SET  boardhit = boardhit + 1
-WHERE boardno = #{boardno} 
+<!-- 게시글 조회수 -->
+<update id="boardHit" parameterType="int">
+	UPDATE BOARDTABLE
+	SET boardhit = boardhit + 1
+	WHERE boardno = #{boardno}
 </update>
+
+
+
+
+
+
+
 
 </mapper>

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import com.example1.practice1.domain.BoardDTO;
 import com.example1.practice1.domain.CommentDTO;
+import com.example1.practice1.domain.Criteria;
+import com.example1.practice1.domain.FileDTO;
 import com.example1.practice1.domain.SearchCriteria;
 
 
@@ -34,7 +36,7 @@ public int delete(int boardno) throws Exception;
 
 //게시글 조회수
 public int boardHit(int boardno) throws Exception;
-
+//
 ////파일 올리기
 //public int fileInsert(FileVO file) throws Exception;
 //
@@ -46,6 +48,7 @@ public int boardHit(int boardno) throws Exception;
 
 //댓글목록
 public List<CommentDTO> commentList(int boardno) throws Exception;
+
 
 
 

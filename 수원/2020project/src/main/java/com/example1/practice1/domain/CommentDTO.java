@@ -2,6 +2,8 @@ package com.example1.practice1.domain;
 
 import java.sql.Date;
 
+import lombok.Data;
+
 
 public class CommentDTO {
 	private int replyno;//댓글번호

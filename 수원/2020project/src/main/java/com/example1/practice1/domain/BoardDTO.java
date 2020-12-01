@@ -2,6 +2,10 @@ package com.example1.practice1.domain;
 
 import java.sql.Date;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 
 public class BoardDTO {
 	private int boardno;//게시글 일련번호
@@ -13,23 +17,6 @@ public class BoardDTO {
 	private int boardhit;//조회수
 	
 	
-	
-	public boolean isNewMark() {
-		return newMark;
-	}
-
-	public void setNewMark(boolean newMark) {
-		this.newMark = newMark;
-	}
-
-	public int getBoardhit() {
-		return boardhit;
-	}
-
-	public void setBoardhit(int boardhit) {
-		this.boardhit = boardhit;
-	}
-
 	public BoardDTO() {}
 
 	public int getBoardno() {
@@ -71,15 +58,32 @@ public class BoardDTO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+	
+	public void setNewMark(boolean newMark) {
+		this.newMark = newMark;
+		
+	}
+	
+	public boolean isNewMark() {
+		
+		
+		return newMark;
+	}
+
+	public int getBoardhit() {
+		return boardhit;
+	}
+
+	public void setBoardhit(int boardhit) {
+		this.boardhit = boardhit;
+	}
+	
 
 	@Override
 	public String toString() {
 		return "BoardDTO [boardno=" + boardno + ", subject=" + subject + ", writer=" + writer + ", content=" + content
-				+ ", regdate=" + regdate + ", newMark=" + newMark + ", boardhit=" + boardhit + "]";
+				+ ", regdate=" + regdate + "]";
 	}
-
-	
-
 	
 	
 	

@@ -143,38 +143,38 @@ for (i = 0; i < dropdown.length; i++) {
 			<div class="row text-center">
 				<div class="col-sm-3">
 					<div class="thumbnail">
-						<img src="/static/images/프로필1.jpg" alt="Paris" width="600"
-							height="400" onclick="location.href='/product/productlist'">
+						<img src="/static/images/너구리.jpg" alt="Paris" width="600"
+							height="400" onclick="location.href='/product/productdetail/9'">
 						<p>
 							<strong>프로필</strong>
 						</p>
 						<p>닉네임:SyaByMe</p>
 						<p>다양한 가면등을 제작하고 판매하고있습니다</p>
-						<button class="btn btn-default" onclick="location.href='/product/productlist'" >More Click</button>
+						<button class="btn btn-default" onclick="location.href='/product/productdetail/9'" >More Click</button>
 					</div>
 				</div>
 				<div class="col-sm-3">
 					<div class="thumbnail">
-						<img src="/static/images/프로필2.jpg" alt="New York" width="600"
-							height="400" onclick="location.href='/product/productlist'">
+						<img src="/static/images/너구리.jpg" alt="New York" width="600"
+							height="400" onclick="location.href='/product/productdetail/6'">
 						<p>
 							<strong>프로필</strong>
 						</p>
 						<p>닉네임:오라하르콘</p>
 						<p>애니피규어를 주종목으로 하고있습니다.</p>
-						<button class="btn btn-default" onclick="location.href='/product/productlist'">More Click</button>
+						<button class="btn btn-default" onclick="location.href='/product/productdetail/6'">More Click</button>
 					</div>
 				</div>
 				<div class="col-sm-3">
 					<div class="thumbnail">
-						<img src="/static/images/프로필3.jpg" alt="San Francisco" width="600"
-							height="400" onclick="location.href='/product/productlist'">
+						<img src="/static/images/너구리.jpg" alt="San Francisco" width="600"
+							height="400" onclick="location.href='/product/productdetail/5'">
 						<p>
 							<strong>프로필</strong>
 						</p>
 						<p> </p>
 						<p>동물 피규어 및 애니피규어를 제작판매 하는 중 입니다.</p>
-						<button class="btn btn-default" onclick="location.href='/product/productlist'">More Click</button>
+						<button class="btn btn-default" onclick="location.href='/product/productdetail/5'">More Click</button>
 					</div>
 				</div>
 
@@ -259,7 +259,7 @@ for (i = 0; i < dropdown.length; i++) {
       <div class="panel panel-success">
         <div class="panel-heading">BLACK FRIDAY DEAL</div>
         <div class="panel-body"><img src="http://cdn.011st.com/11dims/resize/376x376/quality/75/11src/pd/20/7/1/6/5/1/1/ykZIE/2988716511_L300.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">[K2]다가오늘 겨울 성인&키즈 BEST 다운&플리스&점퍼 모음!</div>
+        <div class="panel-footer">[K2]다가오늘 겨울 성인 & 키즈 BEST 다운&플리스&점퍼 모음!</div>
       </div>
     </div>
   </div>
@@ -291,7 +291,6 @@ for (i = 0; i < dropdown.length; i++) {
   </div>
 </div><br><br>
 
-</div>
 
 
 <!-- 밑 그 외 나머지 것들 -->
@@ -337,16 +336,16 @@ for (i = 0; i < dropdown.length; i++) {
   </div>
   <div class="col-sm-4">
     <div class="well">
-      <p>으아아아아아ㅏㅇ</p>
+      <p>qwe*** : 또 구매하고 싶어요</p>
     </div>
     <div class="well">
-       <p>오오아로아</p>
+       <p>awe***: 소재가 마음에 들어요</p>
     </div>
     <div class="well">
-       <p>후후훙루ㅜ루루</p>
+       <p>vwev***: 너무 예뻐요</p>
     </div>
     <div class="well">
-       <p>리라ㅣ라ㅣ릴</p>
+       <p>hkuyk***: 아니 오늘 패션왕이 될것 같아</p>
     </div>
   </div>
 </div>
