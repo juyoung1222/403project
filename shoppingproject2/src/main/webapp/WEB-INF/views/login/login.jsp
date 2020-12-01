@@ -47,6 +47,7 @@
 					<button id="proDeleteBtn" type="button">회원탈퇴</button>
 					<button id="logoutBtn" type="button">로그아웃</button> 
 					<button id="boardBtn" type="button">게시판</button>
+					<button id="productBtn" type="button">제품등록</button>
 					
 				</div>
 			</c:if>
@@ -98,6 +99,9 @@ $(document).ready(function(){
 		});
 	$("#boardBtn").on("click",function(){
 		location.href="/board/boardList";
+		});
+	$("#productBtn").on("click",function(){
+		location.href="/product/productinsert";
 		});
 	
 })

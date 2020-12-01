@@ -18,6 +18,7 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="/">Home</a></li>
       <li><a href="/board/boardList">Community</a></li>
+      <li><a href="/product/productlist">Product</a>
    
    </ul>   
     
