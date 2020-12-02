@@ -60,6 +60,7 @@ public class ProductController {
 			if (productimagefile.isEmpty()) { // 업로드할 파일이 없는 경우
 				productService.productInsertService(product); // 게시글만 올린다.
 			} else { // 업로드할 파일이 있는 경우
+				
 				// FilenameUtils : commons-io defendency를 사용.
 				String Productimagefile = productimagefile.getOriginalFilename();
 				String ProductimageOriName = productimagefile.getOriginalFilename();
@@ -67,8 +68,7 @@ public class ProductController {
 				File destinationFile;
 				String destinationFileName;
 				// fileUrl = "uploadFiles 폴더의 위치";
-				// uploadFiles 폴더의 위치 확인 : uploadFiles 우클릭 -> Properties -> Resource - >
-				// Location
+				// upload 폴더의 위치 확인 : upload 우클릭 -> Properties -> Resource - > Location 복사(각자의 폴더위치를 넣는다.)
 				String productimageUrl = "D:\\project\\juyoungWeb\\exam4\\src\\main\\resources\\static\\upload";
 				                          
 				do {
@@ -118,9 +118,11 @@ public class ProductController {
 		// 게시글 번호에 해당하는 상세정보화면
 		@RequestMapping("/productdetail/{productno}")
 		private String boardDetail(@PathVariable int productno, Model model) throws Exception {
+			
 			// bno에 해당하는 자료를 찾아와서 model에 담는다.
-			model.addAttribute("productdetail", productService.productDetailService(productno)); // 게시글의 정보를 가져와서 저장한다.					//model.addAttribute("files", productService.fileDetailService(bno)); // 파일의 정보를 가져와서 저장한다.
-				return "/product/productdetail";
+			model.addAttribute("productdetail", productService.productDetailService(productno)); // 게시글의 정보를 가져와서 저장한다.
+			//model.addAttribute("files", productService.fileDetailService(bno)); // 파일의 정보를 가져와서 저장한다.
+			return "/product/productdetail";
 		}
 					
 		// 게시글 수정 화면
@@ -135,25 +137,29 @@ public class ProductController {
 
 		// 게시글 수정 화면에서 수정할 자료를 업데이트한다.
 		@RequestMapping("/updateProc")
-		private String productUpdateProc(HttpServletRequest request,@PathVariable int productno) throws Exception {
+		private String productUpdateProc(HttpServletRequest request,@RequestParam int productno) throws Exception {
 
 			logger.info("updateproc get........");
 			ProductDTO productDTO  = new ProductDTO();
-
+			
+			//업데이트 할 정보를 요청한다.
 			productDTO.setProductname(request.getParameter("productname"));
 			productDTO.setProductprice(Integer.parseInt(request.getParameter("productprice")));
 			productDTO.setProductsalescnt(Integer.parseInt(request.getParameter("productsalescnt")));
+			productDTO.setProductno(Integer.parseInt(request.getParameter("productno")));
 
-				productService.update(productDTO);
-				return "redirect:/product/productDetail/" + request.getParameter("productno");
-		}
+			productService.update(productDTO);
+			return "redirect:/product/productdetail/" + request.getParameter("productno");
+		
+		}//end - private String productUpdateProc(HttpServletRequest request,@RequestParam int productno) throws Exception 
 					
 		// 글 번호에 해당하는 자료를 삭제한다.
 		@RequestMapping("/delete/{productno}")
 		private String productDelete(@PathVariable int productno) throws Exception {
+			
 			productService.productDeleteService(productno);
 			return "redirect:/product/productlist";
-		}
+		}//end - private String productDelete(@PathVariable int productno) throws Exception
 }
 
 

@@ -6,10 +6,16 @@ var imsi = "Good";
 
 var boardno= '${detail.boardno}';	//게시글 번호
 //alert("bno : " + bno);
+
 //댓글 등록 버튼을 눌렀을 경우
 $('[name=commentInsertBtn]').click(function() {
 	//alert("commentInsertBtn.....");
 	//alert("commentList....");
+	
+	//로그인을 하지않고 댓글 등록버튼을 눌렀을 때 alert창이 뜸.
+	if(${member == null}){
+		alert("로그인을 하셔야 합니다.");
+	}
 	var insertData = $('[name=commentInsertForm]').serialize();	//commentInsertForm의 내용을 가져온다.
 	
 	commentInsert(insertData);	
@@ -17,7 +23,7 @@ $('[name=commentInsertBtn]').click(function() {
 	//commentList(listData);
 });
 
-
+//댓글등록
 function commentInsert(insertData){
 	//alert(insertData)
     $.ajax({

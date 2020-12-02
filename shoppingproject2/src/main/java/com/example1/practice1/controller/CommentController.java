@@ -35,7 +35,9 @@ public class CommentController {
 	CommentService mCommentService;
 	
 	// 로깅을 위한 변수
-		private static final Logger logger = LoggerFactory.getLogger(CommentController.class);
+	private static final Logger logger
+		= LoggerFactory.getLogger(CommentController.class);
+	
 	//댓글 등록
 	@RequestMapping(value="/insert",method= {RequestMethod.POST, RequestMethod.GET } )
 	@ResponseBody
@@ -45,11 +47,12 @@ public class CommentController {
 		System.out.println("mCommentServiceInsert...");
 		//System.out.println("replyno[" + replyno + "]");
 		
+		//댓글내용, 댓글작성자아이디, 게시글 번호
 		logger.info("replytext[" + replytext + "]");
 		logger.info("replywriterid ===> " + replywriterid);
 		logger.info("replycontentid ===> " + replycontentid);
 		
-		
+		//ip주소 추가
 		HttpServletRequest req = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
 		/*
 		String replyip = req.getHeader("X-FORWARDED-FOR");
@@ -69,6 +72,8 @@ public class CommentController {
 		
 		CommentDTO comment = new CommentDTO();
 		//comment.setReplyno(replyno);
+		
+		//댓글작성자아이디, 댓글내용, 댓글작성자ip, 게시글 번호
 		comment.setReplywriterid(replywriterid);
 		comment.setReplytext(replytext);
 		comment.setReplyip(replyip);
@@ -111,6 +116,7 @@ public class CommentController {
 		logger.info("replyno[" +replyno+ "]");
 		logger.info("replytext[" + replytext + "]");
 		
+		//댓글번호,댓글내용 
 		CommentDTO comment = new CommentDTO();
 		comment.setReplyno(replyno);
 		comment.setReplytext(replytext);

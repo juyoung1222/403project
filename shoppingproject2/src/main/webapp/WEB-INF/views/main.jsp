@@ -3,118 +3,47 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="layoutTag" tagdir="/WEB-INF/tags"%>
-
 <layoutTag:layout>
-	<!DOCTYPE html>
-	<html>
+<!DOCTYPE html>
+<html>
 <head>
-<style>
-body {
-  font-family: "Lato", sans-serif;
-}
-
-
-/* Fixed sidenav, full height */
-.sidenav {
-  height: 100%;
-  width: 150px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 50px;
-}
-
-/* Style the sidenav links and the dropdown button */
-.sidenav a, .dropdown-btn {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #818181;
-  display: block;
-  border: none;
-  background: none;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  outline: none;
-}
-
-/* On mouse-over */
-.sidenav a:hover, .dropdown-btn:hover {
-  color: #f1f1f1;
-}
-
-/* Main content */
-.main {
-  margin-right: 100px; /* Same as the width of the sidenav */
-  font-size: 20px; /* Increased text to enable scrolling */
-  padding: 0px 50px;
-}
-
-/* Add an active class to the active dropdown button */
-.active {
-  background-color: green;
-  color: white;
-}
-
-/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
-.dropdown-container {
-  display: none;
-  background-color: #262626;
-  padding-left: 8px;
-}
-
-/* Optional: Style the caret down icon */
-.fa-caret-down {
-  float: right;
-  padding-right: 8px;
-}
-
-/* Some media queries for responsiveness */
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-/* Set black background color, white text and some padding */
-footer {
-	background-color: #f7f7f7;
-}
-
-br {
-	color: 000000;
-}
-
-
-</style>
+<link rel="icon" type="image/x-icon" href="/static/images/aland.jpg"/>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <meta charset="UTF-8">
 <title>메인</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.w3-sidebar a {font-family: "Roboto", sans-serif}
+
+/* 맨위 메인 사진 */
+.bgimg-1 {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* 맨위 메인 크기 */
+.bgimg-1 {
+  background-image: url('/static/images/main.jpg');
+  min-height: 80%;
+}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1600px) {
+  .bgimg-1 {
+    background-attachment: scroll;
+    min-height: 400px;
+}
+</style>
+
 </head>
-<body>
-<br>
-
-<div class="sidenav">
-  <a href="#">컴퓨터/가전</a>
-  <a href="#">브랜드패션</a>
-  <a href="#">스포츠</a>
-  <a href="#">식품/생필품</a>
-  <button class="dropdown-btn">Dropdown 
-    <i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-container">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
+<!-- 메인사진(글) -->
+<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+  <div class="w3-display-middle" style="white-space:nowrap;">
+    <span class="w3-xxlarge w3-text-white w3-wide">FASHION</span>
   </div>
- 
 </div>
-
-
-
-
+<br>
 <script>
 /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
 var dropdown = document.getElementsByClassName("dropdown-btn");
@@ -132,110 +61,143 @@ for (i = 0; i < dropdown.length; i++) {
   });
 }
 </script>
+
+
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:120px" id="mySidebar">
+  <div class="w3-container w3-display-container w3-padding-16">
+    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+    <h3 class="w3-wide"><b>SHOP</b></h3>
+  </div>
+  <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+    <a href="#" class="w3-bar-item w3-button">Shirts</a>
+    <a href="#" class="w3-bar-item w3-button">Dresses</a>
+    <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+      Jeans <i class="fa fa-caret-down"></i>
+    </a>
+    <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+      <a href="#" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>Skinny</a>
+      <a href="#" class="w3-bar-item w3-button">Relaxed</a>
+      <a href="#" class="w3-bar-item w3-button">Bootcut</a>
+      <a href="#" class="w3-bar-item w3-button">Straight</a>
+    </div>
+    <a href="#" class="w3-bar-item w3-button">Jackets</a>
+    <a href="#" class="w3-bar-item w3-button">Gymwear</a>
+    <a href="#" class="w3-bar-item w3-button">Blazers</a>
+    <a href="#" class="w3-bar-item w3-button">Shoes</a>
+  </div>
+  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
+  <a href="#footer"  class="w3-bar-item w3-button w3-padding">Subscribe</a>
+</nav>
+
+
 <div class="container">
 <form class="form-inline">
-		<input type="text" class="form-control" size="100" placeholder="검색어를 입력하세요">
-		<button type="button" class="btn btn-info">검색</button>
-	</form>
-  </div>
+	<input type="text" class="form-control" size="100" placeholder="검색어를 입력하세요">
+	<button type="button" class="btn btn-info">검색</button>
+</form>
+</div>
+
+
   <!-- 메인가운데 -->
-  <div class="container text-center">
-			<div class="row text-center">
-				<div class="col-sm-3">
-					<div class="thumbnail">
-						<img src="/static/images/프로필1.jpg" alt="Paris" width="600"
-							height="400">
-						<p>
-							<strong>프로필</strong>
-						</p>
-						<p>닉네임:SyaByMe</p>
-						<p>다양한 가면등을 제작하고 판매하고있습니다</p>
-						<button class="btn" data-toggle="modal" data-target="#myModal">Buy
-							Click</button>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="thumbnail">
-						<img src="/static/images/프로필2.jpg" alt="New York" width="600"
-							height="400">
-						<p>
-							<strong>프로필</strong>
-						</p>
-						<p>닉네임:오라하르콘</p>
-						<p>애니피규어를 주종목으로 하고있습니다.</p>
-						<button class="btn" data-toggle="modal" data-target="#myModal">Buy
-							Click</button>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="thumbnail">
-						<img src="/static/images/프로필3.jpg" alt="San Francisco" width="600"
-							height="400">
-						<p>
-							<strong>프로필</strong>
-						</p>
-						<p> </p>
-						<p>동물 피규어 및 애니피규어를 제작판매 하는 중 입니다.</p>
-						<button class="btn" data-toggle="modal" data-target="#myModal">Buy
-							Click</button>
-					</div>
-				</div>
-
-				<div class="col-sm-3 well">
-					<!-- 로그인시 나의프로필과 환영합니다 창이 뜸 -->
-					<c:if test="${member != null }">
-						<div class="well">
-							<p>
-								<a href="/login/login">나의 프로필</a>
-							</p>
-							<img
-								src="https://ext.fmkorea.com/files/attach/new/20191012/486616/1351010096/2272376735/ba9a8fb2a6735f4f2787821924619db5.jpeg"
-								class="img-circle" height="65" width="65" alt="Avatar">
-						</div>
-					</c:if>
-
-
-					<!-- 오른쪽 칸 -->
-					<div class="well">
-						<p>
-							<a href="#">해시태그 검색</a>
-						</p>
-						<p>
-							<a
-								href="https://www.instagram.com/explore/tags/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EB%A3%A9/?hl=ko">
-								<span class="label label-default">#데일리룩</span>
-							</a> <a href="https://www.instagram.com/explore/tags/ootd/"> <span
-								class="label label-primary">#ootd</span></a> <span
-								class="label label-success">#인스타</span> <span
-								class="label label-info">#패션</span> <span
-								class="label label-warning">#화장품</span> <span
-								class="label label-danger">#스킨</span>
-						</p>
-					</div>
-					<div class="alert alert-success fade in">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-						<p>
-							<strong>광고!</strong>
-						</p>
-						여기는 광고칸입니다.
-					</div>
-					<p>
-						<a href="#">링크1</a>
-					</p>
-					<p>
-						<a href="#">링크2</a>
-					</p>
-					<p>
-						<a href="#">링크3</a>
-					</p>
-				</div>
+<div class="container text-center">
+	<div class="row text-center">
+		<div class="col-sm-3">
+			<div class="thumbnail">
+				<img src="/static/images/너구리.jpg" width="600" height="400" onclick="location.href='/product/productdetail/1'">
+				<p>
+					<strong>프로필</strong>
+				</p>
+				<p>닉네임 : 너구리</p>
+				<p>동물 피규어 및 애니피규어를<br>제작판매 하는 중 입니다.</p>
+				<button class="btn btn-default" onclick="location.href='/product/productdetail/1'">More Click</button>
 			</div>
 		</div>
 
 
+		<div class="col-sm-3">
+			<div class="thumbnail">
+				<img src="/static/images/프로필2.jpg" width="600" height="400" onclick="location.href='/product/productdetail/2'">
+				<p>
+					<strong>프로필</strong>
+				</p>
+				<p>닉네임 : 오라하르콘</p>
+				<p>애니피규어를 주종목으로<br>하고있습니다.</p>
+				<button class="btn btn-default" onclick="location.href='/product/productdetail/2'">More Click</button>
+			</div>
+		</div>
 
+
+		<div class="col-sm-3">
+			<div class="thumbnail">
+				<img src="/static/images/프로필3.jpg" width="600" height="400" onclick="location.href='/product/productdetail/3'">
+				<p>
+					<strong>프로필</strong>
+				</p>
+				<p>닉네임 : 유미</p>
+				<p>동물 피규어 및 애니피규어를<br>제작판매 하는 중 입니다.</p>
+				<button class="btn btn-default" onclick="location.href='/product/productdetail/3'">More Click</button>
+			</div>
+		</div>
 
 		<br>
+
+		<!-- 오른쪽 칸 -->
+		<div class="col-sm-3 well">
+			<!-- 로그인시 나의프로필과 환영합니다 창이 뜸 -->
+			<c:if test="${member != null }">
+				<div class="well">
+					<p>
+						<a href="/login/login">나의 프로필</a>
+
+					</p>
+					<img
+						src="https://ext.fmkorea.com/files/attach/new/20191012/486616/1351010096/2272376735/ba9a8fb2a6735f4f2787821924619db5.jpeg"
+						class="img-circle" height="65" width="65" alt="Avatar">
+				</div>
+				<button type="button"
+					onclick="location.href='/product/productinsert'">제품 등록</button>
+			</c:if>
+
+			<div class="well">
+				<p>
+					<a href="#">해시태그 검색</a>
+				</p>
+				<p>
+					<a
+						href="https://www.instagram.com/explore/tags/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EB%A3%A9/?hl=ko">
+						<span class="label label-default">#데일리룩</span>
+					</a><a href="https://www.instagram.com/explore/tags/ootd/"> <span
+						class="label label-primary">#ootd</span></a> <span
+						class="label label-success">#인스타</span> <span
+						class="label label-info">#패션</span> <span
+						class="label label-warning">#화장품</span> <span
+						class="label label-danger">#스킨</span>
+				</p>
+			</div>
+			<div class="alert alert-success fade in">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+				<p>
+					<strong>광고!</strong>
+				</p>
+				여기는 광고칸입니다.
+			</div>
+			<p>
+				<a href="#">링크1</a>
+			</p>
+			<p>
+				<a href="#">링크2</a>
+			</p>
+			<p>
+				<a href="#">링크3</a>
+			</p>
+		</div>
+	</div>
+</div>
+
+<br>
 
 <!-- 밑의 여섯칸 쇼핑몰 창 -->
 <div class="container">    
@@ -293,9 +255,7 @@ for (i = 0; i < dropdown.length; i++) {
     </div>
   </div>
 </div><br><br>
-
 </div>
-
 
 <!-- 밑 그 외 나머지 것들 -->
 <div class="container">
@@ -340,10 +300,10 @@ for (i = 0; i < dropdown.length; i++) {
   </div>
   <div class="col-sm-4">
     <div class="well">
-      <p>으아아아아아ㅏㅇ</p>
+      <p>자세히 보기</p>
     </div>
     <div class="well">
-       <p>오오아로아</p>
+       <p>신상</p>
     </div>
     <div class="well">
        <p>후후훙루ㅜ루루</p>
@@ -353,19 +313,8 @@ for (i = 0; i < dropdown.length; i++) {
     </div>
   </div>
 </div>
-<hr>
 </div>
-<footer class="container-fluid text-center">
-<div id="copy">
-		All contents Copyright 2020 JBoard Inc. all rights reservied<br>
-		Contact mail : jeonghoon@naver.com Tel: +82 02 1234 5678 Fax +82 02
-		7777 8888
-	</div>
-	
-	<a href="http://www.facebook.com"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
-	 <a href="http://www.instagram.com"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
-	 
-</footer>
+
 </body>
 </html>
 </layoutTag:layout>
