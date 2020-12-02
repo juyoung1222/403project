@@ -36,16 +36,26 @@
 					<th>제품명</th>
 					<th>가 격</th>
 					<th>수 량</th>
+					<th>아이디</th>
 				</tr>
 			</thead>
 			<tr>
 				<td>${productdetail.productname}</td>
 				<td>${productdetail.productprice}</td>
 				<td>${productdetail.productsalescnt}</td>
+				<td>${member.userId}</td>
 			</tr>
 		</table>
+				<input type="hidden" name="cartproductid" value="1"/>
 				<input type="hidden" name="productname" value="${productdetail.productname}"/>
-				<input type="hidden" name="cartno" value="${productdetail.cartno}"/>
+				<input type="hidden" name="cartno" value="${productdetail.productno}"/>
+				<input type="hidden" name="cartuserid" value="${member.userId}"/>
+				<input type="hidden" name="productimagefile" value="${productdetail.productimagefile}"/>
+				<input type="hidden" name="productimageName" value="${productdetail.productimageName}"/>
+				<input type="hidden" name="productimageOriName" value="${productdetail.productimageOriName}"/>
+				<input type="hidden" name="productimageUrl" value="${productdetail.productimageUrl}"/>
+				<input type="hidden" name="productprice" value="${productdetail.productprice}"/>
+				<input type="hidden" name="productsalescnt" value="${productdetail.productsalescnt}"/>
 				
 		<table class="table table-hover table-bordered">
 			<thead>
@@ -66,7 +76,7 @@
 		<button class="btn btn-warning"
 			onclick="location.href='#'">구매 하기</button>
 		<button class="btn btn-danger"
-			onclick="#">장바구니담기</button>
+			onclick="#">장바구니담기1</button>
 		</c:if>
 		<c:if test = "${member == null}">
 		<select name="수량~">
@@ -76,9 +86,9 @@
 		</select>
 		<button class="btn btn-warning"
 			onclick="button1_click()">구매 하기</button>
-		<button class="btn btn-danger" type="submit">장바구니담기</button>
+		<button class="btn btn-danger" type="submit" onClick="location.href='/cart/insertCart'">장바구니담기2</button>
 		<button class="btn btn-danger" type="button" 
-			onClick="location.href='/cart/insertCart'">장바구니담기</button>
+			onClick="location.href='/cart/insertCart'">장바구니담기3</button>
 		</c:if>
 	</form>
 </div>

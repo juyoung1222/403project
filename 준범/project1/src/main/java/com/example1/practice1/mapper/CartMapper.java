@@ -11,7 +11,10 @@ public interface CartMapper {
 
 	//장바구니 목록 보기
 	public List<CartDetailDTO> cartList() throws Exception;
-
+	
+	//장바구니 등록
+	public int insertCart(CartDetailDTO cartDetailDTO) throws Exception;
+	
 	//삭제
 	public int cartDelete(int cartno) throws Exception;
 	

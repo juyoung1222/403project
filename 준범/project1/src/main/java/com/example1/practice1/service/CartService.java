@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+
 import com.example1.practice1.domain.CartDetailDTO;
 import com.example1.practice1.mapper.CartMapper;
 
@@ -21,10 +22,18 @@ public class CartService {
 		return cartMapper.cartList();
 	}
 	
+	//장바구니 등록
+		public int insertCart(CartDetailDTO cartDetailDTO ) throws Exception{
+			
+			return cartMapper.insertCart(cartDetailDTO);
+		}
+	
 	//삭제
 	public int cartDeleteService(int cartno) throws Exception {
 		return cartMapper.cartDelete(cartno);
 	}
 	
+	
+
 	
 }

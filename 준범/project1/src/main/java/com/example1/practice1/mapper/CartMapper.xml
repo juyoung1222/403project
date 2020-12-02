@@ -13,7 +13,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	WHERE	cart.CARTPRODUCTID = pro.PRODUCTNO
 	</select>
 	
-	<!-- carto에 해당하는 자료를 삭제한다. -->
+	<!-- 장바구니 등록 -->
+	<insert id="insertCart" parameterType="com.example1.practice1.domain.CartDetailDTO">
+	INSERT	INTO	CARTTABLE
+			( CARTPRODUCTID, CARTDATE, CARTUSERID)
+	VALUES	( #{cartproductid}, now(), #{cartuserid})
+
+	</insert>
+	
+	<!-- carno에 해당하는 자료를 삭제한다. -->
 	<delete id="cartDelete" parameterType="int">
 	DELETE
 	FROM	CART

@@ -115,6 +115,7 @@ public class ProductController {
 		// 게시글 번호에 해당하는 상세정보화면
 			@RequestMapping("/productdetail/{productno}")
 			private String boardDetail(@PathVariable int productno, Model model) throws Exception {
+				System.out.println("Product Controller productdetail : " + productno);
 				// bno에 해당하는 자료를 찾아와서 model에 담는다.
 				model.addAttribute("productdetail", productService.productDetailService(productno)); // 게시글의 정보를 가져와서 저장한다.					//model.addAttribute("files", productService.fileDetailService(bno)); // 파일의 정보를 가져와서 저장한다.
 					return "/product/productdetail";

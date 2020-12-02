@@ -30,6 +30,7 @@
 		<thead>
 			<tr>
 				<th>No</th>
+				<th>이미지</th>
 				<th>상품명</th>
 				<th>가격</th>
 				<th>수량</th>
@@ -39,14 +40,15 @@
 		</thead>
 			<c:forEach var="cart" items="${list}">
 			<tr>
-				<td class="info" onclick="location.href='/product/detail/${cart.cartno}'">${cart.cartno}</td>
+				<td>${cart.cartno}</td>
+				<td>${cart.productimagefile}</td>
 				<td>${cart.productname}</td>
 				<td>${cart.productprice}</td>
 				<td>
 					<input type="number" style="width:40px" name="amount" value="${row.amount}" min="1">
 					<input type="hidden" name="productId" value="${row.productId}">
 				</td>
-				<td><button type="button" class="btn btn-danger" onclick="location.href='/cart/list${cart.cartno}'">삭제</button></td>
+				<td><button type="button" class="btn btn-danger" onclick="location.href='/cart/list/${cart.cartno}'">삭제</button></td>
 				<td><fmt:formatDate value="${cart.cartdate}" pattern="yyyy년 MM월 dd일 HH시 mm분 ss초"/></td>
 				
 			</tr>
