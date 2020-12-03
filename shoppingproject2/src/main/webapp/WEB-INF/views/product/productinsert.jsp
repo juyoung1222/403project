@@ -51,25 +51,15 @@
 			<label for="productsalescnt">판매수량</label>
 			<input type="number" class="form-control" id="productsalescnt" name="productsalescnt"  placeholder="수량를 입력하십시오."/>
 		</div>
-		
-		<!-- 비로그인 접속 제한 설정 -->
-		<c:if test="${member != null}">
-			<button id="inserting" type="submit" class="btn btn-primary">작성</button>
-		</c:if>
-	</form>
-		<c:if test = "${member == null}">
-			<button id="insert" class="btn btn-primary" onclick="button1_click()" >작성</button>
-		</c:if>
-		
-</div>
-
-<script>
-function button1_click() {
-	alert("로그인 해주세요");
-}
-</script>
-
-</body>
+		<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-4">
+						<button class="btn btn-success" type="submit" id="submit">작성</button>
+						<button class="btn btn-danger" type="reset">취소</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
 
 
 </body>

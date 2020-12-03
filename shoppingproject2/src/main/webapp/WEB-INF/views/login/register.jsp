@@ -56,7 +56,7 @@
 	<div class="form-group">
 		<label class="control-label col-sm-2"><span class="glyphicon glyphicon glyphicon glyphicon-user">생 년 월 일</span></label>
 		<div class="col-sm-6">
-		<input type="date" value="2020-11-14" min="1910-01-01" max="2020-11-14" name="userBirth"/>
+		<input type="date" value="2020-11-14" min="1910-01-01" max="2100-12-31" name="userBirth"/>
 		<fmt:formatDate value="${DateValue}" pattern="yy-MM-dd"/>
 	</div>
 </div>

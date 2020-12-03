@@ -46,9 +46,6 @@ public class ProductController {
 		@RequestMapping("/insertProc")
 		private String boardInsertProc(HttpServletRequest request,@RequestPart MultipartFile productimagefile) throws Exception {
 			
-			
-		
-			
 			// 게시글 등록 화면에서 입력한 값들을 실어나르기 위해 BoardVO를 생성한다.
 			ProductDTO product = new ProductDTO();
 			
@@ -69,7 +66,7 @@ public class ProductController {
 				String destinationFileName;
 				// fileUrl = "uploadFiles 폴더의 위치";
 				// upload 폴더의 위치 확인 : upload 우클릭 -> Properties -> Resource - > Location 복사(각자의 폴더위치를 넣는다.)
-				String productimageUrl = "D:\\project\\juyoungWeb\\exam4\\src\\main\\resources\\static\\upload";
+				String productimageUrl = "D:\\project\\juyoungWeb\\exam4\\src\\main\\resources\\static\\upload\\";
 				                          
 				do {
 					destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
@@ -116,13 +113,13 @@ public class ProductController {
 			return "/product/productlist";
 		}
 		// 게시글 번호에 해당하는 상세정보화면
-		@RequestMapping("/productdetail/{productno}")
+		@RequestMapping("/detail2/{productno}")
 		private String boardDetail(@PathVariable int productno, Model model) throws Exception {
 			
 			// bno에 해당하는 자료를 찾아와서 model에 담는다.
 			model.addAttribute("productdetail", productService.productDetailService(productno)); // 게시글의 정보를 가져와서 저장한다.
 			//model.addAttribute("files", productService.fileDetailService(bno)); // 파일의 정보를 가져와서 저장한다.
-			return "/product/productdetail";
+			return "/product/detail2";
 		}
 					
 		// 게시글 수정 화면

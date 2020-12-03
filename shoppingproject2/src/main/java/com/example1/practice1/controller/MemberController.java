@@ -96,6 +96,7 @@ public class MemberController {
 				
 		}//end - private String getLogin() throws Exception
 		
+		//로그인 POST
 		@RequestMapping(value="/login/login", method=RequestMethod.POST)
 		private String postLogin(MemberDTO memberDTO,HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 			logger.info("login post.....");
