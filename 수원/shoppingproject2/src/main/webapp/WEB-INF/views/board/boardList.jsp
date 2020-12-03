@@ -26,6 +26,10 @@
 	<link rel="stylesheet" href="//code.jquey.com/ui/1.12.1/themes/base/jquey-ui.css">
 </head>
 <body>
+
+
+</script>
+
 <div class="container-fluid">
 	<h2 align="left">자 유 게 시 판</h2>
 	

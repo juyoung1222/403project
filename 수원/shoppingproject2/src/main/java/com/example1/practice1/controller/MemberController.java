@@ -27,10 +27,15 @@ public class MemberController {
 	@Inject
 	MemberService service;
 	
+	//시작 애니메이션
+	@RequestMapping("/")
+	private String premainForm() {
+		return "/Preview";
+	}
 	//메인
-	@GetMapping("/")
+	@GetMapping("/main")
 	private String mainForm() {
-		return "main";
+		return "/main";
 	}
 	//채팅
 	@RequestMapping("/chat/chat")

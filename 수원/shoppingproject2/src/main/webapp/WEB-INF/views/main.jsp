@@ -9,6 +9,7 @@
 <head>
 <link rel="icon" type="image/x-icon" href="/static/images/aland.jpg"/>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="/static/assets/css/loading.css" />
 <meta charset="UTF-8">
 <title>메인</title>
 <style>
