@@ -105,7 +105,7 @@
 		<div class="col-sm-3">
 			<div class="thumbnail">
 				<img src="/static/images/너구리.jpg" width="600" height="400"
-					onclick="location.href='/product/productdetail/1'">
+					onclick="location.href='/product/detail2/1'">
 				<p>
 					<strong>프로필</strong>
 				</p>
@@ -114,7 +114,7 @@
 					동물 피규어 및 애니피규어를<br>제작판매 하는 중 입니다.
 				</p>
 				<button class="btn btn-default"
-					onclick="location.href='/product/productdetail/1'">More
+					onclick="location.href='/product/detail2/1'">More
 					Click</button>
 			</div>
 		</div>
@@ -123,7 +123,7 @@
 		<div class="col-sm-3" style=>
 			<div class="thumbnail">
 				<img src="/static/images/프로필2.jpg" width="600" height="400"
-					onclick="location.href='/product/productdetail/2'">
+					onclick="location.href='/product/detail2/2'">
 				<p>
 					<strong>프로필</strong>
 				</p>
@@ -132,7 +132,7 @@
 					애니피규어를 주종목으로<br>하고있습니다.
 				</p>
 				<button class="btn btn-default"
-					onclick="location.href='/product/productdetail/2'">More
+					onclick="location.href='/product/detail2/2'">More
 					Click</button>
 			</div>
 		</div>
@@ -141,7 +141,7 @@
 		<div class="col-sm-3">
 			<div class="thumbnail">
 				<img src="/static/images/프로필3.jpg" width="600" height="400"
-					onclick="location.href='/product/productdetail/3'">
+					onclick="location.href='/product/detail2/3'">
 				<p>
 					<strong>프로필</strong>
 				</p>
@@ -150,7 +150,7 @@
 					동물 피규어 및 애니피규어를<br>제작판매 하는 중 입니다.
 				</p>
 				<button class="btn btn-default"
-					onclick="location.href='/product/productdetail/3'">More Click
+					onclick="location.href='/product/detail2/3'">More Click
 				</button>
 			</div>
 		</div>

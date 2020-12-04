@@ -60,13 +60,12 @@ public class MemberController {
 			if(result == 1) {//아이디를 이미 사용하고 있으면
 				//회원가입창으로 보낸다.
 				return "/login/register";
-			}else if(result == 0) {//아이디가 존재하지 않다면
+			}else  {//아이디가 존재하지 않다면
 				System.out.println(memberDTO);
 				//회원가입 서비스로 간다.
 				service.register(memberDTO);
-			}
-			
-		} catch (Exception e) {
+				}
+		  } catch (Exception e) {
 			
 			
 		}
@@ -74,9 +73,9 @@ public class MemberController {
 		
 		}//end - private String postRegister(MemberVO vo) throws Exceptio
 		
-	//아이디 중복검사
+		//아이디 중복검사
 		@ResponseBody
-		@RequestMapping(value="/login/idCheck",method=RequestMethod.POST)
+		@RequestMapping(value="/login/idCheck",method= {RequestMethod.POST,RequestMethod.GET})
 		private int idCheck(MemberDTO memberDTO) throws Exception{
 			logger.info("MemberController : " + memberDTO);
 			

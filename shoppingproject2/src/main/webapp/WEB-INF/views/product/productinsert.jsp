@@ -19,7 +19,7 @@
 <body>
 
 <div class="container">
-	<h2>게시글 작성</h2>
+	<h2>상 품 등 록</h2>
 	<form class="form-horizontal" action="/product/insertProc" method="post" enctype="multipart/form-data">
 		
 		<div class="inputArea">
