@@ -85,6 +85,9 @@
 	</div>
 </div>
 <script>
+
+
+
 $(document).ready(function(){
 	$(".btn-info").on("click",function(){
 		if(${member == null}){

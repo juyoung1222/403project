@@ -14,12 +14,19 @@
 	*{
 		font-size: 16px;
 		font-family : Consolas,sans-serif;
+		align : center;
+		
 		}
+	.check_font{
+		text-align : center;
+		
+	}
+	
 
 </style>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
 	<form class="form-horizontal" method="post" action="/login/register">
 		<div class="form-group">
 		<div class="col-sm-2"></div>
@@ -33,10 +40,15 @@
 			<input type="text" class="form-control" id="userId" name="userId"
 			maxlength=20 placeholder="id를 입력하세요"/>
 		</div>
+		
 		<div class="col-sm-2">
-			<button class="btn btn-warning idCheck" type="button" id="idCheck" onclick="dupCheck();" value="N">중복확인</button> 
+			<button class="btn btn-warning idCheck" type="button" id="idCheck"  value="N">중복확인</button> 
 		</div>
 	</div>
+	
+	<!-- 메시지 영역 -->
+	<div class="check_font" id="id_Check" ></div>
+	
 	<div class="form-group">
 		<label class="control-label col-sm-2"><span class="glyphicon glyphicon glyphicon-eye-open">비 밀 번 호</span></label>
 			<div class="col-sm-6">
@@ -56,7 +68,7 @@
 	<div class="form-group">
 		<label class="control-label col-sm-2"><span class="glyphicon glyphicon glyphicon glyphicon-user">생 년 월 일</span></label>
 		<div class="col-sm-6">
-		<input type="date" value="2020-11-14" min="1910-01-01" max="2020-11-14" name="userBirth"/>
+		<input type="date" value="2020-11-14" min="1910-01-01" max="2100-12-31" name="userBirth"/>
 		<fmt:formatDate value="${DateValue}" pattern="yy-MM-dd"/>
 	</div>
 </div>
@@ -129,12 +141,10 @@
 <script>
 $(document).ready(function() {
 	//취소버튼을 눌렀을 경우
-	
 	$(".cancel").on("click",function(){
 		alert("취소되었습니다.");
 		location.href="/"
 	});
-	//회원가입 버튼을 눌렀을 경우 =>입력필드가 비어있는지 검사한다.
 	$("#submit").on("click",function(){
 		if($("#userId").val() == ""){
 			alert("아이디를 입력하세요");
@@ -182,38 +192,45 @@ $(document).ready(function() {
 			$("#address01").focus();
 			return false;
 		}
-		
+	});
+//아이디 중복검사
+var idJ = /^[a-z0-9]{4,12}$/;
+$(".idCheck").on("click",function(){
+		if($("#userId").val() == ""){
+			alert("아이디를 입력하세요");
+			$("#userId").focus();
+			return false;
+			}
+		$.ajax({
+			url : "/login/idCheck",
+			type : 'post',
+			dataType : 'json',
+			data : {"userId" : $("#userId").val()},
+			success : function(data){
+				console.log("1 = 중복됨 / 0 = 사용가능 " + data);
+
+			if(data == 1){
+				//1.아이디가 중복되는 문구
+				//alert('사용중인 아이디 입니다.');
+				$("#id_Check").text("입력하신 이 아이디는 사용중인 아이디 입니다.");
+				$("#id_Check").css("color","red");
+				$(".idCheck").attr("disabled",true);
+			}else if(data == 0 ){
+				//0 : 아이디가 중복되지않는문구
+				//alert("사용가능한 아이디 입니다.");
+				$("#id_Check").text("입력하신 이 아이디는 사용이 가능한  아이디 입니다.");
+				$("#id_Check").css("color","red");
+				$(".idCheck").attr("disabled",true);
+			}
+				}, error : function(){
+					console.log("실패");
+			}
+		})
 		
 	});
-	
 })
-//아이디 중복 검사
-//입력한 아이디에 해당한느 정보가 있는지 검사하고 결과값(정수)을 리턴받는다.
-function dupCheck(){
-	//alert("중복확인");
-	if($("#userId").val() == ""){
-		alert("아이디를 입력하세요");
-		$("#userId").focus();
-		return false;
-		}
-	$.ajax({
-		url : "/login/idCheck",
-		type : "post",
-		dataType : "json",
-		data : {"userId" : $("#userId").val()},
-		success : function(data){
-			if(data == 1){
-				alert("중복된 아이디 입니다.");
-				}else if(data == 0){
-					$("#idCheck").attr("value","Y");
-					alert("사용가능한 아이디 입니다.");
-				}
-			}
-		})	
-	}
 </script>
-
-
+	
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.

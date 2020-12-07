@@ -19,7 +19,7 @@
 <body>
 
 <div class="container">
-	<h2>게시글 작성</h2>
+	<h2>상 품 등 록</h2>
 	<form class="form-horizontal" action="/product/insertProc" method="post" enctype="multipart/form-data">
 		
 		<div class="inputArea">
@@ -49,27 +49,27 @@
 		</div>
 		<div class="form-group">
 			<label for="productsalescnt">판매수량</label>
-			<input type="number" class="form-control" id="productsalescnt" name="productsalescnt"  placeholder="수량를 입력하십시오."/>
+			<input type="number" class="form-control" id="productsalescnt" name="productsalescnt"  placeholder="판매 수량를 입력하십시오."/>
 		</div>
-		
-		<!-- 비로그인 접속 제한 설정 -->
-		<c:if test="${member != null}">
-			<button id="inserting" type="submit" class="btn btn-primary">작성</button>
-		</c:if>
-	</form>
-		<c:if test = "${member == null}">
-			<button id="insert" class="btn btn-primary" onclick="button1_click()" >작성</button>
-		</c:if>
-		
-</div>
-
-<script>
-function button1_click() {
-	alert("로그인 해주세요");
-}
-</script>
-
-</body>
+		<div class="form-group">
+			<select name="productid" id="productid">
+			    <option value="">종류 선택</option>
+			    <option value=1>Shirts</option>
+			    <option value=2>Dresses</option>
+			    <option value=3>jeans</option>
+			    <option value=4>jackets</option>
+			    <option value=5>Gymwear</option>
+			    <option value=6>Blazers</option>
+			    <option value=7>Shoes</option>
+			</select>
+		</div>
+		<div class="form-group">			
+				<button class="btn btn-success" type="submit" id="submit">작성</button>
+				<button class="btn btn-danger" type="reset">취소</button>	
+			</div>
+		</form>
+		</div>
+	</body>
 
 
 </body>

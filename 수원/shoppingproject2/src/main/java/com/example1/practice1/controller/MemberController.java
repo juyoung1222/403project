@@ -27,15 +27,10 @@ public class MemberController {
 	@Inject
 	MemberService service;
 	
-	//시작 애니메이션
-	@RequestMapping("/")
-	private String premainForm() {
-		return "/Preview";
-	}
 	//메인
-	@GetMapping("/main")
+	@GetMapping("/")
 	private String mainForm() {
-		return "/main";
+		return "main";
 	}
 	//채팅
 	@RequestMapping("/chat/chat")
@@ -65,13 +60,12 @@ public class MemberController {
 			if(result == 1) {//아이디를 이미 사용하고 있으면
 				//회원가입창으로 보낸다.
 				return "/login/register";
-			}else if(result == 0) {//아이디가 존재하지 않다면
+			}else  {//아이디가 존재하지 않다면
 				System.out.println(memberDTO);
 				//회원가입 서비스로 간다.
 				service.register(memberDTO);
-			}
-			
-		} catch (Exception e) {
+				}
+		  } catch (Exception e) {
 			
 			
 		}
@@ -79,9 +73,9 @@ public class MemberController {
 		
 		}//end - private String postRegister(MemberVO vo) throws Exceptio
 		
-	//아이디 중복검사
+		//아이디 중복검사
 		@ResponseBody
-		@RequestMapping(value="/login/idCheck",method=RequestMethod.POST)
+		@RequestMapping(value="/login/idCheck",method= {RequestMethod.POST,RequestMethod.GET})
 		private int idCheck(MemberDTO memberDTO) throws Exception{
 			logger.info("MemberController : " + memberDTO);
 			
@@ -101,6 +95,7 @@ public class MemberController {
 				
 		}//end - private String getLogin() throws Exception
 		
+		//로그인 POST
 		@RequestMapping(value="/login/login", method=RequestMethod.POST)
 		private String postLogin(MemberDTO memberDTO,HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 			logger.info("login post.....");

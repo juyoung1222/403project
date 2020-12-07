@@ -106,7 +106,7 @@ function mCommentServiceUpdate(replyno){
 		type : 'get',
 		data : {'replyno' : replyno, 'replytext' :  updateContent},
 		success : function(data){
-			if(data == 1) commentList(replycontentid);
+			if(data == 1) commentList();
 			}
 		});
 	}
@@ -119,7 +119,7 @@ function commentDelete(replyno){
 		url : '/comment/delete/' + replyno,
 		type : 'post',
 		success : function(data){
-			if(data == 1) commentList(replycontentid);
+			if(data == 1) commentList();
 			}
 		});
 	}

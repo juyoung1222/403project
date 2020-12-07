@@ -12,9 +12,16 @@ public class ProductDTO {
 	private 	String 		productname;
 	private 	int			productprice;
 	private 	int 		productsalescnt;
+	private 	int 		productid;
 	
 	
 	
+	public int getProductid() {
+		return productid;
+	}
+	public void setProductid(int productid) {
+		this.productid = productid;
+	}
 	public String getProductimageName() {
 		return productimageName;
 	}
@@ -69,8 +76,10 @@ public class ProductDTO {
 		return "ProductDTO [productno=" + productno + ", productimagefile=" + productimagefile + ", productimageName="
 				+ productimageName + ", productimageOriName=" + productimageOriName + ", productimageUrl="
 				+ productimageUrl + ", productname=" + productname + ", productprice=" + productprice
-				+ ", productsalescnt=" + productsalescnt + "]";
+				+ ", productsalescnt=" + productsalescnt + ", productid=" + productid + "]";
 	}
+	
+	
 	
 	
 	

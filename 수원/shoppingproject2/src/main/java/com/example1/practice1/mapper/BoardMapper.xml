@@ -122,12 +122,4 @@ ORDER BY REPLYNO
 	SET boardhit = boardhit + 1
 	WHERE boardno = #{boardno}
 </update>
-
-
-
-
-
-
-
-
 </mapper>

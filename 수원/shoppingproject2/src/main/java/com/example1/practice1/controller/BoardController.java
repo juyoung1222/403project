@@ -92,7 +92,7 @@ public class BoardController {
 		
 		return "redirect:/board/boardList";
 		
-		}
+		}//end - private String boardInsertProc(HttpServletRequest request) throws Exception 
 
 	// 게시글 목록보기
 	@RequestMapping(value = "/boardList", method = { RequestMethod.GET, RequestMethod.POST })
@@ -125,7 +125,7 @@ public class BoardController {
 		
 //		model.addAttribute("upload", service.uploadFileList(boardno));
 		return "/board/detailComment";
-	}// end - public String detail(@PathVariable int bno, Model model) throws
+	}// end - private String detail(@PathVariable int bno, Model model) throws
 		// Exception
 
 	// 댓글을 달수 있는 상세화면
@@ -149,7 +149,7 @@ public class BoardController {
 		
 		return "/board/detailComment";
 
-	}// end - public String comment(@PathVariable int bno,Model model) throws
+	}// end - private String comment(@PathVariable int bno,Model model) throws
 		// Exception
 	
 
@@ -163,7 +163,7 @@ public class BoardController {
 		
 		
 		return "/board/boardUpdate";
-	}// end - public String getUpdate(@PathVariable int bno,Model model) throws
+	}// end - private String getUpdate(@PathVariable int bno,Model model) throws
 		// Exception
 
 	// 게시글 수정 화면에서 수정할 자료를 업데이트한다.
