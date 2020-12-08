@@ -38,14 +38,11 @@ $(document).ready(function(){
 			alert("로그인을 하셔야 합니다.");
 			location.href="/login/login";
 			}
-		else if(${member != null}){
-			location.href="/board/boardUpdate";
-			}
+		
 		});
-	
-})
-
+	})
 </script>
+
 </body>
 </html>
 </layoutTag:layout>

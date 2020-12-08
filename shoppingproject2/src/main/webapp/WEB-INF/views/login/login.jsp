@@ -45,9 +45,9 @@
 					<p><h2>${member.userId}님 환영합니다.</h2></p>
 					<button id="proUpdateBtn" type="button">회원정보수정</button>
 					<button id="proDeleteBtn" type="button">회원탈퇴</button>
-					<button id="logoutBtn" type="button">로그아웃</button> 
-					<button id="boardBtn" type="button">게시판</button>
-					<button id="productBtn" type="button">제품등록</button>
+				
+					
+					
 					
 				</div>
 			</c:if>
@@ -80,11 +80,7 @@ $(document).ready(function(){
 			return false;
 			}
 		});
-	//로그아웃 버튼을 눌렀을 경우
-	$("#logoutBtn").on("click",function(){
-		alert("진짜 로그아웃하시는거에요?");
-		location.href="/login/logout"
-		});
+
 	//회원가입 버튼을 눌렀을 경우
 	$("#proRegisterBtn").on("click",function(){
 		location.href="/login/register";
@@ -97,12 +93,7 @@ $(document).ready(function(){
 	$("#proDeleteBtn").on("click",function(){
 		location.href="/login/proDelete";
 		});
-	$("#boardBtn").on("click",function(){
-		location.href="/board/boardList";
-		});
-	$("#productBtn").on("click",function(){
-		location.href="/product/productinsert";
-		});
+
 	
 })
 
