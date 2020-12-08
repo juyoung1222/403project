@@ -33,10 +33,10 @@ public class MemberController {
 		return "main";
 	}
 	//채팅
-	@RequestMapping("/chat/chat")
-	private String chatMain() throws Exception{
-		return "/chat/chat";
-	}
+//	@RequestMapping("/chat/chat")
+//	private String chatMain() throws Exception{
+//		return "/chat/chat";
+//	}
 
 	//회원가입GET
 	@RequestMapping(value="/login/register",method=RequestMethod.GET)

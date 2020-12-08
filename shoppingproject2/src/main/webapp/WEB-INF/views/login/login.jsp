@@ -45,10 +45,6 @@
 					<p><h2>${member.userId}님 환영합니다.</h2></p>
 					<button id="proUpdateBtn" type="button">회원정보수정</button>
 					<button id="proDeleteBtn" type="button">회원탈퇴</button>
-				
-					
-					
-					
 				</div>
 			</c:if>
 			<c:if test="${msg == false}">

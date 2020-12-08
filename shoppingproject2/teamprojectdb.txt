@@ -64,7 +64,7 @@ PRODUCTIMAGEURL varchar(500) not null, ---------- 상품 URL
 PRODUCTNAME		VARCHAR(500) not null,  ---------- 상품 이름
 PRODUCTPRICE		INT not null, ---------- 상품 가격
 PRODUCTSALESCNT	INT not null, ---------- 상품 판매 개수
-PRODUCTID		INT not null, ---------- 상품 카테고리 ID 
+PRODUCTCID		INT not null, ---------- 상품 카테고리 ID 
 FOREIGN KEY (PRODUCTCID) REFERENCES PRODUCTCATEGORYTABLE(PRODUCTCATEGORYID) --------- 상품 카테고리별 분류 및 검색을 제공하기 위한 컬럼
 );
 

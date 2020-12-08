@@ -11,6 +11,11 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <meta charset="UTF-8">
 <title>메인</title>
+<script type="text/javascript" src="/static/jquery/lib/jquery.js"></script>
+<script type='text/javascript' src='/static/jquery/lib/jquery.bgiframe.min.js'></script>
+<script type='text/javascript' src='/static/jquery/lib/jquery.ajaxQueue.js'></script>
+<script type='text/javascript' src='/static/jquery/jquery.autocomplete.js'></script>
+<link rel="stylesheet" type="text/css" href="/static/jquery/jquery.autocomplete.css" />
 <style>
 .w3-sidebar a {
 	font-family: "Roboto", sans-serif
@@ -84,12 +89,12 @@
 	<a href="#footer" class="w3-bar-item w3-button w3-padding">Subscribe</a>
 </nav>
 
-
+<!-- 검색창 -->
 <div class="container">
-	<form class="form-inline">
-		<input type="text" class="form-control" size="100"
+	<form class="form-inline" action="/product/searchList" method="post">
+		<input type="text" class="form-control" id="searchBox" name="searchName" size="100"
 			placeholder="검색어를 입력하세요">
-		<button type="button" class="btn btn-info">검색</button>
+		<button type="submit">검색</button>
 	</form>
 </div>
 
@@ -360,6 +365,42 @@
 	</div>
 </div>
 <hr id="contact">
+<script>
+	var availableTags = [
+							'셔츠',
+							'반팔 셔츠',
+							'긴팔 셔츠',
+							'shirts',
+							'Shirts',
+							'드레스',
+							'dress',
+							'Dress',
+							'바지',
+							'긴바지',
+							'반바지',
+							'jeans',
+							'Jeans',
+							'자켓',
+							'jackets',
+							'Jackets',
+							'블레이져',
+							'blazers',
+							'신발',
+							'운동화',
+							'구두',
+							'샌들',
+							'Shoes',
+							'shoes'
+						];
+</script>
+<script>
+$(document).ready(function(){
+	$("#searchBox").autocomplete(availableTags,{
+			matchContains:true,
+			selectFirst : false
+		});
+})
+</script>
 </body>
 
 	</html>

@@ -33,8 +33,10 @@ public class ProductController {
 	ProductService productService;	
 	
 	// 로깅을 위한 변수
-	private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
-	// 웹 브라우저에서 http://localhost:8088/Product/Productinsert 로 호출한다.
+	private static final Logger logger 
+		= LoggerFactory.getLogger(ProductController.class);
+	
+		// 웹 브라우저에서 http://localhost:8088/Product/Productinsert 로 호출한다.
 		@RequestMapping("/productinsert")
 		private String boardInsertForm() {
 			System.out.println("Controller insert......");
@@ -67,10 +69,10 @@ public class ProductController {
 				// upload 폴더의 위치 확인 : upload 우클릭 -> Properties -> Resource - > Location 복사(각자의 폴더위치를 넣는다.)
 				String productimageUrl = "D:\\project\\juyoungWeb\\exam4\\src\\main\\resources\\static\\upload\\";
 				                          
-				do {
-					destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
-					destinationFile = new File(productimageUrl + destinationFileName);
-				} while (destinationFile.exists());
+					do {
+						destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
+						destinationFile = new File(productimageUrl + destinationFileName);
+					} while (destinationFile.exists());
 
 				// MultipartFile.transferTo() : 요청 시점의 임시 파일을 로컬 파일 시스템에 영구적으로 복사해준다.
 				destinationFile.getParentFile().mkdirs();
@@ -146,6 +148,19 @@ public class ProductController {
 			//model.addAttribute("files", productService.fileDetailService(bno)); // 파일의 정보를 가져와서 저장한다.
 			return "/product/detail2";
 		}
+		
+		//메인 검색 기능
+		@RequestMapping("/searchList")
+		private String searchList( Model model, HttpServletRequest request) throws Exception {
+
+			logger.info("ProductController productlist.....");
+			
+			logger.info("searchList :  " + request.getParameter("searchName"));
+			
+			model.addAttribute("search", productService.search(request.getParameter("searchName")));
+			
+			return "/product/searchList";
+		}//end - private String searchList( Model model, HttpServletRequest request) throws Exception  
 					
 		// 게시글 수정 화면
 		@RequestMapping(value = "/Update/{productno}", method = RequestMethod.GET)
@@ -171,7 +186,7 @@ public class ProductController {
 			productDTO.setProductno(Integer.parseInt(request.getParameter("productno")));
 
 			productService.update(productDTO);
-			return "redirect:/product/productdetail/" + request.getParameter("productno");
+			return "redirect:/product/detail2/" + request.getParameter("productno");
 		
 		}//end - private String productUpdateProc(HttpServletRequest request,@RequestParam int productno) throws Exception 
 					

@@ -103,10 +103,21 @@
 								<p>판매량 : ${productdetail.productsalescnt}</p>
 							</div>
 						</div>
-					</section>
-
-				</div>
-			</section>
+						<c:if test="${member == null}">
+						</c:if>
+						
+						<c:if test="${member != null}">
+						</c:if>
+						
+						<c:if test="${admin != null}">
+							<button type="button" class="btn btn-success" onclick="location.href='/product/Update/${productdetail.productno}'">수정</button>
+							<button type="button" class="btn btn-danger" onclick="location.href='/product/delete/${productdetail.productno}'">삭제</button>
+						</c:if>
+				</section>
+			</div>
+	</section>
+		
+	
 
 		<!-- Footer -->
 			<footer id="footer">
@@ -123,12 +134,30 @@
 				</div>
 			</footer>
 
-		<!-- Scripts -->
-			<script src="/static/assets/js/jquery.min.js"></script>
-			<script src="/static/assets/js/jquery.poptrox.min.js"></script>
-			<script src="/static/assets/js/skel.min.js"></script>
-			<script src="/static/assets/js/util.js"></script>
-			<script src="/static/assets/js/main.js"></script>
+<!-- Scripts -->
+<script src="/static/assets/js/jquery.min.js"></script>
+<script src="/static/assets/js/jquery.poptrox.min.js"></script>
+<script src="/static/assets/js/skel.min.js"></script>
+<script src="/static/assets/js/util.js"></script>
+<script src="/static/assets/js/main.js"></script>
 
-	</body>
+<script>
+$(document).ready(function(){
+	$(".btn-success").on("click",function(){
+		alert("수정하시겠습니까?");
+		location.href='/product/Update/${productdetail.productno}';
+		});
+})
+</script>
+<script>
+$(document).ready(function(){
+	$(".btn-danger").on("click",function(){
+		alert("삭제하시겠습니까?");
+		location.href='/product/delete/${productdetail.productno}';
+		});
+})
+</script>
+			
+
+</body>
 </html>
