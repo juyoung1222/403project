@@ -76,7 +76,7 @@
 		<button class="btn btn-warning"
 			onclick="location.href='#'">구매 하기</button>
 		<button class="btn btn-danger"
-			onclick="#">장바구니담기1</button>
+			onclick="#">장바구니담기</button>
 		</c:if>
 		<c:if test = "${member == null}">
 		<select name="수량~">
@@ -86,9 +86,8 @@
 		</select>
 		<button class="btn btn-warning"
 			onclick="button1_click()">구매 하기</button>
-		<button class="btn btn-danger" type="submit" onClick="location.href='/cart/insertCart'">장바구니담기2</button>
-		<button class="btn btn-danger" type="button" 
-			onClick="location.href='/cart/insertCart'">장바구니담기3</button>
+		<button class="btn btn-danger" type="submit" onClick="location.href='/cart/insertCart'">장바구니담기</button>
+		
 		</c:if>
 	</form>
 </div>

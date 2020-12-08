@@ -22,9 +22,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<!-- carno에 해당하는 자료를 삭제한다. -->
-	<delete id="cartDelete" parameterType="int">
+	<delete id="cartDelete" >
 	DELETE
-	FROM	CART
+	FROM	CARTTABLE
 	WHERE	CARTNO		= #{cartno}
 	</delete>
 

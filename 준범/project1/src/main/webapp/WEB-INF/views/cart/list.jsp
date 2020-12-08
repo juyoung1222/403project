@@ -44,12 +44,9 @@
 				<td>${cart.productimagefile}</td>
 				<td>${cart.productname}</td>
 				<td>${cart.productprice}</td>
-				<td>
-					<input type="number" style="width:40px" name="amount" value="${row.amount}" min="1">
-					<input type="hidden" name="productId" value="${row.productId}">
-				</td>
+				<td>${cart.productsalescnt}</td>
 				<td><fmt:formatDate value="${cart.cartdate}" pattern="yyyy년 MM월 dd일 HH시 mm분 ss초"/></td>
-				<td><button type="button" class="btn btn-danger" onclick="location.href='/cart/list/${cart.cartno}'">삭제</button></td>
+				<td><button type="button" class="btn btn-danger" onclick="location.href='/cart/cartDelete/${cart.cartno}'">삭제</button></td>
 			</tr>
 			</c:forEach>
 		<tbody>
