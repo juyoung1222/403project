@@ -5,7 +5,6 @@ import java.io.File;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -44,18 +43,15 @@ public class ProductController {
 
 		// Controller 에서 Multipart 를 @RequestParet 어노테이션을 통해 별도의 설정없이 사용할 수 있다.
 		@RequestMapping("/insertProc")
-		private String boardInsertProc(HttpServletRequest request,@RequestPart MultipartFile productimagefile) throws Exception {
+		private String boardInsertProc (HttpServletRequest request,@RequestPart MultipartFile productimagefile) throws Exception {
 			
-			
-		
-			
-			// 게시글 등록 화면에서 입력한 값들을 실어나르기 위해 BoardVO를 생성한다.
+			// 게시글 등록 화면에서 입력한 값들을 실어나르기 위해 BoardDTO를 생성한다.
 			ProductDTO product = new ProductDTO();
 			
 			product.setProductname(request.getParameter("productname"));
 			product.setProductprice(Integer.parseInt(request.getParameter("productprice")));
 			product.setProductsalescnt(Integer.parseInt(request.getParameter("productsalescnt")));
-			
+			product.setProductid(Integer.parseInt(request.getParameter("productid")));
 			
 			if (productimagefile.isEmpty()) { // 업로드할 파일이 없는 경우
 				productService.productInsertService(product); // 게시글만 올린다.
@@ -69,7 +65,7 @@ public class ProductController {
 				String destinationFileName;
 				// fileUrl = "uploadFiles 폴더의 위치";
 				// upload 폴더의 위치 확인 : upload 우클릭 -> Properties -> Resource - > Location 복사(각자의 폴더위치를 넣는다.)
-				String productimageUrl = "D:\\project\\juyoungWeb\\exam4\\src\\main\\resources\\static\\upload";
+				String productimageUrl = "D:\\project\\juyoungWeb\\exam4\\src\\main\\resources\\static\\upload\\";
 				                          
 				do {
 					destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
@@ -82,7 +78,7 @@ public class ProductController {
 
 				//productService.productInsertService(product); // 게시글 올리기
 
-				// 파일관련 자료를 Files 테이블에 등록한다.
+				// 파일관련 자료를 product테이블에 등록한다.
 				product.setProductno(product.getProductno());
 				product.setProductimagefile(Productimagefile);
 				product.setProductimageName(destinationFileName);
@@ -99,7 +95,7 @@ public class ProductController {
 		
 		// 게시글 목록 보여주기
 		@RequestMapping(value = "/productlist", method = RequestMethod.GET)
-		private String boardList(Model model, @RequestParam(required = false, defaultValue = "1") int page,
+		private String ProductList( Model model, @RequestParam(required = false, defaultValue = "1") int page,
 				@RequestParam(required = false, defaultValue = "1") int range) throws Exception {
 
 			// 전체 게시글 개수
@@ -111,18 +107,44 @@ public class ProductController {
 			pagination.pageInfo(page, range, listCnt);
 			
 			model.addAttribute("pagination", pagination);
+			
 			model.addAttribute("list", productService.productListService(pagination));
 			
 			return "/product/productlist";
 		}
+		
+		// 게시글 카테고리 목록 보여주기
+		@RequestMapping(value = "/productlist/{productid}", method = RequestMethod.GET)
+			private String ProductcateList(@PathVariable int productid, Model model) throws Exception {
+
+			
+			// 전체 게시글 개수
+			int listCnt = productService.getProductListCnt();
+
+			// Pagination 객체생성
+			Pagination pagination = new Pagination();
+
+			int page = 1;
+			int range = 1;
+			pagination.pageInfo(page, range, listCnt);
+			pagination.setProductid(productid);
+			System.out.println("*****productid : " + pagination.getProductid());
+			
+			model.addAttribute("pagination", pagination);
+			
+			model.addAttribute("list", productService.productcateListService(pagination));
+			
+			return "/product/productlist";
+		}
+				
 		// 게시글 번호에 해당하는 상세정보화면
-		@RequestMapping("/productdetail/{productno}")
+		@RequestMapping("/detail2/{productno}")
 		private String boardDetail(@PathVariable int productno, Model model) throws Exception {
 			
 			// bno에 해당하는 자료를 찾아와서 model에 담는다.
 			model.addAttribute("productdetail", productService.productDetailService(productno)); // 게시글의 정보를 가져와서 저장한다.
 			//model.addAttribute("files", productService.fileDetailService(bno)); // 파일의 정보를 가져와서 저장한다.
-			return "/product/productdetail";
+			return "/product/detail2";
 		}
 					
 		// 게시글 수정 화면
