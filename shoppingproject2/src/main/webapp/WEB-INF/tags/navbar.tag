@@ -298,44 +298,41 @@ cursor: pointer;
 				
 				
 				<ul class="nav navbar-nav navbar-right">
-				<c:if test="${member != null }">
-			      <li><a href="/chat/chat"><span class="glyphicon glyphicon-envelope"> CHAT</span></a></li> 
-			     </c:if>
-			      <c:if test="${member == null}">
-			      <li><a href="/login/register"><span class="glyphicon glyphicon-user"></span> SIGN UP</a></li>
+					<c:if test="${member == null}">
+			      		<li><a href="/login/register"><span class="glyphicon glyphicon-user"></span> SIGN UP</a></li>
 			      </c:if>
 			      
 			     <c:if test="${member == null}">
-			      <li><a href="/login/login"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a></li>
+			      	<li><a href="/login/login"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a></li>
 			     </c:if>
 			     
 			     <c:if test="${member != null}">
-			      <li><a href="/login/logout" role="button"><span class="glyphicon glyphicon-log-out"></span> LOGOUT</a></li>
+			     	<li><a href="/login/logout" role="button"><span class="glyphicon glyphicon-log-out"></span> LOGOUT</a></li>
 			     </c:if>
 			    </ul>
 				
 				<li>
 				<div class="dropdown">
 				  <button onclick="myFunction()" class="dropbtn">SEARCH</button>
-				  <div id="myDropdown" class="dropdown-content">
-				    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-				    <a href="#">TOP</a>
-				    <a href="#">BUTTOM</a>
-				    <a href="#">ACC</a>
-				    <a href="/product/productlist">PRODUCT</a>
-				    <a href="/product/productinsert">PRODUCTUPLOAD</a>
-					<a href="/board/boardList">COMMUNITY</a>
-				    <a href="#about">About</a>
-				    <a href="#contact">Contact</a>
-				    <a href="#custom">Custom</a>
-				    <a href="#support">Support</a>
-				    <a href="#tools">Tools</a>
-				  </div>
+				  	<div id="myDropdown" class="dropdown-content">
+				    	<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+						    <a href="#">TOP</a>
+						    <a href="#">BUTTOM</a>
+						    <a href="#">ACC</a>
+						    <a href="/product/productlist">PRODUCT</a>
+						    <a href="/product/productinsert">PRODUCTUPLOAD</a>
+							<a href="/board/boardList">COMMUNITY</a>
+						    <a href="#about">About</a>
+						    <a href="#contact">Contact</a>
+						    <a href="#custom">Custom</a>
+						    <a href="#support">Support</a>
+						    <a href="#tools">Tools</a>
+				  	</div>
 				</div>
-				</li>
-			</ul>
-		</div>
+			</li>
+		</ul>
 	</div>
+</div>
 	
 	
 	

@@ -23,6 +23,8 @@ public class Pagination {
 
 	private boolean next;
 	
+	private int	productid;
+	
 	public int getRangeSize() {
 
 		return rangeSize;
@@ -130,6 +132,16 @@ public class Pagination {
 		return startList;
 
 	}
+	
+	
+
+	public int getProductid() {
+		return productid;
+	}
+
+	public void setProductid(int productid) {
+		this.productid = productid;
+	}
 
 	public void pageInfo(int page, int range, int listCnt) {
 
@@ -170,4 +182,14 @@ public class Pagination {
 			this.next = false;
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Pagination [listSize=" + listSize + ", rangeSize=" + rangeSize + ", page=" + page + ", range=" + range
+				+ ", listCnt=" + listCnt + ", pageCnt=" + pageCnt + ", startPage=" + startPage + ", startList="
+				+ startList + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next + ", productid=" + productid
+				+ "]";
+	}
+	
+	
 }

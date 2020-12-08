@@ -8,7 +8,6 @@
 	<!DOCTYPE html>
 	<html>
 <head>
-<link rel="icon" type="image/x-icon" href="/static/images/aland.jpg" />
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <meta charset="UTF-8">
 <title>메인</title>
@@ -67,21 +66,17 @@
 	</div>
 	<div class="w3-padding-64 w3-large w3-text-grey"
 		style="font-weight: bold">
-		<a href="#" class="w3-bar-item w3-button">Shirts</a> <a href="#dress"
-			class="w3-bar-item w3-button">Dresses</a> <a onclick="myAccFunc()"
-			href="javascript:void(0)"
-			class="w3-button w3-block w3-white w3-left-align" id="myBtn">
-			Jeans <i class="fa fa-caret-down"></i>
+		<a href="/product/productlist/1" class="w3-bar-item w3-button">Shirts</a> 
+		<a href="/product/productlist/2" class="w3-bar-item w3-button">Dresses</a> 
+		<a onclick="myAccFunc()" href="/product/productlist/3" class="w3-button w3-block w3-white w3-left-align" id="myBtn">Jeans <i class="fa fa-caret-down"></i>
 		</a>
-		<div id="demoAcc"
-			class="w3-bar-block w3-hide w3-padding-large w3-medium">
-			<a href="#" class="w3-bar-item w3-button w3-light-grey"><i
-				class="fa fa-caret-right w3-margin-right"></i>Skinny</a>
-		</div>
-		<a href="#" class="w3-bar-item w3-button">Jackets</a> <a href="#"
-			class="w3-bar-item w3-button">Gymwear</a> <a href="#"
-			class="w3-bar-item w3-button">Blazers</a> <a href="#"
-			class="w3-bar-item w3-button">Shoes</a>
+		<div id="demoAcc"class="w3-bar-block w3-hide w3-padding-large w3-medium">
+		<a href="/product/productlist/3" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>Skinny</a>
+	</div>
+		<a href="/product/productlist/4" class="w3-bar-item w3-button">Jackets</a>
+		<a href="/product/productlist/5" class="w3-bar-item w3-button">Gymwear</a> 
+		<a href="/product/productlist/6" class="w3-bar-item w3-button">Blazers</a> 
+		<a href="/product/productlist/7" class="w3-bar-item w3-button">Shoes</a>
 	</div>
 	<a href="#contact" class="w3-bar-item w3-button w3-padding">Contact</a>
 	<a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding"
@@ -104,17 +99,17 @@
 	<div class="row text-center">
 		<div class="col-sm-3">
 			<div class="thumbnail">
-				<img src="/static/images/너구리.jpg" width="600" height="400"
-					onclick="location.href='/product/detail2/1'">
+				<img src="/static/images/jackets.jpg" width="600" height="400"
+					onclick="location.href='/product/detail2/6'">
 				<p>
 					<strong>프로필</strong>
 				</p>
-				<p>닉네임 : 너구리</p>
+				<p>Jacket</p>
 				<p>
-					동물 피규어 및 애니피규어를<br>제작판매 하는 중 입니다.
+					가을 완판 제품<br>10% 할인
 				</p>
 				<button class="btn btn-default"
-					onclick="location.href='/product/detail2/1'">More
+					onclick="location.href='/product/detail2/6'">More
 					Click</button>
 			</div>
 		</div>
@@ -122,17 +117,17 @@
 
 		<div class="col-sm-3" style=>
 			<div class="thumbnail">
-				<img src="/static/images/프로필2.jpg" width="600" height="400"
-					onclick="location.href='/product/detail2/2'">
+				<img src="/static/images/blazers.jpg" width="600" height="400"
+					onclick="location.href='/product/detail2/8'">
 				<p>
 					<strong>프로필</strong>
 				</p>
-				<p>닉네임 : 오라하르콘</p>
+				<p>Blazer</p>
 				<p>
-					애니피규어를 주종목으로<br>하고있습니다.
+					남성미를 강조하는<br>검정색
 				</p>
 				<button class="btn btn-default"
-					onclick="location.href='/product/detail2/2'">More
+					onclick="location.href='/product/detail2/8'">More
 					Click</button>
 			</div>
 		</div>
@@ -140,17 +135,17 @@
 
 		<div class="col-sm-3">
 			<div class="thumbnail">
-				<img src="/static/images/프로필3.jpg" width="600" height="400"
-					onclick="location.href='/product/detail2/3'">
+				<img src="/static/images/jeans.jpg" width="600" height="400"
+					onclick="location.href='/product/detail2/5'">
 				<p>
 					<strong>프로필</strong>
 				</p>
-				<p>닉네임 : 유미</p>
+				<p>Jean</p>
 				<p>
-					동물 피규어 및 애니피규어를<br>제작판매 하는 중 입니다.
+					감각 적인 핏으로 <br>하반신도 감동중 
 				</p>
 				<button class="btn btn-default"
-					onclick="location.href='/product/detail2/3'">More Click
+					onclick="location.href='/product/detail2/5'">More Click
 				</button>
 			</div>
 		</div>
@@ -171,8 +166,7 @@
 						src="https://ext.fmkorea.com/files/attach/new/20191012/486616/1351010096/2272376735/ba9a8fb2a6735f4f2787821924619db5.jpeg"
 						class="img-circle" height="65" width="65" alt="Avatar">
 				</div>
-				<button type="button"
-					onclick="location.href='/product/productinsert'">제품 등록</button>
+				
 			</c:if>
 
 			<div class="well">

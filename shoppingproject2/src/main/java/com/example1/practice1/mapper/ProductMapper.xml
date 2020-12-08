@@ -12,8 +12,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="productInsert" parameterType="com.example1.practice1.domain.ProductDTO" useGeneratedKeys="true" keyProperty="productno">
 	INSERT	INTO	PRODUCTTABLE
-			(PRODUCTNO, PRODUCTIMAGEFILE, productimageName, productimageOriName, productimageUrl, PRODUCTNAME, 	PRODUCTPRICE, PRODUCTSALESCNT)
-	VALUES	(#{productno},#{productimagefile}, #{productimageName}, #{productimageOriName}, #{productimageUrl}, #{productname},#{productprice}, #{productsalescnt})
+			(PRODUCTNO, PRODUCTIMAGEFILE, productimageName, productimageOriName, productimageUrl, PRODUCTNAME, 	PRODUCTPRICE, PRODUCTSALESCNT, PRODUCTCID)
+	VALUES	(#{productno},#{productimagefile}, #{productimageName}, #{productimageOriName}, #{productimageUrl}, #{productname},#{productprice}, #{productsalescnt}, #{productid})
 	</insert>                
 <!-- 
 	<insert id="fileInsert" parameterType="com.edu.Product.domain.FileDTO">
@@ -25,12 +25,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 게시글 목록 보기 -->
 	<select id="productList" resultType="com.example1.practice1.domain.ProductDTO">
 	SELECT	
-		PRODUCTNO, PRODUCTIMAGEFILE, productimageName, productimageOriName, productimageUrl, PRODUCTNAME, PRODUCTPRICE, PRODUCTPRICE, PRODUCTSALESCNT
+		PRODUCTNO, PRODUCTIMAGEFILE, productimageName, productimageOriName, productimageUrl, PRODUCTNAME,PRODUCTPRICE, PRODUCTSALESCNT, PRODUCTCID
 	FROM
 			PRODUCTTABLE	
 	order by PRODUCTNO desc		
 	</select>
 	
+	<select id="ProductcateList" resultType="com.example1.practice1.domain.ProductDTO">
+	SELECT	
+		PRODUCTNO, PRODUCTIMAGEFILE, productimageName, productimageOriName, productimageUrl, PRODUCTNAME, PRODUCTPRICE, PRODUCTSALESCNT, PRODUCTCID
+	FROM
+			PRODUCTTABLE
+	WHERE	PRODUCTCID		= #{productid}
+	</select>
+
 	<select id="getproductListCnt" resultType="int">
 		SELECT
 			count(*) as listCut
@@ -70,4 +78,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	-->
+	
 </mapper>

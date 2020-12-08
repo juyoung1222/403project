@@ -46,7 +46,16 @@
 							<li><a href="/product/productlist">상품목록(수정/삭제)</a></li>
 						</ul>
 					</li>
-					<c:if test="${admin == null }">
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+						 게시판관리 <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/board/boardinsert">게시판등록</a></li>
+							<li><a href="/board/boardList">게시판목록(수정/삭제)</a></li>
+						</ul>
+					</li>
+					
+					<c:if test="${admin == null}">
 					<li><a href="/admin/adminloginform">로그인</a></li>
 					</c:if>
 					<c:if test="${admin != null}">

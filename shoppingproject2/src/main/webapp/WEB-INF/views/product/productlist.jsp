@@ -45,60 +45,8 @@
 </head>
 <body>
 	<div class=" text-center">
-		<h1 id="fofo">다양한 마이스터</h1>
 		<p>각각의 장인들이 올린 작품들을 확인해보세요</p>
 	</div>
-
-	<%-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-
-<div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img src="/static/images/프로필1.jpg" alt="모델1" width="1100" height="550">
-        <div class="carousel-caption">
-          <p>좋은 퀄리티의 제품과 보존도가 좋은 중고 제품들</p>
-        </div>      
-      </div>
-      <div class="item">
-        <img src="/static/images/프로필2.jpg" alt="모델4" width="1100" height="550">
-        <div class="carousel-caption">
-          <p>만들고 다른 사람에게도 자신의 캐릭터를 팔아보자</p>
-        </div>      
-      </div> 
-      <div class="item">
-        <img src="/static/images/프로필3.jpg" alt="모델3" width="1100" height="550">
-        <div class="carousel-caption">
-          <p>그저 팔기만 하지말고 자작 캐릭터의 설정특징을 알리고 팬으로 만들어 보자!</p>
-        </div>      
-      </div>
-    </div>
-
- <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-</div>
-
-<c:forEach var="product" items="${list}">
-     <div class="col-sm-3">
-        <div class="thumbnail">
-          <img src="/static/upload/${product.productimageName}" alt="이미지 업로드" >
-          <button class="btn" data-toggle="modal" data-target="#myModal" onclick="location.href='/product/productdetail/${product.productno}'">Click</button>
-        </div>
-      </div>
-</c:forEach>  --%>
-
-
 
 	<div class="container">
 		<div class="row">
@@ -147,6 +95,7 @@
 					</a>
 				</div>
 			</div>
+				
 			<div class="col-sm-10">
 				<c:forEach var="product" items="${list}">
 					<div class="col-sm-3">
@@ -166,7 +115,7 @@
 		</div>
 	</div>
 
-	<!-- pagination{s}
+
 		<div id="paginationBox" >
 			<ul class="pagination">
 				<c:if test="${productpagination.prev}">
@@ -196,7 +145,7 @@
 			</ul>
 
 		</div>
-	 -->
+
 	<script>
 		$(document).ready(
 				function() {
@@ -229,7 +178,7 @@
 							});
 				})
 	</script>
-	<!-- <script>
+<script>
 		//이전 버튼 이벤트
 
 		function fn_prev(page, range, rangeSize) {
@@ -280,7 +229,7 @@
 
 		}
 	</script>
--->
+
 </layoutTag:layout>
 </body>
 </html>

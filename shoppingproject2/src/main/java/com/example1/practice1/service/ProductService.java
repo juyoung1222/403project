@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.example1.practice1.domain.Pagination;
+import com.example1.practice1.domain.ProductCategoryiDTO;
 import com.example1.practice1.domain.ProductDTO;
 import com.example1.practice1.mapper.ProductMapper;
 
@@ -27,6 +28,7 @@ public class ProductService {
 	}
 	//게시글 목록 보기
 	public List<ProductDTO> productListService(Pagination pagination) throws Exception {
+		System.out.println("productListService : " + pagination);
 		return productMapper.productList(pagination);
 	}
 	//게시글 등록
@@ -57,7 +59,13 @@ public class ProductService {
 		System.out.println("Productsalescnt : " + productDTO.getProductsalescnt());
 		return productMapper.productUpdate(productDTO );
 	}
+	//게시글 카테고리목록 보기
+	public List<ProductDTO> productcateListService(Pagination pagination) throws Exception {
+		System.out.println("productListService : " + pagination);
+		return productMapper.ProductcateList(pagination);
+	}
 //	// 서비스는 매퍼를 호출한다.
 //	@Resource(name = "com.edu.Product.mapper.ProductMapper")
 //	ProductMapper ProductMapper;
+
 }

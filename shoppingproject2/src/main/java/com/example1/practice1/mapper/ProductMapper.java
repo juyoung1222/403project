@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.example1.practice1.domain.BoardDTO;
 import com.example1.practice1.domain.Pagination;
+import com.example1.practice1.domain.ProductCategoryiDTO;
 import com.example1.practice1.domain.ProductDTO;
 
 
@@ -38,4 +38,8 @@ public interface ProductMapper {
 
 	//게시글 수정
 	public int productUpdate(ProductDTO product) throws Exception;
+	
+	//product 카테고리
+    public List<ProductDTO> ProductcateList(Pagination pagination) throws Exception;
+
 }
