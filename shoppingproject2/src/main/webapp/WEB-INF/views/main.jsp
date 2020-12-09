@@ -114,7 +114,7 @@
 					가을 완판 제품<br>10% 할인
 				</p>
 				<button class="btn btn-default"
-					onclick="location.href='/product/detail2/6'">More
+					onclick="location.href='/product/detail2/14'">More
 					Click</button>
 			</div>
 		</div>
@@ -132,7 +132,7 @@
 					남성미를 강조하는<br>검정색
 				</p>
 				<button class="btn btn-default"
-					onclick="location.href='/product/detail2/8'">More
+					onclick="location.href='/product/detail2/6">More
 					Click</button>
 			</div>
 		</div>
@@ -150,7 +150,7 @@
 					감각 적인 핏으로 <br>하반신도 감동중 
 				</p>
 				<button class="btn btn-default"
-					onclick="location.href='/product/detail2/5'">More Click
+					onclick="location.href='/product/detail2/13'">More Click
 				</button>
 			</div>
 		</div>

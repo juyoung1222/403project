@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example1.practice1.domain.MemberDTO;
 import com.example1.practice1.domain.Pagination;
 import com.example1.practice1.domain.ProductDTO;
 import com.example1.practice1.service.ProductService;
@@ -47,7 +48,7 @@ public class ProductController {
 		@RequestMapping("/insertProc")
 		private String boardInsertProc (HttpServletRequest request,@RequestPart MultipartFile productimagefile) throws Exception {
 			
-			// 게시글 등록 화면에서 입력한 값들을 실어나르기 위해 BoardDTO를 생성한다.
+			// 게시글 등록 화면에서 입력한 값들을 실어나르기 위해 ProductDTO를 생성한다.
 			ProductDTO product = new ProductDTO();
 			
 			product.setProductname(request.getParameter("productname"));
@@ -140,13 +141,15 @@ public class ProductController {
 		}
 				
 		// 게시글 번호에 해당하는 상세정보화면
-		@RequestMapping("/detail2/{productno}")
-		private String boardDetail(@PathVariable int productno, Model model) throws Exception {
+		@RequestMapping("/productdetail/{productno}")
+		private String boardDetail(@PathVariable int productno, HttpServletRequest request,Model model) throws Exception {
 			
 			// bno에 해당하는 자료를 찾아와서 model에 담는다.
 			model.addAttribute("productdetail", productService.productDetailService(productno)); // 게시글의 정보를 가져와서 저장한다.
 			//model.addAttribute("files", productService.fileDetailService(bno)); // 파일의 정보를 가져와서 저장한다.
-			return "/product/detail2";
+			
+		
+			return "/product/productdetail";
 		}
 		
 		//메인 검색 기능
@@ -180,13 +183,18 @@ public class ProductController {
 			ProductDTO productDTO  = new ProductDTO();
 			
 			//업데이트 할 정보를 요청한다.
+			productDTO.setProductimagefile(request.getParameter("productimagefile"));
+			productDTO.setProductimageName(request.getParameter("productimageName"));
+			productDTO.setProductimageOriName(request.getParameter("productimageOriName"));
+			productDTO.setProductimageUrl(request.getParameter("productimageUrl"));
+			
 			productDTO.setProductname(request.getParameter("productname"));
 			productDTO.setProductprice(Integer.parseInt(request.getParameter("productprice")));
 			productDTO.setProductsalescnt(Integer.parseInt(request.getParameter("productsalescnt")));
 			productDTO.setProductno(Integer.parseInt(request.getParameter("productno")));
 
 			productService.update(productDTO);
-			return "redirect:/product/detail2/" + request.getParameter("productno");
+			return "redirect:/product/productdetail/" + request.getParameter("productno");
 		
 		}//end - private String productUpdateProc(HttpServletRequest request,@RequestParam int productno) throws Exception 
 					

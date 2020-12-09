@@ -107,7 +107,7 @@
 								  <li>가격 : ${product.productprice} 원</li>
 								</ul>
 							<button class="btn" data-toggle="modal" data-target="#myModal" 
-							onclick="location.href='/product/detail2/${product.productno}'">Click</button>
+							onclick="location.href='/product/productdetail/${product.productno}'">Click</button>
 						</div>
 					</div>
 				</c:forEach>

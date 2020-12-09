@@ -1,7 +1,11 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="true"%>
+<%@ page session="true" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="layoutTag" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="c"   		uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" 		uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="layoutTag" 	tagdir="/WEB-INF/tags" %>
+<%@ page import="com.example1.practice1.domain.CartDTO" %>
+
+<layoutTag:layout>
 <!DOCTYPE HTML>
 <!--
 	Caminar by TEMPLATED
@@ -10,7 +14,7 @@
 -->
 <html>
 	<head>
-		<title>Caminar by TEMPLATED</title>
+		<title>Caminar by TEMPLATED </title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="/static/assets/css/main.css" />
@@ -19,7 +23,9 @@
 
 		<!-- Header -->
 			<header id="header">
-				<div class="logo"><a href="#">Fashionable <span>by ${productdetail.productname}</span></a></div>
+				<div class="logo"><a href="#">Fashionable ${member.userId}<span>by ${productdetail.productname}</span></a></div>
+				
+				<a href="/cart/insertCart">장바구니담기</a>
 			</header>
 
 		<!-- Main -->
@@ -107,16 +113,32 @@
 						</c:if>
 						
 						<c:if test="${member != null}">
+							<button type="button" class="btn btn-warning" onclick="location.href='/cart/insertCart'">장바구니담기</button>
+							
 						</c:if>
 						
 						<c:if test="${admin != null}">
 							<button type="button" class="btn btn-success" onclick="location.href='/product/Update/${productdetail.productno}'">수정</button>
 							<button type="button" class="btn btn-danger" onclick="location.href='/product/delete/${productdetail.productno}'">삭제</button>
+							<button type="button" class="btn btn-warning" onclick="location.href='/cart/insertCart'">장바구니담기</button>
 						</c:if>
 				</section>
 			</div>
 	</section>
+		<div class="input-group">
+			<input type="text" id="cartuserid" name="cartuserid" value="${member.userId}"/>
+				<input type="hidden" id="cartproductid" name="cartproductid" value="1"/>
+				<input type="hidden" id="productname" name="productname" value="${productdetail.productname}"/>
+				<input type="hidden" id="cartno" name="cartno" value="${productdetail.productno}"/>
+				<input type="hidden" id="cartuserid" name="cartuserid" value="${member.userId}"/>
+				<input type="hidden" id="productimagefile" name="productimagefile" value="${productdetail.productimagefile}"/>
+				<input type="hidden" id="productimageName" name="productimageName" value="${productdetail.productimageName}"/>
+				<input type="hidden" id="produtimageOriName" name="productimageOriName" value="${productdetail.productimageOriName}"/>
+				<input type="hidden" id="productimageUrl" name="productimageUrl" value="${productdetail.productimageUrl}"/>
+				<input type="hidden" id="productprice" name="productprice" value="${productdetail.productprice}"/>
+				<input type="hidden" id="productsalescnt" name="productsalescnt" value="${productdetail.productsalescnt}"/>
 		
+		</div>			
 	
 
 		<!-- Footer -->
@@ -161,3 +183,4 @@ $(document).ready(function(){
 
 </body>
 </html>
+</layoutTag:layout>
