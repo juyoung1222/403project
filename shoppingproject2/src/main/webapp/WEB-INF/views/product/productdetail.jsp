@@ -27,12 +27,12 @@
 <body>
 
 	<div class="container">
-		<h2>게시글 상세 정보 /${member.userId}</h2>
+		<h2>게시글 상세 정보</h2>
 		
 		<table class="table table-hover table-bordered">
 			<thead>
 				<tr>
-					<th>제품명 ${productdetail.productno}</th>
+					<th>제품명</th>
 					<th>가 격</th>
 					<th>수 량</th>
 				</tr>

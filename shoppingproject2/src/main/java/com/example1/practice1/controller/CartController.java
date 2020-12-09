@@ -50,7 +50,7 @@ public class CartController {
 		String cartuserid = request.getParameter("cartuserid");
 		logger.info("cartuserid : " + cartuserid);
 		
-		cartService.insertCart(cartDTO);
+		////cartService.insertCart(cartDTO);
 		
 		model.addAttribute("inserCart", cartService.insertCart(cartDTO));
 		

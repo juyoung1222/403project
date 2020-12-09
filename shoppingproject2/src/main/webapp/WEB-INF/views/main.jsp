@@ -105,7 +105,7 @@
 		<div class="col-sm-3">
 			<div class="thumbnail">
 				<img src="/static/images/jackets.jpg" width="600" height="400"
-					onclick="location.href='/product/detail2/6'">
+					onclick="location.href='/product/productdetail/6'">
 				<p>
 					<strong>프로필</strong>
 				</p>
@@ -114,7 +114,7 @@
 					가을 완판 제품<br>10% 할인
 				</p>
 				<button class="btn btn-default"
-					onclick="location.href='/product/detail2/14'">More
+					onclick="location.href='/product/productdetail/14'">More
 					Click</button>
 			</div>
 		</div>
@@ -123,7 +123,7 @@
 		<div class="col-sm-3" style=>
 			<div class="thumbnail">
 				<img src="/static/images/blazers.jpg" width="600" height="400"
-					onclick="location.href='/product/detail2/8'">
+					onclick="location.href='/product/productdetail/8'">
 				<p>
 					<strong>프로필</strong>
 				</p>
@@ -132,7 +132,7 @@
 					남성미를 강조하는<br>검정색
 				</p>
 				<button class="btn btn-default"
-					onclick="location.href='/product/detail2/6">More
+					onclick="location.href='/product/productdetail/6'">More
 					Click</button>
 			</div>
 		</div>
@@ -141,7 +141,7 @@
 		<div class="col-sm-3">
 			<div class="thumbnail">
 				<img src="/static/images/jeans.jpg" width="600" height="400"
-					onclick="location.href='/product/detail2/5'">
+					onclick="location.href='/product/productdetail/5'">
 				<p>
 					<strong>프로필</strong>
 				</p>
@@ -150,7 +150,7 @@
 					감각 적인 핏으로 <br>하반신도 감동중 
 				</p>
 				<button class="btn btn-default"
-					onclick="location.href='/product/detail2/13'">More Click
+					onclick="location.href='/product/productdetail/13'">More Click
 				</button>
 			</div>
 		</div>
