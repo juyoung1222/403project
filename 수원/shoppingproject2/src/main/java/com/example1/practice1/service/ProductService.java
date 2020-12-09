@@ -68,4 +68,10 @@ public class ProductService {
 //	@Resource(name = "com.edu.Product.mapper.ProductMapper")
 //	ProductMapper ProductMapper;
 
+	//메인 검색 기능
+	public List<ProductDTO> search(String searchName) throws Exception{
+		logger.info("service search...." + searchName);
+		
+		return productMapper.search(searchName);
+	}
 }

@@ -27,9 +27,14 @@
 <body>
 <div class="container-fluid">
 	<h2 align="left">자 유 게 시 판</h2>
-	
-	<button class="btn btn-primary" onclick="location.href='/board/boardInsert'">글쓰기</button>
-	
+		<c:if test="${member != null }">
+		<button class="btn btn-primary" onclick="location.href='/board/boardInsert'">글쓰기</button>
+		</c:if>
+		<c:if test="${member == null}">
+		</c:if>
+		<c:if test="${admin != null}">
+		<button class="btn btn-primary" onclick="location.href='/board/boardInsert'">글쓰기</button>
+		</c:if>
 	<table class="table table-hover table-bodered">
 		<thead>
 			<tr>
@@ -83,15 +88,17 @@
 <div class="row" style="clear:right;width:400px;margin:auto">
 	<div class="col-lg-12">
 		<form id="searchForm" action="/board/boardList">
+			
 			<select name="searchType">
 				<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
-      		<option value="s"<c:out value="${scri.searchType eq 's' ? 'selected' : ''}"/>>제목</option>
-      		<option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
-      		<option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
-      		<option value="sc"<c:out value="${scri.searchType eq 'sc' ? 'selected' : ''}"/>>제목+내용</option>
-				</select>
-			<input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>
-			<button class="btn btn-primary btn-sm">검색</button>
+	      		<option value="s"<c:out value="${scri.searchType eq 's' ? 'selected' : ''}"/>>제목</option>
+	      		<option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
+	      		<option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
+	      		<option value="sc"<c:out value="${scri.searchType eq 'sc' ? 'selected' : ''}"/>>제목+내용</option>
+			</select>
+				<input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>
+				<button class="btn btn-success btn-sm">검색</button>
+			
 		</form>
 	</div>
 </div>
@@ -100,27 +107,19 @@
     
 <script>
 $(document).ready(function(){
-        $('#searchBtn').click(function() {
+        $('.btn-success').click(function() {
        self.location = "/board/boardList" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
         });
       }); 
 </script>
 
-<script>
-$(document).ready(function(){
-	$(".btn-primary").on("click",function(){
-		
-	if(${member == null}){
-		alert("로그인을 하셔야 합니다.");
-		location.href="/login/login";
-		}
-	else if(${member != null}){
-		location.href="/board/boardInsert";
-		}
-	});
-});
-</script>
-</div>
+
+	
+	
+	
+
+
+
 </body>
 </html>
 </layoutTag:layout>

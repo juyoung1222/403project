@@ -41,5 +41,8 @@ public interface ProductMapper {
 	
 	//product 카테고리
     public List<ProductDTO> ProductcateList(Pagination pagination) throws Exception;
+    
+    //메인 검색 기능
+    public List<ProductDTO> search(String searchName) throws Exception;
 
 }

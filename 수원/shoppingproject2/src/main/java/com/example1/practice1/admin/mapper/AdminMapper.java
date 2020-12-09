@@ -3,7 +3,6 @@ package com.example1.practice1.admin.mapper;
 import org.springframework.stereotype.Repository;
 
 import com.example1.practice1.admin.domain.AdminDTO;
-import com.example1.practice1.domain.ProductCategoryiDTO;
 
 
 @Repository("com.example1.practice1.admin.mapper.AdminMapper")
@@ -14,6 +13,6 @@ public interface AdminMapper {
 		
 	//로그인
 	public AdminDTO adminLogin(AdminDTO adminDTO) throws Exception;
-	
-	
+		
+
 }

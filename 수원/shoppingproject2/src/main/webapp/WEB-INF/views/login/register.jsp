@@ -14,15 +14,13 @@
 	*{
 		font-size: 16px;
 		font-family : Consolas,sans-serif;
-		align : center;
-		
-		}
-	.check_font{
-		text-align : center;
 		
 	}
-	
+	#id_Check{
+		text-align:center;
+	}
 
+		
 </style>
 </head>
 <body>
@@ -31,33 +29,37 @@
 		<div class="form-group">
 		<div class="col-sm-2"></div>
 		<div class="col-sm-6">
-			<h2 align="left">회 원 가 입</h2>
+			<h2 align="center">회 원 가 입</h2>
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="control-label col-sm-2"><span class="glyphicon glyphicon-user">아 이 디</span></label>
+		<label class="control-label col-sm-3"><span class="glyphicon glyphicon-user">아 이 디</span></label>
 			<div class="col-sm-6">
 			<input type="text" class="form-control" id="userId" name="userId"
 			maxlength=20 placeholder="id를 입력하세요"/>
-		</div>
-		
+			</div>
 		<div class="col-sm-2">
 			<button class="btn btn-warning idCheck" type="button" id="idCheck"  value="N">중복확인</button> 
 		</div>
 	</div>
 	
 	<!-- 메시지 영역 -->
-	<div class="check_font" id="id_Check" ></div>
+	<div class="form-group">
+		<div class="text-center">
+			<div class="check_font" id="id_Check">
+			</div>
+		</div>
+	</div>
 	
 	<div class="form-group">
-		<label class="control-label col-sm-2"><span class="glyphicon glyphicon glyphicon-eye-open">비 밀 번 호</span></label>
+		<label class="control-label col-sm-3"><span class="glyphicon glyphicon glyphicon-eye-open">비 밀 번 호</span></label>
 			<div class="col-sm-6">
 			<input type="password" class="form-control" id="userPw" name="userPw"
 			maxlength=20 placeholder="비밀번호를 입력하세요"/>
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="control-label col-sm-2"><span class="glyphicon glyphicon glyphicon glyphicon-user">이 름</span></label>
+		<label class="control-label col-sm-3"><span class="glyphicon glyphicon glyphicon glyphicon-user">이 름</span></label>
 			<div class="col-sm-6">
 			<input type="text" class="form-control" id="userName" name="userName"
 			maxlength=20 placeholder="이름을 입력하세요"/>
@@ -66,14 +68,14 @@
 	
 	
 	<div class="form-group">
-		<label class="control-label col-sm-2"><span class="glyphicon glyphicon glyphicon glyphicon-user">생 년 월 일</span></label>
+		<label class="control-label col-sm-3"><span class="glyphicon glyphicon glyphicon glyphicon-user">생 년 월 일</span></label>
 		<div class="col-sm-6">
-		<input type="date" value="2020-11-14" min="1910-01-01" max="2100-12-31" name="userBirth"/>
+		<input type="date" value="" min="1910-01-01" max="2100-12-31" name="userBirth"/>
 		<fmt:formatDate value="${DateValue}" pattern="yy-MM-dd"/>
 	</div>
 </div>
 <div class="form-group">
-		<label class="control-label col-sm-2"><span class="glyphicon glyphicon glyphicon glyphicon-home">우편번호</span></label>
+		<label class="control-label col-sm-3"><span class="glyphicon glyphicon glyphicon glyphicon-home">우편번호</span></label>
 		<div class="col-sm-6">
 			<input type="text" class="form-control" name="zipcode"
 			id="zipcode" readonly/>
@@ -82,58 +84,60 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="control-label col-sm-2"><span class="glyphicon glyphicon glyphicon glyphicon-home">주소</span></label>
+		<label class="control-label col-sm-3"><span class="glyphicon glyphicon glyphicon glyphicon-home">주소</span></label>
 		<div class="col-sm-6">
 			<input type="text" class="form-control" name="address01" id="address01" placeholder="주소"/>
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="control-label col-sm-2"><span class="glyphicon glyphicon glyphicon glyphicon-home">상세주소</span></label>
+		<label class="control-label col-sm-3"><span class="glyphicon glyphicon glyphicon glyphicon-home">상세주소</span></label>
 		<div class="col-sm-6">
 			<input type="text" class="form-control" name="address02" id="address02" placeholder="상세주소"/>
 		
 		</div>
 	</div>
+	
 	<div class="form-group">
-		<label class="control-label col-sm-2"><span class="glyphicon glyphicon glyphicon glyphicon-phone-alt">전 화 번 호</span></label>
+		<label class="control-label col-sm-3"><span class="glyphicon glyphicon glyphicon glyphicon-phone-alt">전 화 번 호</span></label>
 			<div class="col-sm-2" id="tel1">
-			<select class="form-control" name="tel1">
-				<option value="010">010</option>
-				<option value="011">011</option>
-				<option value="017">017</option>
-				<option value="018">018</option>
-				<option value="019">019</option>
-			</select>
-		</div>
-			<div class="input-group col-sm-3">
-				<div class="input-group-addon">-</div>
-				<div><input type="text" class="form-control col-sm-1" id="tel2"name="tel2" 
-					maxlength="4" placeholder="Tel">
-				</div>
-				<div class="input-group-addon">-</div>
-				<div><input type="text" class="form-control col-sm-1" id="tel3" name="tel3" 
-					maxlength="4" placeholder="Tel">
-				</div>
+				<select class="form-control" name="tel1">
+					<option value="010">010</option>
+					<option value="011">011</option>
+					<option value="017">017</option>
+					<option value="018">018</option>
+					<option value="019">019</option>
+				</select>
 			</div>
+			
+		<div class="input-group col-sm-3">
+				<div class="input-group-addon">-</div>
+					<div><input type="text" class="form-control col-sm-1" id="tel2"name="tel2" 
+						maxlength="4" placeholder="Tel">
+					</div>
+				<div class="input-group-addon">-</div>
+				
+					<div><input type="text" class="form-control col-sm-1" id="tel3" name="tel3" 
+						maxlength="4" placeholder="Tel">
+					</div>
+				</div>
 		</div>
+		
 		<div class="form-group">
-		<label class="control-label col-sm-2"><span class="glyphicon glyphicon glyphicon glyphicon-send">이 메 일</span></label>
-			<div class="col-sm-6">
-			<input type="email" class="form-control" id="userEmail" name="userEmail"
-			maxlength=40 placeholder="이메일을 입력하세요"/>
+			<label class="control-label col-sm-3"><span class="glyphicon glyphicon glyphicon glyphicon-send">이 메 일</span></label>
+				<div class="col-sm-6">
+					<input type="email" class="form-control" id="userEmail" name="userEmail"
+						maxlength=40 placeholder="이메일을 입력하세요"/>
+				</div>
 		</div>
-	</div>
+	
 	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-4">
+		<div class="col-sm-offset-4 col-sm-4">
 			<button class="btn btn-success" type="submit" id="submit">회원가입</button>
 			<button class="btn btn-danger cancel" type="button">취소</button>
 			
+			</div>
 		</div>
-	</div>
-	
-
-</form>
-
+	</form>
 </div>
 
 <!-- <script src="/static/js/profunction.js"></script> -->

@@ -18,37 +18,38 @@
 	<div class="col-xs-12">
 		<form action="/board/insertProc" method="post" class="form-horizontal">
 			
-			<div class="form-group">
-	<div class="col-sm-2"></div>
-	<div class="col-sm-6">
-		<h2><span class="glyphicon glyphicon-file">게시글 상세 정보</span></h2>
+	<div class="form-group">
+			<div class="col-sm-2"></div>
+				<div class="col-sm-6">
+					<h2><span class="glyphicon glyphicon-file">게시글 상세 정보</span></h2>
+				</div>
+				
+			</div>
+	<div class="form-group">
+			<label class="control-label col-sm-2">게시글 번호</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="boardno" name="boardno" value="${detail.boardno}" readonly="readonly"/>
+				</div>
 	</div>
-</div>
-<div class="form-group">
-	<label class="control-label col-sm-2">게시글 번호</label>
-	<div class="col-sm-4">
-		<input type="text" class="form-control" id="boardno" name="boardno" value="${detail.boardno}" readonly="readonly"/>
-	</div>
-</div>
-<div class="form-group">
-	<label class="control-label col-sm-2">제 목</label>
-	<div class="col-sm-6">
-	<input type="text" class="form-control" id="subject" name="subject" value="${detail.subject}" readonly="readonly"/>
-	</div>
-</div>	
-<div class="form-group">
-	<label class="control-label col-sm-2">작 성 자</label>
-	<div class="col-sm-6">
-	<input type="text" class="form-control" id="writer" name="writer" value="${detail.writer}" readonly="readonly"/>
-	</div>
-</div>
-<div class="form-group">
-	<label class="control-label col-sm-2">내용</label>
-	<div class="col-sm-6">
-		<input type="text" class="form-control" id="content" name="content" value="${detail.content}" readonly="readonly"/>
-	</div>
-</div>
-		</form>
+		<div class="form-group">
+			<label class="control-label col-sm-2">제 목</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" id="subject" name="subject" value="${detail.subject}" readonly="readonly"/>
+				</div>
+		</div>	
+		<div class="form-group">
+			<label class="control-label col-sm-2">작 성 자</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" id="writer" name="writer" value="${detail.writer}" readonly="readonly"/>
+				</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2">내용</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" id="content" name="content" value="${detail.content}" readonly="readonly"/>
+				</div>
+		</div>
+	</form>
 		<div class="btn-group btn-group-sm" role="group" style="float:right;">
 			<button type="button" class="btn btn-info"    onclick="location.href='/board/boardDelete/${detail.boardno}'">삭제</button>
 			<button type="button" class="btn btn-success" onclick="location.href='/board/boardUpdate/${detail.boardno}'">수정</button>
@@ -70,6 +71,7 @@
 				<input type="text" class="form-control" id="replytext" name="replytext" placeholder="댓글을 입력하십시오"/>
 				<span class="input-group-btn">
 					<button class="btn btn-warning" type="submit" name="commentInsertBtn">등록</button>
+					
 				</span>
 			</div>
 		</form>
@@ -85,29 +87,41 @@
 	</div>
 </div>
 <script>
-
-
-
 $(document).ready(function(){
-	$(".btn-info").on("click",function(){
-		if(${member == null}){
-			alert("로그인을 하셔야 합니다.");
-			location.href="/login/login";
-			}
-		else if(${member != null}){
-			location.href="/board/boardUpdate";
-			}
-		});
 	$(".btn-success").on("click",function(){
 		if(${member == null}){
-			alert("로그인을 하셔야 합니다.");
+			alert("수정할 권한이 없습니다.");
+			location.href="/login/login";
+			}
+		});
+	$(".btn-info").on("click",function(){
+		if(${member == null}){
+			alert("삭제할 권한이 없습니다..");
 			location.href="/login/login";
 			}
 		});
 	
 	})
-
 </script>
+<script>
+$(document).ready(function(){
+	$(".btn-success").on("click",function(){
+		if(${admin != null}){
+			alert("관리자입니다.");
+			location.href="/board/boardUpdate/${detail.boardno}";
+			}
+		});
+	$(".btn-info").on("click",function(){
+		if(${admin != null}){
+			alert("관리자입니다.");
+			location.href="/board/boardDelete/${detail.boardno}";
+			}
+		});
+	
+})
+</script>
+
+
 
 
 <!-- 댓글 목록 -->

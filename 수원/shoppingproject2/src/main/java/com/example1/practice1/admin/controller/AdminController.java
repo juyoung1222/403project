@@ -1,6 +1,7 @@
 package com.example1.practice1.admin.controller;
 
 import javax.annotation.Resource;
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 

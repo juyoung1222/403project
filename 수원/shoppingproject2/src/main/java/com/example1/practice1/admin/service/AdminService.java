@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example1.practice1.admin.controller.AdminController;
 import com.example1.practice1.admin.domain.AdminDTO;
 import com.example1.practice1.admin.mapper.AdminMapper;
-import com.example1.practice1.domain.ProductCategoryiDTO;
+import com.example1.practice1.domain.MemberDTO;
 
 
 
@@ -38,5 +38,4 @@ public class AdminService {
 		return mapper.adminLogin(adminDTO);
 		}
 	
-
 }

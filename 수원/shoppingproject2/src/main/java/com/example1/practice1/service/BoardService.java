@@ -10,8 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example1.practice1.controller.BoardController;
 import com.example1.practice1.domain.BoardDTO;
 import com.example1.practice1.domain.CommentDTO;
+import com.example1.practice1.domain.Criteria;
+import com.example1.practice1.domain.FileDTO;
 import com.example1.practice1.domain.SearchCriteria;
 import com.example1.practice1.mapper.BoardMapper;
 

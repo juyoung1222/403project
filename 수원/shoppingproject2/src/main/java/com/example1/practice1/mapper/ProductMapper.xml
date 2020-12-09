@@ -79,4 +79,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	-->
 	
+	<!-- 메인검색 기능 -->
+	<select id="search" resultType="com.example1.practice1.domain.ProductDTO">
+	SELECT *
+	FROM PRODUCTTABLE
+	WHERE productname  LIKE CONCAT('%',#{searchName},'%')
+	
+	
+	
+	</select>
+	
 </mapper>
