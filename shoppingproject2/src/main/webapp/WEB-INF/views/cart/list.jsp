@@ -41,6 +41,7 @@
 				<th>일자</th>
 				<th></th>
 			</tr>
+			
 		</thead>
 			<c:forEach var="cart" items="${list}">
 			<tr>
@@ -58,13 +59,20 @@
 				<td><button type="button" class="btn btn-danger" onclick="location.href='/cart/cartDelete/${cart.cartno}',alert('삭제 완료')">삭제</button>
 				<button class="btn btn-warning"  onclick="location.href='/cart/cartDelete/${cart.cartno}',alert('구매 완료')">구매 하기</button></td>
 			</tr>
-				
-			</c:forEach>
-		<tbody>
-		</tbody>
-	</table>
+				 <c:set var="sum" value="${sum + (cart.productprice * cart.productsalescnt )}"/>
+		</c:forEach>
 	
-
+				<tr class="danger">
+					<td colspan="7" align="right">
+						<b><font size="+1">총 구매금액 :<fmt:formatNumber pattern="###,###,###" value="${sum}" />원</font></b>
+					</td>
+				</tr>
+	
+<tbody>
+</tbody>
+	
+</table>
+	
 </div>
 
 </body>
