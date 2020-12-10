@@ -1,40 +1,25 @@
 package com.example1.practice1.controller;
 
-import java.io.File;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.example1.practice1.domain.BoardDTO;
 import com.example1.practice1.domain.CommentDTO;
-import com.example1.practice1.domain.Criteria;
-import com.example1.practice1.domain.FileDTO;
-import com.example1.practice1.domain.MemberDTO;
 import com.example1.practice1.domain.PageMaker;
 import com.example1.practice1.domain.SearchCriteria;
 import com.example1.practice1.service.BoardService;
-import com.example1.practice1.service.CommentService;
 
 @Controller
 @RequestMapping("/board")

@@ -296,22 +296,26 @@ cursor: pointer;
 				<li><a href="/product/productlist">PRODUCT</a></li>
 				<li><a href="/board/boardList">COMMUNITY</a></li>
 				
+				<c:if test="${member == null}">
+				<li><a onclick="alert('회원정보가 없습니다 로그인 해주세요')"><span class="glyphicon hlyphicon-shopping-cart"></span>CART</a></li>
+				</c:if>
 				
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/cart/list"><span class="glyphicon hlyphicon-shopping-cart"></span>CART</a></li>
+				<c:if test="${member != null}">
+				<li><a href="/cart/list"><span class="glyphicon hlyphicon-shopping-cart"></span>CART</a></li>
+				</c:if>
 					
-					<c:if test="${member == null}">
-			      		<li><a href="/login/register"><span class="glyphicon glyphicon-user"></span> SIGN UP</a></li>
-			      </c:if>
+				<c:if test="${member == null}">
+			    	<li><a href="/login/register"><span class="glyphicon glyphicon-user"></span> SIGN UP</a></li>
+			    </c:if>
 			      
-			     <c:if test="${member == null}">
-			      	<li><a href="/login/login"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a></li>
-			     </c:if>
+			    <c:if test="${member == null}">
+			    	<li><a href="/login/login"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a></li>
+			    </c:if>
 			     
-			     <c:if test="${member != null}">
+			    <c:if test="${member != null}">
 			     	<li><a href="/login/logout" role="button"><span class="glyphicon glyphicon-log-out"></span> LOGOUT</a></li>
-			     </c:if>
-			    </ul>
+			    </c:if>
+			   
 			</ul>
 		</div>
 	</div>

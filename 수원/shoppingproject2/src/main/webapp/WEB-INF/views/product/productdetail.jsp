@@ -34,7 +34,7 @@
 				<tr>
 					<th>제품명 ${productdetail.productno}</th>
 					<th>가 격</th>
-					<th>수 량</th>
+					<th>판매 량</th>
 				</tr>
 			</thead>
 			<tr>
@@ -66,8 +66,8 @@
 					<input type="hidden" id="productimageUrl" name="productimageUrl" value="${productdetail.productimageUrl}"/>
 					<input type="hidden" id="productprice" name="productprice" value="${productdetail.productprice}"/>
 					<input type="hidden" id="productsalescnt" name="productsalescnt" value="${productdetail.productsalescnt}"/>
-		</div>		
-			<c:if test = "${member != null}">
+		</div>	
+		<c:if test = "${member != null}">
 				<select name="수량~">
 					<c:forEach begin="1" end="10" var="i">
 						<option value="${i}">${i}</option>
@@ -77,25 +77,16 @@
 			onclick="'location.href='/cart/list'">구매 하기</button>
 		<input type="submit" value="장바구니담기">
 		</c:if>
-		<c:if test = "${member == null}">
+	</form>
 		<select name="수량~">
 			<c:forEach begin="1" end="10" var="i">
 				<option value="${i}">${i}</option>
 			</c:forEach>
 		</select>
 		<button class="btn btn-warning"
-			onclick="button1_click()">구매 하기</button>
+			onclick="location.href='/login/login',alert('로그인 필요')">구매 하기</button>
 		
-		</c:if>
-	</form>
 </div>
-
-
-<script>
-function button1_click() {
-	alert("로그인 해주세요");
-}
-</script>
 
 </body>
 </html>
