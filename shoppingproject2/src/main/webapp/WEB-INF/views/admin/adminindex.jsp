@@ -44,6 +44,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="/product/productinsert">상품등록</a></li>
 							<li><a href="/product/productlist">상품목록(수정/삭제)</a></li>
+							<li><a href="/cart/list">장바구니</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
