@@ -30,6 +30,9 @@
 <div class="container">
 	<h2>장바구니 목록</h2>
 	
+	<button class="btn btn-warning"
+			onclick="button1_click()" style="float: right;">구매 하기</button>
+	
 	<table class="table table-hover table-bordered">
 		<thead>
 			<tr>
@@ -52,15 +55,21 @@
 				<td>${cart.productsalescnt}</td>
 				<!-- <td>${member.getUserId()}</td> -->
 				<td><fmt:formatDate value="${cart.cartdate}" pattern="yyyy년 MM월 dd일"/></td>
-				<td><button type="button" class="btn btn-danger" onclick="location.href='/cart/cartDelete/${cart.cartno}'">삭제</button></td>
+				<td><button type="button" class="btn btn-danger" onclick="location.href='/cart/cartDelete/${cart.cartno}',alert('삭제 완료')">삭제</button>
+				<button class="btn btn-warning"  onclick="location.href='/cart/cartDelete/${cart.cartno}',alert('구매 완료')">구매 하기</button></td>
 			</tr>
 			</c:forEach>
 		<tbody>
 		</tbody>
 	</table>
-	
-
 </div>
+
+<script>
+function button1_click() {
+	alert("구매 완료 했습니다.");
+	location.href="/product/productlist";
+}
+</script>
 
 </body>
 

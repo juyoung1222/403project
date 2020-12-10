@@ -18,4 +18,6 @@ public interface CartMapper {
 	//삭제
 	public int cartDelete(int cartno) throws Exception;
 	
+
+	
 }

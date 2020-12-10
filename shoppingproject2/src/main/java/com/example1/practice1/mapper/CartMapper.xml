@@ -27,6 +27,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	FROM	CARTTABLE
 	WHERE	CARTNO		= #{cartno}
 	</delete>
+	
+
 
 
 </mapper>

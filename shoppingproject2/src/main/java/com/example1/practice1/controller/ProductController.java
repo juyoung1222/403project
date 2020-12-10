@@ -42,7 +42,7 @@ public class ProductController {
 		private String boardInsertForm() {
 			System.out.println("Controller insert......");
 			return "/product/productinsert";
-		}
+		}//end - private String boardInsertForm() 
 
 		// Controller 에서 Multipart 를 @RequestParet 어노테이션을 통해 별도의 설정없이 사용할 수 있다.
 		@RequestMapping("/insertProc")
@@ -94,7 +94,7 @@ public class ProductController {
 			}
 
 			return "redirect:/product/productlist";
-		}
+		}//end -private String boardInsertProc (HttpServletRequest request,@RequestPart MultipartFile productimagefile) throws Exception  
 		
 		// 게시글 목록 보여주기
 		@RequestMapping(value = "/productlist", method = RequestMethod.GET)
@@ -114,7 +114,8 @@ public class ProductController {
 			model.addAttribute("list", productService.productListService(pagination));
 			
 			return "/product/productlist";
-		}
+		}//end - private String ProductList( Model model, @RequestParam(required = false, defaultValue = "1") int page,
+		//@RequestParam(required = false, defaultValue = "1") int range) throws Exception 
 		
 		// 게시글 카테고리 목록 보여주기
 		@RequestMapping(value = "/productlist/{productid}", method = RequestMethod.GET)
@@ -138,7 +139,7 @@ public class ProductController {
 			model.addAttribute("list", productService.productcateListService(pagination));
 			
 			return "/product/productlist";
-		}
+		}//end - private String ProductcateList(@PathVariable int productid, Model model) throws Exception
 				
 		// 게시글 번호에 해당하는 상세정보화면
 		@RequestMapping("/productdetail/{productno}")
@@ -205,7 +206,9 @@ public class ProductController {
 			productService.productDeleteService(productno);
 			return "redirect:/product/productlist";
 		}//end - private String productDelete(@PathVariable int productno) throws Exception
-}
+		
+	
+}// end - public class ProductController 
 
 
 
