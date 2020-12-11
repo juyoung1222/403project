@@ -12,14 +12,10 @@
 <meta charset="UTF-8">
 <title>메인</title>
 <script type="text/javascript" src="/static/jquery/lib/jquery.js"></script>
-<script type='text/javascript'
-	src='/static/jquery/lib/jquery.bgiframe.min.js'></script>
-<script type='text/javascript'
-	src='/static/jquery/lib/jquery.ajaxQueue.js'></script>
-<script type='text/javascript'
-	src='/static/jquery/jquery.autocomplete.js'></script>
-<link rel="stylesheet" type="text/css"
-	href="/static/jquery/jquery.autocomplete.css" />
+<script type='text/javascript'src='/static/jquery/lib/jquery.bgiframe.min.js'></script>
+<script type='text/javascript'src='/static/jquery/lib/jquery.ajaxQueue.js'></script>
+<script type='text/javascript'src='/static/jquery/jquery.autocomplete.js'></script>
+<link rel="stylesheet" type="text/css" href="/static/jquery/jquery.autocomplete.css" />
 	
 <style>
 .w3-sidebar a {
@@ -413,7 +409,7 @@
 						'구두', 
 						'샌들',
 						'Shoes', 
-						'shoes' 
+						'shoes' ,
 						'악세사리'
 						];
 </script>
