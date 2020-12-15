@@ -3,7 +3,7 @@ package com.example1.practice1.domain;
 public class productPagination {
 	private int listSize = 10; // 초기값으로 목록개수를 10으로 셋팅
 
-	private int rangeSize = 10; // 초기값으로 페이지범위를 10으로 셋팅
+	private int rangeSize=10; // 초기값으로 페이지범위를 10으로 셋팅
 
 	private int page;//현재 페이지
 

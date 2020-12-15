@@ -98,8 +98,8 @@ public class ProductController {
 		
 		// 게시글 목록 보여주기
 		@RequestMapping(value = "/productlist", method = RequestMethod.GET)
-		private String ProductList( Model model, @RequestParam(required = false, defaultValue = "1") int page,
-				@RequestParam(required = false, defaultValue = "1") int range) throws Exception {
+		private String ProductList( Model model, @RequestParam int page,
+				@RequestParam  int range) throws Exception {
 
 			// 전체 게시글 개수
 			int listCnt = productService.getProductListCnt();
@@ -114,8 +114,7 @@ public class ProductController {
 			model.addAttribute("list", productService.productListService(pagination));
 			
 			return "/product/productlist";
-		}//end - private String ProductList( Model model, @RequestParam(required = false, defaultValue = "1") int page,
-		//@RequestParam(required = false, defaultValue = "1") int range) throws Exception 
+		}//end - private String ProductList( Model model, @RequestParam int page, @RequestParam  int range) throws Exception 
 		
 		// 게시글 카테고리 목록 보여주기
 		@RequestMapping(value = "/productlist/{productid}", method = RequestMethod.GET)

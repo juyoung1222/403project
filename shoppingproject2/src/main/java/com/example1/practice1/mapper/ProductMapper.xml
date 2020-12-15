@@ -26,12 +26,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 -->
 	<!-- 게시글 목록 보기 -->
-	<select id="productList" resultType="com.example1.practice1.domain.ProductDTO">
+	<select id="productList" resultType="com.example1.practice1.domain.ProductDTO" parameterType="com.example1.practice1.domain.Pagination">
 	SELECT	
 		PRODUCTNO, PRODUCTIMAGEFILE, productimageName, productimageOriName, productimageUrl, PRODUCTNAME,PRODUCTPRICE, PRODUCTSALESCNT, PRODUCTCID
 	FROM
 			PRODUCTTABLE	
-	order by PRODUCTNO desc		
+	order by PRODUCTNO desc	
+	LIMIT #{startList}, #{listSize}
 	</select>
 	
 	<!-- 상품카테고리리스트 -->
