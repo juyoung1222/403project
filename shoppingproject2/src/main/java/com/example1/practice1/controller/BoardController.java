@@ -80,6 +80,7 @@ public class BoardController {
 		logger.info("insertproc get........");
 		MemberDTO memberDTO = new MemberDTO();
 		
+		//작성자를 memberdto에 userId를 부른다.
 		String writer = (String) session.getAttribute("userId"); 
 		
 		logger.info("subject : " + request.getParameter("subject") );
